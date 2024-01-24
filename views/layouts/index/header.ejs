@@ -1,0 +1,138 @@
+<!-- Start Header Top 
+    ============================================= -->
+<%# console.log({LANG}) %>
+<div class="top-bar-area inc-pad <%= inc == 'inc/index/home' ? 'transparent' : '' %> text-light">
+	<div class="container-full">
+		<div class="row align-center">
+			<div class="col-lg-6 info">
+				<ul>
+					<% const addresses = PAGE_COMPONENTS.find(e => e.name == 'addresses')?.titles %>
+					<li><i class="fas fa-map-marker-alt"></i> <%= addresses?.[1] || addresses?.[0] || '' %></li>
+					<% const headerEmails = PAGE_COMPONENTS.find(e => e.name == 'emails')?.titles %>
+					<li><i class="fas fa-envelope-open"></i><%= headerEmails?.[1] || headerEmails?.[0] || '' %></li>
+				</ul>
+			</div>
+			<div class="col-lg-6 text-right item-flex">
+				<div class="info">
+					<ul>
+						<li><i class="fas fa-clock"></i> Giờ làm việc: 8:00 AM – 7:45 PM</li>
+					</ul>
+				</div>
+				<div class="social">
+					<ul>
+						<li>
+							<a href="https://www.facebook.com/Bach-Khoa-Electrical-110359044729618/">
+								<i class="fab fa-facebook-f"></i>
+							</a>
+						</li>
+						<!-- <li>
+							<a href="#">
+								<i class="fab fa-twitter"></i>
+							</a>
+						</li>
+						<li>
+							<a href="#">
+								<i class="fab fa-linkedin-in"></i>
+							</a>
+						</li> -->
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- End Header Top -->
+
+<!-- Header 
+    ============================================= -->
+<header id="home">
+	<!-- Start Navigation -->
+	<nav
+		class="
+			navbar navbar-default
+			attr-bg
+			navbar-fixed
+			white
+			<%=
+			inc
+			==
+			'inc/index/home'
+			?
+			'no-background'
+			:
+			''
+			%>
+			bootsnav
+			inc-topbar
+		"
+	>
+		<div class="container-full">
+			<div class="nav-box">
+				<!-- Start Header Navigation -->
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
+						<i class="fa fa-bars"></i>
+					</button>
+					<a class="navbar-brand" href="/?lang=<%=LANG%>">
+						<img src="/assets/img/bachkhoa-logo-light.png" class="logo logo-display" alt="Logo" />
+						<img src="/assets/img/bachkhoa-logo-dark.png" class="logo logo-scrolled" alt="Logo" />
+					</a>
+				</div>
+				<!-- End Header Navigation -->
+
+				<!-- Collect the nav links, forms, and other content for toggling -->
+				<div class="collapse navbar-collapse" id="navbar-menu">
+					<ul class="nav navbar-nav navbar-center" data-in="fadeInDown" data-out="fadeOutUp">
+						<li>
+							<a href="/?lang=<%=LANG%>" class="<%= inc.match(/home/) ? 'active' : '' %>"
+								><%=TRANS.HOME[LANG]%>
+							</a>
+						</li>
+
+						<li class="dropdown" style="margin-top: -1px">
+							<a
+								href="#"
+								class="dropdown-toggle <%= inc.match(/service/) ? 'active' : '' %>"
+								data-toggle="dropdown"
+							>
+								<%=TRANS.SERVICES[LANG]%>
+							</a>
+							<ul class="dropdown-menu">
+								<% MENU_SERVICES.forEach(service => { %>
+								<li>
+									<a href="/<%=TRANS.SERVICES_SLUG[LANG]%>/<%=service.slug%>"><%=service.name%></a>
+								</li>
+								<% }) %>
+							</ul>
+						</li>
+						<li>
+							<a href="/<%=TRANS.PRODUCTS_SLUG[LANG]%>" class="<%= inc.match(/products/) ? 'active' : '' %>">
+								<%=TRANS.PRODUCTS[LANG]%>
+							</a>
+						</li>
+						<li>
+							<a href="/<%=TRANS.BLOG_SLUG[LANG]%>" class="<%= inc.match(/blog/) ? 'active' : '' %>">
+								<%=TRANS.BLOG[LANG]%>
+							</a>
+						</li>
+						<li>
+							<a href="/<%=TRANS.ABOUT_US_SLUG[LANG]%>" class="<%= inc.match(/about/) ? 'active' : '' %>">
+								<%=TRANS.ABOUT_US[LANG]%>
+							</a>
+						</li>
+						<li class="dropdown" style="margin-top: -1px">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown"><%=TRANS.LANGUAGES[LANG]%></a>
+							<ul class="dropdown-menu">
+								<li><a href="<%=SWITCH_LANGS.vi%>">Việt Nam</a></li>
+								<li><a href="<%=SWITCH_LANGS.en%>">English</a></li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+				<!-- /.navbar-collapse -->
+			</div>
+		</div>
+	</nav>
+	<!-- End Navigation -->
+</header>
+<!-- End Header -->

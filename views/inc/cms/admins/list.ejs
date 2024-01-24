@@ -1,0 +1,58 @@
+<div class="breadcrumbs d-flex justify-content-center">
+  <div class="page-header float-left">
+    <div class="page-title">
+      <h1 class="d-inline-block float-left text-uppercase">Danh sách quản trị viên</h1>
+    </div>
+  </div>
+  <div class="d-flex align-items-center" style="height: 50px; padding-left: 20px; padding-top: 10px">
+    <% if (currentUserRole === 'admin') {%>
+    <label for="open-create-admin" class="btn-success p-2 pl-3 pr-3 br-7"> Thêm quản trị viên mới </label>
+    <% } %>
+  </div>
+</div>
+
+<div class="col-lg bg-light" style="padding-bottom: 100px">
+  <%# include ../../components/admin/products/filter %>
+  <br />
+  <table class="table" style="margin: auto">
+    <thead>
+      <tr class="bg-light">
+        <th scope="col">#username</th>
+        <th scope="col">Tên</th>
+        <th scope="col">Số điện thoại</th>
+        <th scope="col">Email</th>
+        <th scope="col">Vai trò</th>
+        <% if (currentUserRole == 0) {%>
+        <th scope="col" style="max-width: 100px">Thao tác</th>
+        <% } %>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% admins.forEach(admin => { %>
+      <tr scope="row">
+        <td scope="col"><%= admin.username %></td>
+        <td scope="col"><%= admin.name %></td>
+        <td scope="col"><%= admin.phone %></td>
+        <td scope="col"><%= admin.email %></td>
+        <td scope="col"><%= ROLE_NAMES[admin.role] %></td>
+
+        <% if (currentUserRole == 0) {%>
+        <td scope="col" style="max-width: 100px">
+          <div class="d-flex flex-column">
+            <a class="button btn-warning p-2 br-7 mb-2" href="/admin/admin/password/<%= admin._id %>">
+              Đặt lại Mật khẩu
+            </a>
+            <button data-id="<%=admin._id %>" data-url="/admin/admin/<%=admin._id%>" class="button button-remove btn-danger p-2 br-7">
+              Xoá người dùng
+            </button>
+          </div>
+        </td>
+        <% } %>
+      </tr>
+      <% }) %>
+    </tbody>
+  </table>
+</div>
+
+<%- include('../../../components/form/create-admin')%>

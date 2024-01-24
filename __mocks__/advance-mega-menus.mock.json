@@ -1,0 +1,1092 @@
+{
+  "header_menu": [
+    {
+      "id": 1,
+      "title": "Trang chủ",
+      "value": "trang-chu",
+      "direct_url": "https://www.vlu.edu.vn/",
+      "order": 1,
+      "createdAt": "2023-09-05T01:43:56.635Z",
+      "updatedAt": "2023-12-06T08:36:50.843Z",
+      "publishedAt": "2023-09-05T01:43:58.225Z",
+      "locale": "vi",
+      "localizations": [
+        {
+          "id": 5,
+          "title": "Homepage",
+          "value": "home-page",
+          "direct_url": "https://www.vlu.edu.vn/en",
+          "order": 1,
+          "createdAt": "2023-09-05T03:38:39.562Z",
+          "updatedAt": "2023-11-27T04:01:34.645Z",
+          "publishedAt": "2023-09-05T03:38:41.107Z",
+          "locale": "en"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "title": "Sinh viên",
+      "value": "sinh-vien",
+      "direct_url": "https://online.vlu.edu.vn/",
+      "order": 2,
+      "createdAt": "2023-09-05T03:17:08.457Z",
+      "updatedAt": "2023-09-05T03:42:18.209Z",
+      "publishedAt": "2023-09-05T03:17:14.516Z",
+      "locale": "vi",
+      "localizations": [
+        {
+          "id": 6,
+          "title": "Students",
+          "value": "student",
+          "direct_url": "https://online.vlu.edu.vn/",
+          "order": 2,
+          "createdAt": "2023-09-05T03:39:17.127Z",
+          "updatedAt": "2023-09-05T03:42:29.361Z",
+          "publishedAt": "2023-09-05T03:39:19.086Z",
+          "locale": "en"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "title": "Nhân viên",
+      "value": "nhan-vien",
+      "direct_url": "https://vanlangunivn.sharepoint.com/",
+      "order": 3,
+      "createdAt": "2023-09-05T03:18:51.326Z",
+      "updatedAt": "2023-09-05T03:39:44.722Z",
+      "publishedAt": "2023-09-05T03:20:24.532Z",
+      "locale": "vi",
+      "localizations": [
+        {
+          "id": 7,
+          "title": "Staff",
+          "value": "staff",
+          "direct_url": "https://vanlangunivn.sharepoint.com/",
+          "order": 3,
+          "createdAt": "2023-09-05T03:39:44.618Z",
+          "updatedAt": "2023-09-05T03:39:49.603Z",
+          "publishedAt": "2023-09-05T03:39:49.581Z",
+          "locale": "en"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Cựu sinh viên",
+      "value": "cuu-sinh-vien",
+      "direct_url": "/alumni",
+      "order": 4,
+      "createdAt": "2023-09-05T03:16:21.810Z",
+      "updatedAt": "2023-09-05T03:40:18.327Z",
+      "publishedAt": "2023-09-05T03:16:23.886Z",
+      "locale": "vi",
+      "localizations": [
+        {
+          "id": 8,
+          "title": "Alumni",
+          "value": "alumni",
+          "direct_url": "/en/alumni",
+          "order": 4,
+          "createdAt": "2023-09-05T03:40:18.295Z",
+          "updatedAt": "2023-09-05T03:40:24.254Z",
+          "publishedAt": "2023-09-05T03:40:24.245Z",
+          "locale": "en"
+        }
+      ]
+    }
+  ],
+  "advance_mega_menu": [
+    {
+      "id": 363,
+      "title": "Về Văn Lang",
+      "direct_url": "/about-us",
+      "image": null,
+      "list": [
+        {
+          "id": 533,
+          "title": "Lý tưởng dẫn dắt",
+          "direct_label": null,
+          "direct_url": "/about-us/mission-vision",
+          "image": null,
+          "list": []
+        },
+        {
+          "id": 531,
+          "title": "Hành trình truyền cảm hứng",
+          "direct_label": null,
+          "direct_url": "/about-us/history-milestone",
+          "image": null,
+          "list": []
+        },
+        {
+          "id": 532,
+          "title": "Hội đồng trường & Ban giám hiệu",
+          "direct_label": null,
+          "direct_url": "/about-us/trustees-administrators",
+          "image": null,
+          "list": []
+        },
+        {
+          "id": 534,
+          "title": "Kiểm định chất lượng",
+          "direct_label": null,
+          "direct_url": "/about-us/quality-accreditation",
+          "image": null,
+          "list": []
+        },
+        {
+          "id": 535,
+          "title": "Triển vọng và Đổi mới",
+          "direct_label": null,
+          "direct_url": "/about-us/innovation-futuristic",
+          "image": null,
+          "list": []
+        },
+        {
+          "id": 536,
+          "title": "Khuôn viên & Cơ sở vật chất",
+          "direct_label": null,
+          "direct_url": "/vi/about-us/campuses-facilities/co-so-chinh",
+          "image": null,
+          "list": []
+        },
+        {
+          "id": 537,
+          "title": "Hệ thống văn bằng",
+          "direct_label": null,
+          "direct_url": null,
+          "image": null,
+          "list": []
+        },
+        {
+          "id": 538,
+          "title": "Khoa & Viện đào tạo",
+          "direct_label": null,
+          "direct_url": "/about-us/faculty-institutes",
+          "image": null,
+          "list": []
+        },
+        {
+          "id": 677,
+          "title": "Phát triển bền vững",
+          "direct_label": null,
+          "direct_url": "/vi/sustainability/homepage-sustainability/homepage",
+          "image": null,
+          "list": []
+        },
+        {
+          "id": 655,
+          "title": "Hệ thống văn bản",
+          "direct_label": null,
+          "direct_url": null,
+          "image": null,
+          "list": [
+            {
+              "id": 1243,
+              "title": "Văn bản chỉ đạo",
+              "direct_url": "https://www.vlu.edu.vn/vi/dynamic/he-thong-van-ban-chi-dao"
+            },
+            {
+              "id": 1244,
+              "title": "Văn bản thực thi",
+              "direct_url": "https://www.vlu.edu.vn/vi/dynamic/he-thong-van-ban-thuc-thi-cong-khai"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 364,
+      "title": "Đào tạo",
+      "direct_url": "/academics",
+      "image": null,
+      "list": [
+        {
+          "id": 539,
+          "title": "Chương trình đào tạo",
+          "direct_label": null,
+          "direct_url": null,
+          "image": {
+            "id": 4374,
+            "name": "Artboard 13@2x (1).png",
+            "alternativeText": "Artboard 13@2x (1).png",
+            "caption": "Artboard 13@2x (1).png",
+            "width": 4161,
+            "height": 4160,
+            "formats": {
+              "large": {
+                "ext": ".png",
+                "url": "https://vanlang.s3.ap-southeast-1.amazonaws.com/large_Artboard_13_2x_1_301ccefaf1.png",
+                "hash": "large_Artboard_13_2x_1_301ccefaf1",
+                "mime": "image/png",
+                "name": "large_Artboard 13@2x (1).png",
+                "path": null,
+                "size": 44.08,
+                "width": 1000,
+                "height": 1000
+              },
+              "small": {
+                "ext": ".png",
+                "url": "https://vanlang.s3.ap-southeast-1.amazonaws.com/small_Artboard_13_2x_1_301ccefaf1.png",
+                "hash": "small_Artboard_13_2x_1_301ccefaf1",
+                "mime": "image/png",
+                "name": "small_Artboard 13@2x (1).png",
+                "path": null,
+                "size": 17.58,
+                "width": 500,
+                "height": 500
+              },
+              "medium": {
+                "ext": ".png",
+                "url": "https://vanlang.s3.ap-southeast-1.amazonaws.com/medium_Artboard_13_2x_1_301ccefaf1.png",
+                "hash": "medium_Artboard_13_2x_1_301ccefaf1",
+                "mime": "image/png",
+                "name": "medium_Artboard 13@2x (1).png",
+                "path": null,
+                "size": 29.72,
+                "width": 750,
+                "height": 750
+              },
+              "thumbnail": {
+                "ext": ".png",
+                "url": "https://vanlang.s3.ap-southeast-1.amazonaws.com/thumbnail_Artboard_13_2x_1_301ccefaf1.png",
+                "hash": "thumbnail_Artboard_13_2x_1_301ccefaf1",
+                "mime": "image/png",
+                "name": "thumbnail_Artboard 13@2x (1).png",
+                "path": null,
+                "size": 4.31,
+                "width": 156,
+                "height": 156
+              }
+            },
+            "hash": "Artboard_13_2x_1_301ccefaf1",
+            "ext": ".png",
+            "mime": "image/png",
+            "size": 50.92,
+            "url": "https://vanlang.s3.ap-southeast-1.amazonaws.com/Artboard_13_2x_1_301ccefaf1.png",
+            "previewUrl": null,
+            "provider": "aws-s3",
+            "provider_metadata": null,
+            "createdAt": "2023-02-03T10:19:53.222Z",
+            "updatedAt": "2023-02-03T10:19:53.222Z"
+          },
+          "list": [
+            {
+              "id": 946,
+              "title": "Chương trình Đại học",
+              "direct_url": "/academics#ungraduate_programs_content"
+            },
+            {
+              "id": 947,
+              "title": "Chương trình Sau Đại học",
+              "direct_url": "/academics#graduate_programs_content"
+            },
+            {
+              "id": 948,
+              "title": "Chương trình liên kết quốc tế",
+              "direct_url": "/academics#international_programs_content"
+            }
+          ]
+        },
+        {
+          "id": 540,
+          "title": "Các trường và khối đào tạo",
+          "direct_label": "Xem tất cả trường & khối đào tạo",
+          "direct_url": "/academics/faculty-group",
+          "image": {
+            "id": 4376,
+            "name": "Artboard 15@2x.png",
+            "alternativeText": "Artboard 15@2x.png",
+            "caption": "Artboard 15@2x.png",
+            "width": 4167,
+            "height": 4167,
+            "formats": {
+              "large": {
+                "ext": ".png",
+                "url": "https://vanlang.s3.ap-southeast-1.amazonaws.com/large_Artboard_15_2x_266bf1aa87.png",
+                "hash": "large_Artboard_15_2x_266bf1aa87",
+                "mime": "image/png",
+                "name": "large_Artboard 15@2x.png",
+                "path": null,
+                "size": 72.86,
+                "width": 1000,
+                "height": 1000
+              },
+              "small": {
+                "ext": ".png",
+                "url": "https://vanlang.s3.ap-southeast-1.amazonaws.com/small_Artboard_15_2x_266bf1aa87.png",
+                "hash": "small_Artboard_15_2x_266bf1aa87",
+                "mime": "image/png",
+                "name": "small_Artboard 15@2x.png",
+                "path": null,
+                "size": 29.57,
+                "width": 500,
+                "height": 500
+              },
+              "medium": {
+                "ext": ".png",
+                "url": "https://vanlang.s3.ap-southeast-1.amazonaws.com/medium_Artboard_15_2x_266bf1aa87.png",
+                "hash": "medium_Artboard_15_2x_266bf1aa87",
+                "mime": "image/png",
+                "name": "medium_Artboard 15@2x.png",
+                "path": null,
+                "size": 48.93,
+                "width": 750,
+                "height": 750
+              },
+              "thumbnail": {
+                "ext": ".png",
+                "url": "https://vanlang.s3.ap-southeast-1.amazonaws.com/thumbnail_Artboard_15_2x_266bf1aa87.png",
+                "hash": "thumbnail_Artboard_15_2x_266bf1aa87",
+                "mime": "image/png",
+                "name": "thumbnail_Artboard 15@2x.png",
+                "path": null,
+                "size": 7.32,
+                "width": 156,
+                "height": 156
+              }
+            },
+            "hash": "Artboard_15_2x_266bf1aa87",
+            "ext": ".png",
+            "mime": "image/png",
+            "size": 66.21,
+            "url": "https://vanlang.s3.ap-southeast-1.amazonaws.com/Artboard_15_2x_266bf1aa87.png",
+            "previewUrl": null,
+            "provider": "aws-s3",
+            "provider_metadata": null,
+            "createdAt": "2023-02-03T10:19:53.493Z",
+            "updatedAt": "2023-02-03T10:19:53.493Z"
+          },
+          "list": [
+            {
+              "id": 949,
+              "title": "Trường Công nghệ Văn Lang",
+              "direct_url": "/academics/faculty-group?faculty=truong-cong-nghe-van-lang#faculties"
+            },
+            {
+              "id": 950,
+              "title": "Khối Khoa học Sức khỏe",
+              "direct_url": "/academics/faculty-group?faculty=khoa-hoc-suc-khoe#faculties"
+            },
+            {
+              "id": 951,
+              "title": "Khối Kinh doanh - Quản lý",
+              "direct_url": "/academics/faculty-group?faculty=kinh-doanh-quan-ly#faculties"
+            },
+            {
+              "id": 952,
+              "title": "Khối Thiết kế - Nghệ thuật",
+              "direct_url": "/academics/faculty-group?faculty=thiet-ke-nghe-thuat#faculties"
+            },
+            {
+              "id": 953,
+              "title": "Khối Kiến trúc",
+              "direct_url": "/academics/faculty-group?faculty=kien-truc#faculties"
+            },
+            {
+              "id": 1060,
+              "title": "Khối Du lịch",
+              "direct_url": "/academics/faculty-group?faculty=khoa-khach-san-du-lich-va-su-kien#faculties"
+            },
+            {
+              "id": 954,
+              "title": "Khối Luật - Xã hội Nhân văn - Truyền thông",
+              "direct_url": "/academics/faculty-group?faculty=luat-xa-hoi-nhan-van-truyen-thong#faculties"
+            }
+          ]
+        },
+        {
+          "id": 541,
+          "title": "Các ngành đào tạo",
+          "direct_label": "Xem tất cả ngành đào tạo",
+          "direct_url": "/academics/majors/search",
+          "image": null,
+          "list": [
+            {
+              "id": 956,
+              "title": null,
+              "direct_url": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 365,
+      "title": "Tuyển sinh",
+      "direct_url": "/admissions",
+      "image": null,
+      "list": [
+        {
+          "id": 543,
+          "title": "Chương trình Đại học",
+          "direct_label": null,
+          "direct_url": null,
+          "image": {
+            "id": 4374,
+            "name": "Artboard 13@2x (1).png",
+            "alternativeText": "Artboard 13@2x (1).png",
+            "caption": "Artboard 13@2x (1).png",
+            "width": 4161,
+            "height": 4160,
+            "formats": {
+              "large": {
+                "ext": ".png",
+                "url": "https://vanlang.s3.ap-southeast-1.amazonaws.com/large_Artboard_13_2x_1_301ccefaf1.png",
+                "hash": "large_Artboard_13_2x_1_301ccefaf1",
+                "mime": "image/png",
+                "name": "large_Artboard 13@2x (1).png",
+                "path": null,
+                "size": 44.08,
+                "width": 1000,
+                "height": 1000
+              },
+              "small": {
+                "ext": ".png",
+                "url": "https://vanlang.s3.ap-southeast-1.amazonaws.com/small_Artboard_13_2x_1_301ccefaf1.png",
+                "hash": "small_Artboard_13_2x_1_301ccefaf1",
+                "mime": "image/png",
+                "name": "small_Artboard 13@2x (1).png",
+                "path": null,
+                "size": 17.58,
+                "width": 500,
+                "height": 500
+              },
+              "medium": {
+                "ext": ".png",
+                "url": "https://vanlang.s3.ap-southeast-1.amazonaws.com/medium_Artboard_13_2x_1_301ccefaf1.png",
+                "hash": "medium_Artboard_13_2x_1_301ccefaf1",
+                "mime": "image/png",
+                "name": "medium_Artboard 13@2x (1).png",
+                "path": null,
+                "size": 29.72,
+                "width": 750,
+                "height": 750
+              },
+              "thumbnail": {
+                "ext": ".png",
+                "url": "https://vanlang.s3.ap-southeast-1.amazonaws.com/thumbnail_Artboard_13_2x_1_301ccefaf1.png",
+                "hash": "thumbnail_Artboard_13_2x_1_301ccefaf1",
+                "mime": "image/png",
+                "name": "thumbnail_Artboard 13@2x (1).png",
+                "path": null,
+                "size": 4.31,
+                "width": 156,
+                "height": 156
+              }
+            },
+            "hash": "Artboard_13_2x_1_301ccefaf1",
+            "ext": ".png",
+            "mime": "image/png",
+            "size": 50.92,
+            "url": "https://vanlang.s3.ap-southeast-1.amazonaws.com/Artboard_13_2x_1_301ccefaf1.png",
+            "previewUrl": null,
+            "provider": "aws-s3",
+            "provider_metadata": null,
+            "createdAt": "2023-02-03T10:19:53.222Z",
+            "updatedAt": "2023-02-03T10:19:53.222Z"
+          },
+          "list": [
+            {
+              "id": 957,
+              "title": "Đề án tuyển sinh",
+              "direct_url": "/dynamic/de-an-tuyen-sinh"
+            },
+            {
+              "id": 963,
+              "title": "Học phí",
+              "direct_url": "/admissions/tuition-fee/hoc-phi-dai-hoc"
+            },
+            {
+              "id": 961,
+              "title": "Tuyển sinh năm 2024",
+              "direct_url": "https://tuyensinh.vlu.edu.vn/"
+            },
+            {
+              "id": 965,
+              "title": "Học bổng",
+              "direct_url": "/admissions/scholarship/hoc-bong-dai-hoc"
+            },
+            {
+              "id": 958,
+              "title": "Ngành đào tạo",
+              "direct_url": "/dynamic/nganh-dao-tao"
+            },
+            {
+              "id": 964,
+              "title": "Hỗ trợ tài chính",
+              "direct_url": "/admissions/financial-aid/ho-tro-tai-chinh-dai-hoc"
+            }
+          ]
+        },
+        {
+          "id": 542,
+          "title": "Chương trình Sau Đại học",
+          "direct_label": null,
+          "direct_url": null,
+          "image": {
+            "id": 4377,
+            "name": "Artboard 9@2x.png",
+            "alternativeText": "Artboard 9@2x.png",
+            "caption": "Artboard 9@2x.png",
+            "width": 4167,
+            "height": 4168,
+            "formats": {
+              "large": {
+                "ext": ".png",
+                "url": "https://vanlang.s3.ap-southeast-1.amazonaws.com/large_Artboard_9_2x_0c9bf0d456.png",
+                "hash": "large_Artboard_9_2x_0c9bf0d456",
+                "mime": "image/png",
+                "name": "large_Artboard 9@2x.png",
+                "path": null,
+                "size": 42.98,
+                "width": 1000,
+                "height": 1000
+              },
+              "small": {
+                "ext": ".png",
+                "url": "https://vanlang.s3.ap-southeast-1.amazonaws.com/small_Artboard_9_2x_0c9bf0d456.png",
+                "hash": "small_Artboard_9_2x_0c9bf0d456",
+                "mime": "image/png",
+                "name": "small_Artboard 9@2x.png",
+                "path": null,
+                "size": 16.21,
+                "width": 500,
+                "height": 500
+              },
+              "medium": {
+                "ext": ".png",
+                "url": "https://vanlang.s3.ap-southeast-1.amazonaws.com/medium_Artboard_9_2x_0c9bf0d456.png",
+                "hash": "medium_Artboard_9_2x_0c9bf0d456",
+                "mime": "image/png",
+                "name": "medium_Artboard 9@2x.png",
+                "path": null,
+                "size": 27.99,
+                "width": 750,
+                "height": 750
+              },
+              "thumbnail": {
+                "ext": ".png",
+                "url": "https://vanlang.s3.ap-southeast-1.amazonaws.com/thumbnail_Artboard_9_2x_0c9bf0d456.png",
+                "hash": "thumbnail_Artboard_9_2x_0c9bf0d456",
+                "mime": "image/png",
+                "name": "thumbnail_Artboard 9@2x.png",
+                "path": null,
+                "size": 4.04,
+                "width": 156,
+                "height": 156
+              }
+            },
+            "hash": "Artboard_9_2x_0c9bf0d456",
+            "ext": ".png",
+            "mime": "image/png",
+            "size": 49.07,
+            "url": "https://vanlang.s3.ap-southeast-1.amazonaws.com/Artboard_9_2x_0c9bf0d456.png",
+            "previewUrl": null,
+            "provider": "aws-s3",
+            "provider_metadata": null,
+            "createdAt": "2023-02-03T10:19:54.943Z",
+            "updatedAt": "2023-02-03T10:19:54.943Z"
+          },
+          "list": [
+            {
+              "id": 966,
+              "title": "Hướng dẫn xét tuyển",
+              "direct_url": "/admissions/huong-dan-xet-tuyen-sau-dai-hoc"
+            },
+            {
+              "id": 967,
+              "title": "Học phí",
+              "direct_url": "/admissions/tuition-fee/hoc-phi-sau-dai-hoc"
+            },
+            {
+              "id": 968,
+              "title": "Học bổng",
+              "direct_url": "/admissions/scholarship/hoc-bong-sau-dai-hoc"
+            }
+          ]
+        },
+        {
+          "id": 545,
+          "title": "Chương trình liên kết quốc tế",
+          "direct_label": null,
+          "direct_url": null,
+          "image": null,
+          "list": [
+            {
+              "id": 969,
+              "title": "Xét tuyển Cử nhân quốc tế",
+              "direct_url": "/admissions/huong-dan-xet-tuyen-cu-nhan-quoc-te"
+            },
+            {
+              "id": 970,
+              "title": "Xét tuyển Thạc sĩ quốc tế",
+              "direct_url": "/admissions/huong-dan-xet-tuyen-thac-si-quoc-te"
+            },
+            {
+              "id": 971,
+              "title": "Học bổng Đại học",
+              "direct_url": "/admissions/scholarship/hoc-bong-dai-hoc"
+            },
+            {
+              "id": 972,
+              "title": "Học bổng Sau đại học",
+              "direct_url": "/admissions/scholarship/hoc-bong-sau-dai-hoc"
+            },
+            {
+              "id": 973,
+              "title": "Học phí Đại học",
+              "direct_url": "/admissions/tuition-fee/hoc-phi-dai-hoc"
+            },
+            {
+              "id": 974,
+              "title": "Học phí Sau Đại học",
+              "direct_url": "/admissions/tuition-fee/hoc-phi-sau-dai-hoc"
+            }
+          ]
+        },
+        {
+          "id": 544,
+          "title": "Các chương trình khác",
+          "direct_label": null,
+          "direct_url": null,
+          "image": null,
+          "list": [
+            {
+              "id": 975,
+              "title": "Cơ hội nghề nghiệp",
+              "direct_url": "/admissions/professional-career-support"
+            },
+            {
+              "id": 976,
+              "title": "Cơ hội trao đổi sinh viên",
+              "direct_url": "/admissions/student-exchange-opportunities"
+            },
+            {
+              "id": 977,
+              "title": "Dịch vụ chăm sóc sinh viên",
+              "direct_url": "/admissions/student-care-services"
+            },
+            {
+              "id": 978,
+              "title": "Tài liệu tham khảo",
+              "direct_url": null
+            },
+            {
+              "id": 979,
+              "title": "Câu hỏi thường gặp",
+              "direct_url": "/vi/faqs/cau-hoi-thuong-gap"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 366,
+      "title": "Nghiên cứu khoa học",
+      "direct_url": "/research",
+      "image": null,
+      "list": [
+        {
+          "id": 548,
+          "title": "Nghiên cứu khoa học tại Văn Lang",
+          "direct_label": null,
+          "direct_url": null,
+          "image": null,
+          "list": [
+            {
+              "id": 980,
+              "title": "Lĩnh vực nghiên cứu tập trung",
+              "direct_url": "/research#research_focus"
+            },
+            {
+              "id": 981,
+              "title": "Dự án nghiên cứu",
+              "direct_url": "/research/projects/search"
+            },
+            {
+              "id": 982,
+              "title": "Công bố khoa học",
+              "direct_url": "/research/publications/search"
+            },
+            {
+              "id": 983,
+              "title": "Tạp chí khoa học",
+              "direct_url": null
+            },
+            {
+              "id": 1325,
+              "title": "Hội đồng đạo đức Y sinh",
+              "direct_url": "/vi/dynamic/reserach-ethics-and-integrity"
+            }
+          ]
+        },
+        {
+          "id": 549,
+          "title": "Các thông tin khác",
+          "direct_label": null,
+          "direct_url": null,
+          "image": null,
+          "list": [
+            {
+              "id": 985,
+              "title": "Cơ sở vật chất & Phòng thí nghiệm",
+              "direct_url": "/research/facilities"
+            },
+            {
+              "id": 984,
+              "title": "Đơn vị nghiên cứu",
+              "direct_url": "/research/unit-overview/don-vi-nghien-cuu"
+            },
+            {
+              "id": 986,
+              "title": "Đối tác nghiên cứu",
+              "direct_url": null
+            },
+            {
+              "id": 987,
+              "title": "Hỗ trợ nghiên cứu",
+              "direct_url": null
+            },
+            {
+              "id": 988,
+              "title": "Đạo đức và trung thực trong nghiên cứu",
+              "direct_url": null
+            },
+            {
+              "id": 989,
+              "title": "Giải thưởng nghiên cứu",
+              "direct_url": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 367,
+      "title": "Đời sống Văn Lang",
+      "direct_url": "/life-at-vlu",
+      "image": null,
+      "list": [
+        {
+          "id": 546,
+          "title": "Tân sinh viên",
+          "direct_label": null,
+          "direct_url": "/life-at-vlu/freshman",
+          "image": {
+            "id": 4379,
+            "name": "Artboard 16@2x.png",
+            "alternativeText": "Artboard 16@2x.png",
+            "caption": "Artboard 16@2x.png",
+            "width": 4167,
+            "height": 4167,
+            "formats": {
+              "large": {
+                "ext": ".png",
+                "url": "https://vanlang.s3.ap-southeast-1.amazonaws.com/large_Artboard_16_2x_ccf3a9b790.png",
+                "hash": "large_Artboard_16_2x_ccf3a9b790",
+                "mime": "image/png",
+                "name": "large_Artboard 16@2x.png",
+                "path": null,
+                "size": 73.62,
+                "width": 1000,
+                "height": 1000
+              },
+              "small": {
+                "ext": ".png",
+                "url": "https://vanlang.s3.ap-southeast-1.amazonaws.com/small_Artboard_16_2x_ccf3a9b790.png",
+                "hash": "small_Artboard_16_2x_ccf3a9b790",
+                "mime": "image/png",
+                "name": "small_Artboard 16@2x.png",
+                "path": null,
+                "size": 29.81,
+                "width": 500,
+                "height": 500
+              },
+              "medium": {
+                "ext": ".png",
+                "url": "https://vanlang.s3.ap-southeast-1.amazonaws.com/medium_Artboard_16_2x_ccf3a9b790.png",
+                "hash": "medium_Artboard_16_2x_ccf3a9b790",
+                "mime": "image/png",
+                "name": "medium_Artboard 16@2x.png",
+                "path": null,
+                "size": 50.62,
+                "width": 750,
+                "height": 750
+              },
+              "thumbnail": {
+                "ext": ".png",
+                "url": "https://vanlang.s3.ap-southeast-1.amazonaws.com/thumbnail_Artboard_16_2x_ccf3a9b790.png",
+                "hash": "thumbnail_Artboard_16_2x_ccf3a9b790",
+                "mime": "image/png",
+                "name": "thumbnail_Artboard 16@2x.png",
+                "path": null,
+                "size": 7.55,
+                "width": 156,
+                "height": 156
+              }
+            },
+            "hash": "Artboard_16_2x_ccf3a9b790",
+            "ext": ".png",
+            "mime": "image/png",
+            "size": 84.92,
+            "url": "https://vanlang.s3.ap-southeast-1.amazonaws.com/Artboard_16_2x_ccf3a9b790.png",
+            "previewUrl": null,
+            "provider": "aws-s3",
+            "provider_metadata": null,
+            "createdAt": "2023-02-03T10:19:55.181Z",
+            "updatedAt": "2023-02-03T10:19:55.181Z"
+          },
+          "list": [
+            {
+              "id": 998,
+              "title": null,
+              "direct_url": null
+            }
+          ]
+        },
+        {
+          "id": 547,
+          "title": "Sinh viên quốc tế",
+          "direct_label": null,
+          "direct_url": "/life-at-vlu/international-student",
+          "image": {
+            "id": 4380,
+            "name": "Artboard 14@2x.png",
+            "alternativeText": "Artboard 14@2x.png",
+            "caption": "Artboard 14@2x.png",
+            "width": 4167,
+            "height": 4167,
+            "formats": {
+              "large": {
+                "ext": ".png",
+                "url": "https://vanlang.s3.ap-southeast-1.amazonaws.com/large_Artboard_14_2x_b2e5932800.png",
+                "hash": "large_Artboard_14_2x_b2e5932800",
+                "mime": "image/png",
+                "name": "large_Artboard 14@2x.png",
+                "path": null,
+                "size": 103.73,
+                "width": 1000,
+                "height": 1000
+              },
+              "small": {
+                "ext": ".png",
+                "url": "https://vanlang.s3.ap-southeast-1.amazonaws.com/small_Artboard_14_2x_b2e5932800.png",
+                "hash": "small_Artboard_14_2x_b2e5932800",
+                "mime": "image/png",
+                "name": "small_Artboard 14@2x.png",
+                "path": null,
+                "size": 42.89,
+                "width": 500,
+                "height": 500
+              },
+              "medium": {
+                "ext": ".png",
+                "url": "https://vanlang.s3.ap-southeast-1.amazonaws.com/medium_Artboard_14_2x_b2e5932800.png",
+                "hash": "medium_Artboard_14_2x_b2e5932800",
+                "mime": "image/png",
+                "name": "medium_Artboard 14@2x.png",
+                "path": null,
+                "size": 70.22,
+                "width": 750,
+                "height": 750
+              },
+              "thumbnail": {
+                "ext": ".png",
+                "url": "https://vanlang.s3.ap-southeast-1.amazonaws.com/thumbnail_Artboard_14_2x_b2e5932800.png",
+                "hash": "thumbnail_Artboard_14_2x_b2e5932800",
+                "mime": "image/png",
+                "name": "thumbnail_Artboard 14@2x.png",
+                "path": null,
+                "size": 10.16,
+                "width": 156,
+                "height": 156
+              }
+            },
+            "hash": "Artboard_14_2x_b2e5932800",
+            "ext": ".png",
+            "mime": "image/png",
+            "size": 78.08,
+            "url": "https://vanlang.s3.ap-southeast-1.amazonaws.com/Artboard_14_2x_b2e5932800.png",
+            "previewUrl": null,
+            "provider": "aws-s3",
+            "provider_metadata": null,
+            "createdAt": "2023-02-03T10:19:55.506Z",
+            "updatedAt": "2023-02-03T10:19:55.506Z"
+          },
+          "list": [
+            {
+              "id": 999,
+              "title": null,
+              "direct_url": null
+            }
+          ]
+        },
+        {
+          "id": 550,
+          "title": "Đời sống tại Văn Lang",
+          "direct_label": null,
+          "direct_url": null,
+          "image": {
+            "id": 4375,
+            "name": "Artboard 12@2x.png",
+            "alternativeText": "Artboard 12@2x.png",
+            "caption": "Artboard 12@2x.png",
+            "width": 4167,
+            "height": 4168,
+            "formats": {
+              "large": {
+                "ext": ".png",
+                "url": "https://vanlang.s3.ap-southeast-1.amazonaws.com/large_Artboard_12_2x_5cdf778d99.png",
+                "hash": "large_Artboard_12_2x_5cdf778d99",
+                "mime": "image/png",
+                "name": "large_Artboard 12@2x.png",
+                "path": null,
+                "size": 46.95,
+                "width": 1000,
+                "height": 1000
+              },
+              "small": {
+                "ext": ".png",
+                "url": "https://vanlang.s3.ap-southeast-1.amazonaws.com/small_Artboard_12_2x_5cdf778d99.png",
+                "hash": "small_Artboard_12_2x_5cdf778d99",
+                "mime": "image/png",
+                "name": "small_Artboard 12@2x.png",
+                "path": null,
+                "size": 17.4,
+                "width": 500,
+                "height": 500
+              },
+              "medium": {
+                "ext": ".png",
+                "url": "https://vanlang.s3.ap-southeast-1.amazonaws.com/medium_Artboard_12_2x_5cdf778d99.png",
+                "hash": "medium_Artboard_12_2x_5cdf778d99",
+                "mime": "image/png",
+                "name": "medium_Artboard 12@2x.png",
+                "path": null,
+                "size": 30.53,
+                "width": 750,
+                "height": 750
+              },
+              "thumbnail": {
+                "ext": ".png",
+                "url": "https://vanlang.s3.ap-southeast-1.amazonaws.com/thumbnail_Artboard_12_2x_5cdf778d99.png",
+                "hash": "thumbnail_Artboard_12_2x_5cdf778d99",
+                "mime": "image/png",
+                "name": "thumbnail_Artboard 12@2x.png",
+                "path": null,
+                "size": 5.08,
+                "width": 156,
+                "height": 156
+              }
+            },
+            "hash": "Artboard_12_2x_5cdf778d99",
+            "ext": ".png",
+            "mime": "image/png",
+            "size": 75.34,
+            "url": "https://vanlang.s3.ap-southeast-1.amazonaws.com/Artboard_12_2x_5cdf778d99.png",
+            "previewUrl": null,
+            "provider": "aws-s3",
+            "provider_metadata": null,
+            "createdAt": "2023-02-03T10:19:53.492Z",
+            "updatedAt": "2023-02-03T10:19:53.492Z"
+          },
+          "list": [
+            {
+              "id": 990,
+              "title": "Cơ sở vật chất",
+              "direct_url": "/life-at-vlu/accommodation"
+            },
+            {
+              "id": 991,
+              "title": "Ứng dụng công nghệ trong học tập",
+              "direct_url": "/life-at-vlu/it-and-technology"
+            },
+            {
+              "id": 992,
+              "title": "Câu lạc bộ sinh viên",
+              "direct_url": "/life-at-vlu/student-clubs"
+            },
+            {
+              "id": 993,
+              "title": "Trung tâm hỗ trợ sinh viên",
+              "direct_url": "/life-at-vlu/center/trung-tam-ho-tro-sinh-vien"
+            },
+            {
+              "id": 994,
+              "title": "Trau dồi kỹ năng & Trải nghiệm thực tế",
+              "direct_url": "/admissions/professional-career-support"
+            },
+            {
+              "id": 995,
+              "title": "Hoạt động cộng đồng",
+              "direct_url": "/life-at-vlu/community-engagement"
+            },
+            {
+              "id": 996,
+              "title": "Các giải thưởng sinh viên",
+              "direct_url": null
+            },
+            {
+              "id": 997,
+              "title": "Cẩm nang sinh viên",
+              "direct_url": "/vi/dynamic/cam-nang-sinh-vien"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 368,
+      "title": "Tin tức & Sự kiện",
+      "direct_url": "/news-events",
+      "image": null,
+      "list": [
+        {
+          "id": 551,
+          "title": "Tin tức",
+          "direct_label": "Xem tất cả tin tức",
+          "direct_url": "/news-events/news/search",
+          "image": null,
+          "list": [
+            {
+              "id": 1000,
+              "title": null,
+              "direct_url": null
+            }
+          ]
+        },
+        {
+          "id": 552,
+          "title": "Sự kiện",
+          "direct_label": "Xem tất cả sự kiện",
+          "direct_url": "/news-events/events/search",
+          "image": null,
+          "list": [
+            {
+              "id": 1001,
+              "title": null,
+              "direct_url": null
+            }
+          ]
+        },
+        {
+          "id": 553,
+          "title": "Tạp chí",
+          "direct_label": "Xem tất cả tạp chí",
+          "direct_url": "/news-events/magazines/search",
+          "image": null,
+          "list": [
+            {
+              "id": 1002,
+              "title": null,
+              "direct_url": null
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

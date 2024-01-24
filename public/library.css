@@ -1,0 +1,89 @@
+
+.doc-container {
+    padding: 5px;
+}
+
+.doc-container > a {
+    min-height: 120px;
+    min-width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 7px;
+    overflow: hidden;
+    background-color: rgb(144, 144, 144);
+}
+
+.doc-container > a > img {
+    width: 100%;
+    height: 100%;
+    max-height: 250px;
+    object-fit: cover;
+}
+
+#upload-doc-btn {
+    border-radius: 4px;
+    max-height: 40px;
+    align-self: flex-end;
+    cursor: pointer;
+    background-color: rgb(255, 255, 255);
+    height: 40px;
+    padding: 0 12px;
+    line-height: 40px;
+    border: 2px solid rgb(30, 30, 30);
+}
+
+#upload-doc-btn:hover {
+    color: rgb(255, 255, 255);
+    background-color: rgb(30, 30, 30);
+    transition: 0.2s;
+}
+
+.upload-doc-border {
+    border: 1px dashed rgba(30, 30, 30, 1);
+    border-radius: 10px;
+}
+
+.doc-selection-label {
+    z-index: 10;
+    /* top: 50%; */
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 5px 15px;
+    background-color: rgba(255, 255, 255, 0.8);
+    min-width: 110px;
+    border: 1px dashed black;
+    pointer-events: none;
+    opacity: 0;
+    top: 100px;
+}
+
+.doc-selection:hover .doc-selection-label {
+    text-align: center;
+    top: 50%;
+    opacity: 1;
+    transition: 0.3s all;
+}
+
+.doc-selection:hover .doc-remove-button {
+    opacity: 1;
+    transition: 0.3s all;
+}
+
+.doc-remove-button {
+    transform: translate(-20%, -50%);
+    z-index: 10;
+    top: 3px;
+    right: -12px;
+    padding: 0 7px;
+    border-radius: 50%;
+    background-color: rgb(243, 61, 61);
+    opacity: 1;
+    color: white;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.doc-selection {
+    cursor: pointer;
+}

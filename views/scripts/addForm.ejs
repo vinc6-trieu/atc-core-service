@@ -1,0 +1,74 @@
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    $(".item-select").select2({
+      width: "100%"
+    });
+    const copyButtons = document.querySelectorAll(".copy-button");
+    copyButtons.forEach((button) => {
+      button.onclick = copyTargetAndPaste;
+    });
+
+    const copyButtonsDiv = document.querySelectorAll(".copy-button-div");
+    copyButtonsDiv.forEach((button) => {
+      button.onclick = copyTargetAndPasteDiv;
+    });
+
+    function setDeleteEvent() {
+      const removeCategoriesButtons = document.querySelectorAll(".post-remove-btn");
+      removeCategoriesButtons.forEach((button) => {
+        // console.log("ok");
+        button.onclick = removeConfirmedCategory;
+      });
+    }
+
+    setDeleteEvent();
+
+    function copyTargetAndPaste() {
+      $(".item-select").select2("destroy");
+      const copy = document.querySelector(this.dataset.copy);
+      const paste = document.querySelector(this.dataset.paste);
+
+      const newItem = copy.cloneNode(true);
+      const newID = Date.now();
+
+      newItem.setAttribute("id", `new-${newID}`);
+      newItem.querySelector("select").value = '';
+
+      // newItem.querySelectorAll("input").forEach((input) => (input.value = ""));
+      paste.appendChild(newItem);
+
+      // (document.querySelector(`#new-${newID} select`).selectedIndex = -1
+      $(".item-select").select2({
+        width: "100%"
+      });
+      setDeleteEvent();
+    }
+
+    function copyTargetAndPasteDiv() {
+
+      // add event auto create slug -- only for filter 
+      // multi auto slug
+      let titleInputs = document.querySelectorAll(".title-input");
+      let slugAutos = document.querySelectorAll(".slug-auto");
+      let createSlugButtons = document.querySelectorAll(".create-slug-btn");
+
+      if (createSlugButtons)
+        createSlugButtons.forEach((button, index) => {
+          button.onclick = (evt) => {
+            evt.preventDefault();
+            console.log(titleInputs[index].value);
+            slugAutos[index].value = removeVietnameseTones(titleInputs[index].value);
+          }
+        })
+      setDeleteEvent();
+    }
+
+    function removeConfirmedCategory(e) {
+      // console.log(e);
+      const confirmed = window.confirm("Bạn có chắc chắn muốn xoá ?");
+      if (confirmed) {
+        this.parentElement.parentElement.remove();
+      }
+    }
+  });
+</script>

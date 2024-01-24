@@ -1,0 +1,50 @@
+<div class="breadcrumbs">
+  <div class="page-header float-left pl-5 pr-5">
+    <div class="page-title">
+      <h1 class="d-inline-block float-left">Danh sách Policy</h1>
+    </div>
+  </div>
+  <div class="d-flex align-items-center float-right pr-5" style="height: 50px;">
+    <div data-action="/cms-api/v1/policies" data-type="policies" class="button-create-empty button btn-success p-2 pl-3 pr-3 br-7">
+      Tạo mới
+    </div>
+  </div>
+</div>
+
+<div class="col-lg bg-light pl-5 pr-5" style="padding-bottom: 100px">
+  <%- include('../../../components/filters/policy')%>
+  <br />
+  <table class="table" style="margin: auto">
+    <thead>
+      <tr class="bg-light">
+        <th scope="col">#ID</th>
+        <th scope="col">Tên</th>
+        <th scope="col">Mô tả</th>
+        <th scope="col">Phòng/Khoa</th>
+        <th scope="col" style="max-width: 100px">Thao tác</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% list.forEach(item => { %>
+      <tr scope="row">
+        <td scope="col"><%=FORMAT_ID_FN(`${item._id}`)%> <br /></td>
+        <td scope="col"><%= item.name %></td>
+        <td scope="col"><%= item.description %></td>
+        <td scope="col"><%= DEPARTMENTS.find(e=> e.code === item.departmentCode)?.viName || "" %></td>
+
+        <td scope="col" style="max-width: 100px">
+          <div class="d-flex flex-column">
+            <a class="edit-button button btn-warning p-2 br-7 mb-2" href="/cms/policies/<%= item._id %>">
+              Sửa
+            </a>
+            <button data-id="<%=item._id %>" data-url="/cms-api/v1/policies/<%=item._id%>" class="button button-remove btn-danger p-2 br-7">
+              Xoá
+            </button>
+          </div>
+        </td>
+      </tr>
+      <% }) %>
+    </tbody>
+  </table>
+</div>

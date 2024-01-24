@@ -1,0 +1,64 @@
+<div class="breadcrumbs">
+    <div class="page-header float-left pl-5 pr-5">
+        <div class="page-title">
+            <h1 class="d-inline-block float-left">Danh sách vai trò</h1>
+        </div>
+    </div>
+    <div class="d-flex align-items-center float-right pr-5" style="height: 50px;">
+        <div data-action="/cms-api/v1/roles" data-type="roles" class="button-create-empty button btn-success p-2 pl-3 pr-3 br-7">
+            Tạo mới
+        </div>
+    </div>
+</div>
+
+<div class="col-lg bg-light pl-5 pr-5" style="padding-bottom: 100px">
+    <!-- You can include filters if needed -->
+    <!-- <%- include('../../../components/filters/role')%> -->
+    <br />
+    <table class="table" style="margin: auto">
+        <thead>
+            <tr class="bg-light">
+                <th scope="col">#ID</th>
+                <th scope="col">Tên</th>
+                <th scope="col">Ngày hết hạn</th>
+                <th scope="col">Trạng Thái</th>
+                <th scope="col" style="max-width: 100px">Thao tác</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <% roles && roles.forEach(role=> { %>
+                <tr scope="row">
+                    <td scope="col">
+                        <%= FORMAT_ID_FN(`${role._id}`) %> <br />
+                    </td>
+                    <td scope="col">
+                        <%= role.name %>
+                    </td>
+
+                    <td scope="col">
+                        <%= DATE_FORMAT_FN(role.expiredTime) %>
+                    </td>
+
+                    <td scope="row" style="width: 150px; max-width: 20%">
+                        <div data-url="/cms-api/v1/roles/<%=role?._id%>/status/<%=  role?.status != -1 ? -1 : 2 %>" data-id="<%=role?._id%>"
+                            class="button btn-warning d-flex justify-content-center p-2 pl-3 pr-3 mb-1 br-7 button-update">
+                            <%= role?.status===listStatus.ACTIVE ? 'Active' : 'Deactive' %>
+                        </div>
+                    </td>
+
+                    <td scope="col" style="max-width: 100px">
+                        <div class="d-flex flex-column">
+                            <a class="edit-button button btn-warning p-2 br-7 mb-2" href="/cms/roles/<%= role._id %>">
+                                Sửa
+                            </a>
+                            <button data-id="<%= role._id %>" data-url="/cms-api/v1/roles/<%= role._id %>" class="button button-remove btn-danger p-2 br-7">
+                                Xoá
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+                <% }) %>
+        </tbody>
+    </table>
+</div>

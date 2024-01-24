@@ -1,0 +1,45 @@
+export const SUCCESS_MESSAGES = {
+  GET_SUCCEED: 'get_succeed',
+  CREATED_SUCCEED: 'created_model_succeed',
+  CREATED_MANY_SUCCEED: 'created_many_model_succeed',
+  DELETE_SUCCEED: 'delete_succeed',
+  UPDATE_SUCCEED: 'update_succeed',
+  INSERT_SUCCEED: 'insert_succeed',
+  TOKEN_REFRESH_SUCCESS: 'token_refresh_success',
+}
+
+export enum ERROR_CODES {
+  USER_NOT_EXISTS = '10000',
+  AUTHENTICATION_FAILED = '10001',
+  INVALID_PAGINATION = '10002',
+  READ_OPERATOR_FAILED = '10003',
+  WRITE_OPERATOR_FAILED = '10004',
+  ERROR_REGISTER_ADMIN = '10005',
+  ADMIN_ALREADY_EXIST = '10006',
+  INVALID_PARAMETER = '10007',
+  NOT_FOUND = '10008',
+  INTERNAL_SERVER_ERROR = '10009',
+  INVALID_REFRESH_TOKEN = '10010',
+  REFRESH_TOKEN_FAILED = '10011',
+  ERROR_REGISTER_USER = '10012',
+  INVALID_STATUS_PARAMETER = '10013',
+  DATA_NOT_FOUND = '10014',
+}
+
+export const ERROR_MESSAGES: Record<ERROR_CODES, string> = {
+  [ERROR_CODES.USER_NOT_EXISTS]: 'not_found',
+  [ERROR_CODES.AUTHENTICATION_FAILED]: 'authentication_failed',
+  [ERROR_CODES.INVALID_PAGINATION]: 'invalid_pagination',
+  [ERROR_CODES.READ_OPERATOR_FAILED]: 'read_operator_failed',
+  [ERROR_CODES.WRITE_OPERATOR_FAILED]: 'write_operator_failed',
+  [ERROR_CODES.ERROR_REGISTER_ADMIN]: 'error_register_admin',
+  [ERROR_CODES.ADMIN_ALREADY_EXIST]: 'admin_already_exist',
+  [ERROR_CODES.INVALID_PARAMETER]: 'invalid_parameter',
+  [ERROR_CODES.NOT_FOUND]: 'not_found',
+  [ERROR_CODES.INTERNAL_SERVER_ERROR]: 'internal_server_error',
+  [ERROR_CODES.INVALID_REFRESH_TOKEN]: 'invalid_refresh_token',
+  [ERROR_CODES.REFRESH_TOKEN_FAILED]: 'refresh_token_failed',
+  [ERROR_CODES.ERROR_REGISTER_USER]: 'error_register_user',
+  [ERROR_CODES.INVALID_STATUS_PARAMETER]: 'invalid_status_parameter',
+  [ERROR_CODES.DATA_NOT_FOUND]: 'data_not_found',
+}

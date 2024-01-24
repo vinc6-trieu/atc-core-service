@@ -1,0 +1,79 @@
+<div class="breadcrumbs">
+  <div class="page-header float-left">
+    <div class="page-name">
+      <h1 class="d-inline-block float-left">Cập nhật vai trò</h1>
+    </div>
+  </div>
+  <!-- Add your language selection component here if needed -->
+</div>
+
+<div class="col-lg">
+  <br />
+  <br />
+  <form method="PUT" action="/cms-api/v1/roles/<%= role?._id %>" class="form-horizontal">
+    <div class="card">
+      <div class="card-header">
+        <strong style="text-transform: uppercase">Chi tiết</strong>
+      </div>
+      <div class="card-body" style="padding: 20px !important; position: relative">
+        <div class="row">
+          <!-- Role name -->
+          <div class="col-12 form-group">
+            <label for="roleName">Tên vai trò:</label>
+            <input type="text" name="roleName" id="roleName" class="form-control" value="<%= role?.name ?? '' %>" required>
+          </div>
+
+          <div class="col-12 form-group">
+            <label for="roleDescription">Mô tả:</label>
+            <input type="text" name="roleDescription" id="roleDescription" class="form-control" value="<%= role?.description ?? '' %>">
+          </div>
+
+          <div class="col-6 form-group">
+            <label>Trạng thái</label>
+            <select name="status" id="" class="form-control" style="max-width: 200px">
+              <option <%- `${role?.status}`===`${listStatus.ACTIVE}` ? "selected" : '' %> value="2">Hoạt động</option>
+              <option <%- `${role?.status}`===`${listStatus.DEACTIVE}` ? "selected" : '' %> value="1">Không hoạt động</option>
+            </select>
+          </div>
+
+          <!-- List of Policy -->
+          <!-- Table for Policies -->
+          <div class="col-12 form-group">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">Chọn</th>
+                  <th scope="col">Tên nhóm quyền</th>
+                  <th scope="col">Mô tả</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% policies.forEach(function(policy) { %>
+                  <tr>
+                    <td>
+                      <input type="checkbox" name="selectedPolicies[]" value="<%= policy._id %>" <% if
+                      (role?.policies?.map(e=>
+                    `${e._id}`).includes(`${policy._id}`)) { %>checked<% } %> >
+                    </td>
+                    <td>
+                      <%= policy.name %>
+                    </td>
+                    <td>
+                      <%= policy.description %>
+                    </td>
+                  </tr>
+                  <% }); %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer text-right">
+        <button type="submit" class="btn btn-primary btn-sm">
+          <i class="fa fa-dot-circle-o"></i> Cập nhật
+        </button>
+        <button type="reset" class="btn btn-danger btn-sm"><i class="fa fa-ban"></i> Làm mới</button>
+      </div>
+    </div>
+  </form>
+</div>

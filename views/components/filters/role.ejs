@@ -1,0 +1,26 @@
+<div class="card">
+  <div class="card-header">
+    <strong>Tìm kiếm vai trò</strong>
+  </div>
+  <div class="card-body card-block">
+    <form method="GET" action="/cms/policies/list">
+      <div class="row form-group">
+        <div class="col col-md-6">
+          <label for="hf-title" class="form-control-label">Từ khóa tìm kiếm</label>
+          <input
+            type="text"
+            name="search"
+            id="hf-title"
+            value="<%= search || '' %>"
+            class="form-control"
+          />
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary btn-sm">
+        <i class="fa fa-search"></i> Tìm kiếm
+      </button>
+      <div class="d-inline-block ml-3"><strong> <%= total %> Kết quả trả về </strong></div>
+    </form>
+  </div>
+</div>
+<br />

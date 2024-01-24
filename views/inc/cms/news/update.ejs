@@ -1,0 +1,132 @@
+<div class="breadcrumbs">
+  <div class="page-header float-left">
+    <div class="page-title">
+      <h1 class="d-inline-block float-left">Chỉnh sửa bài viết</h1>
+    </div>
+  </div>
+  <%- include('../../../components/languages_select')%>
+</div>
+
+<div class="col-lg">
+  <br />
+
+  <br />
+  <form method="PUT" action="/cms-api/v1/news/<%=news._id%>" class="form-horizontal">
+    <input type="hidden" name="lang" value="<%=lang%>" />
+    <input type="hidden" name="news" value="<%=news._id%>" />
+
+    <div class="card">
+      <div class="card-header">
+        <strong style="text-transform: uppercase">
+          <%=lang=='vi' ? 'Bài viết Tiếng Việt' : 'Bản dịch Tiếng Anh' %>
+        </strong>
+      </div>
+      <div class="card-body" style="padding: 20px !important; position: relative">
+        <div class="row">
+          <div class="col-12 form-group">
+            <% const thumbnailSrc=newsInfo?.thumbnail?.src || "/noimage.jpg" %>
+            <img onclick="openGallery(this, '#input-thumbnail')" src="<%=thumbnailSrc%>" style="width: 100%; cursor: pointer" class="gallery-image" />
+
+            <% const thumbnailID=newsInfo?.thumbnail?._id || "" %>
+            <input type="hidden" id="input-thumbnail" name="thumbnail" value="<%=thumbnailID%>" required />
+          </div>
+
+          <div class="col-12 form-group">
+            <% const title=newsInfo?.name || "" %>
+            <label>Tiêu đề bài viết</label>
+            <input type="text" name="name" required=true class="form-control" id="title-input" value="<%=title%>" />
+            <br />
+
+            <% const slug=newsInfo?.slug || "" %>
+            <label>Slug (LINK URL)</label>
+            <input type="text" name="slug" required=true class="form-control" value="<%=slug%>" id="slug-auto" />
+            <div id="create-slug-btn" class="btn btn-info mt-2" style="cursor: pointer">Tạo
+              slug auto</div>
+            <br>
+            <br />
+
+            <% const description=newsInfo?.description || "" %>
+            <label>Mô tả ngắn</label>
+            <textarea name="description" rows="5" class="form-control"><%-description%></textarea>
+            <br />
+            <hr />
+          </div>
+
+          <div class="col-12 form-group">
+            <% const content=newsInfo?.content || "" %>
+            <label for="introduce-content">Nội dung bài viết</label>
+            <textarea name="content" class="content-editor" id="content-editor"><%-content%></textarea>
+            <br />
+          </div>
+
+          <div class="col-12 form-group">
+            <label>Trạng thái</label>
+            <select name="status" id="" class="form-control" style="max-width: 200px">
+              <option <%- `${newsInfo?.status}`==`public_index` ? "selected" : '' %> value="public_index">Public,
+                index</option>
+              <option <%- `${newsInfo?.status}`==`public_noindex` ? "selected" : '' %> value="public_noindex">Public, no
+                index</option>
+              <option <%- `${newsInfo?.status}`==`redirect_noindex` ? "selected" : '' %> value="redirect_noindex">Redirect, no
+                index</option>
+              <option <%- `${newsInfo?.status}`==`private_noindex` ? "selected" : '' %> value="private_noindex">Private,
+                no index</option>
+              <option <%- `${newsInfo?.status}`==`draft` ? "selected" : '' %> value="draft">Draft
+              </option>
+            </select>
+            <br />
+
+            <label for="select" class="form-control-label d-block">Danh mục bài viết</label>
+            <select name="category" id="newsCategory" class="select-search-input form-control">
+              <option value="" <%=!news.category && 'selected' %>>Trống</option>
+              <% if (categories && categories.length) { %>
+              <% categories.forEach(e=> {%>
+              <option value=<%- `"${e._id}"` %> <%= `${e._id}`==`${news.category}` && 'selected' %>>
+                <%= (lang=='en' ) ? e.enName : e.viName %>
+              </option>
+              <% }) %>
+              <% } %>
+            </select>
+            <br />
+            <br />
+
+            <label>Tiêu đề SEO (Giới hạn 70 kí tự)</label>
+            <% const seoTitle=newsInfo?.seoTitle || "" %>
+            <input type="text" name="seoTitle" maxlength="70" class="form-control" value="<%=seoTitle%>" id="seo-title-auto" />
+            <div id="create-seo-title-btn" class="btn btn-info mt-2">Tạo tiêu đề SEO auto
+            </div>
+            <br />
+
+            <% const seoDescription=newsInfo?.seoDescription || "" %>
+            <label>Mô tả SEO (Giới hạn 160 kí tự)</label>
+            <textarea name="seoDescription" maxlength="160" rows="3" class="form-control"><%-seoDescription%></textarea>
+            <br />
+
+            <label>Từ khoá SEO</label>
+            <% const seoKeywords=newsInfo?.seoKeywords || "" %>
+            <input type="text" name="seoKeywords" class="form-control" value="<%=seoKeywords%>" />
+            <br />
+
+            <label>Seo canonical</label>
+            <% const canonical=newsInfo?.seoCanonical || "" %>
+            <input type="text" name="seoCanonical" class="form-control" value="<%=canonical%>" />
+            <br />
+
+            <label>seoLang</label>
+            <% const seoLang=newsInfo?.seoLang || "vi" %>
+            <input type="text" name="seoLang" class="form-control" value="<%=seoLang%>" />
+            <br />
+
+          </div>
+        </div>
+      </div>
+      <div class="card-footer">
+        <button type="submit" class="btn btn-primary btn-sm">
+          <i class="fa fa-dot-circle-o"></i> Đăng mới
+        </button>
+        <button type="reset" class="btn btn-danger btn-sm"><i class="fa fa-ban"></i>Reset</button>
+      </div>
+    </div>
+  </form>
+</div>
+
+<script src="/admin/js/autoFilled.js"></script>

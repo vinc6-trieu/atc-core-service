@@ -1,0 +1,62 @@
+<div class="col-lg">
+	<form method="POST" action="/cms-api/admin" class="form-horizontal">
+		<input type="checkbox" class="open-hidden-form" id="open-create-admin" hidden />
+
+		<div class="card hidden-form" style="max-width: 600px">
+			<div class="card-header">
+				<strong style="text-transform: uppercase">Tạo Tài khoản mới</strong>
+			</div>
+			<div class="card-body" style="padding: 20px !important; position: relative">
+				<div class="form-group">
+					<label for="">Username (tên đăng nhập)</label>
+					<input
+						name="username"
+						type="text"
+						class="form-control"
+						placeholder="user.name"
+						required
+						minlength="6"
+					/>
+					<br />
+
+					<label for="">Vai trò</label>
+					<select name="role" id="" required class="form-control">
+						<option class="form-control" value="0">Quản trị viên</option>
+						<option class="form-control" value="1">Seoer</option>
+						<option class="form-control" value="2">Editor</option>
+					</select>
+					<br />
+
+					<label for="">Tên</label>
+					<input
+						name="name"
+						type="text"
+						class="form-control"
+						placeholder="Nguyễn Văn A"
+						required
+						minlength="3"
+					/>
+					<br />
+
+					<label for="">Số điện thoại</label>
+					<input name="phone" type="text" class="form-control" minlength="6" />
+					<br />
+
+					<label for="">Email</label>
+					<input name="email" type="email" class="form-control" />
+					<br />
+
+					<label for="">Mật khẩu</label>
+					<input type="password" name="password" class="form-control" required minlength="6" />
+					<br />
+				</div>
+			</div>
+
+			<div class="card-footer">
+				<button type="submit" class="btn btn-primary btn-sm"><i class="fa fa-dot-circle-o"></i> Tạo mới</button>
+				<button type="reset" class="btn btn-danger btn-sm"><i class="fa fa-ban"></i>Reset</button>
+			</div>
+		</div>
+		<label for="open-create-user" class="hidden-form-backdrop"></label>
+	</form>
+</div>

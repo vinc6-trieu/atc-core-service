@@ -1,0 +1,52 @@
+// Define Roles
+enum UserRole {
+  ADMIN,
+  EDITOR,
+  VIEWER
+}
+
+// Define Policies
+enum PolicyType {
+  CONTENT_EDITING,
+  USER_MANAGEMENT,
+  READ_ONLY
+}
+
+// Define Permissions
+enum PermissionType {
+  READ,
+  WRITE,
+  DELETE
+}
+
+// Define a mapping of Policies to Permissions
+const policyPermissions = {
+  [PolicyType.CONTENT_EDITING]: [PermissionType.READ, PermissionType.WRITE],
+  [PolicyType.USER_MANAGEMENT]: [PermissionType.READ, PermissionType.WRITE, PermissionType.DELETE],
+  [PolicyType.READ_ONLY]: [PermissionType.READ]
+};
+
+// Define Role-Policy mapping
+const rolePolicies = {
+  [UserRole.ADMIN]: [PolicyType.CONTENT_EDITING, PolicyType.USER_MANAGEMENT],
+  [UserRole.EDITOR]: [PolicyType.CONTENT_EDITING],
+  [UserRole.VIEWER]: [PolicyType.READ_ONLY]
+};
+
+// Function to check if a user has a specific permission
+function hasPermission(userRole, policyType, permissionType) {
+  const userPolicies = rolePolicies[userRole] || [];
+  if (userPolicies.includes(policyType)) {
+    const allowedPermissions = policyPermissions[policyType] || [];
+    return allowedPermissions.includes(permissionType);
+  }
+  return false;
+}
+
+// Example Usage
+const userRole = UserRole.EDITOR;
+const canReadContent = hasPermission(userRole, PolicyType.CONTENT_EDITING, PermissionType.READ);
+const canWriteContent = hasPermission(userRole, PolicyType.CONTENT_EDITING, PermissionType.WRITE);
+
+console.log(`User with role ${userRole} can read content: ${canReadContent}`);
+console.log(`User with role ${userRole} can write content: ${canWriteContent}`);

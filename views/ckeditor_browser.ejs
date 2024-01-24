@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Kho lưu trữ hình ảnh</title>
+	<!-- 	
+	<link rel="stylesheet" href="/gallery.css" />
+	<link rel="stylesheet" href="/admin/vendors/font-awesome/css/font-awesome.min.css" />
+	<link rel="stylesheet" href="/admin/vendors/bootstrap/dist/css/bootstrap.min.css" /> -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="/gallery.css" />
+	<link rel="stylesheet" href="/admin/vendors/font-awesome/css/font-awesome.min.css" />
+	<link rel="stylesheet" href="/admin/vendors/bootstrap/dist/css/bootstrap.min.css" />
+
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
+	<script src="/admin/vendors/jquery/dist/jquery.min.js"></script>
+	<script src="/admin/vendors/popper.js/dist/umd/popper.min.js"></script>
+	<script src="/admin/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+	<script src="/admin/js/sweetalert2.all.min.js"></script>
+</head>
+<!-- Tìm kiếm -->
+<div class="card">
+	<div class="card-header">
+		<strong>Gallery Ảnh</strong>
+	</div>
+	<div class="card-body card-block">
+		<form method="GET" enctype="multipart/form-data" class="form">
+			<div class="row form-group">
+				<div class="col col-md-12"><label for="hf-title" class=" form-control-label">Từ khóa tìm kiếm</label>
+					<input type="text" name="search" id="hf-title" value="<%- search || '' %>" class="form-control"
+						placeholder="Từ khóa/Tên ảnh">
+					<input type="text" name="CKEditor" id="hf-title" value="<%- CKEditor || '' %>" class="form-control"
+						hidden>
+					<input type="text" name="CKEditorFuncNum" id="hf-title" value="<%- CKEditorFuncNum || '' %>"
+						class="form-control" hidden>
+					<input type="text" name="langCode" id="hf-title" value="<%- langCode || '' %>" class="form-control"
+						hidden>
+				</div>
+			</div>
+
+			<button type="submit" class="btn btn-primary btn-sm">
+				<i class="fa fa-search"></i> Tìm kiếm
+			</button>
+
+		</form>
+	</div>
+</div>
+
+<body>
+	<!-- Page Content -->
+	<input type="hidden" name="images-length" value="<%= images.length %>" />
+	<input type="hidden" id="skip" value="<%= skip %>" />
+	<div class="container">
+		<div class="d-flex justify-content-between">
+			<h1 class="fw-light text-center text-lg-start mt-4 mb-0 d-inline-block">Gallery Ảnh</h1>
+			<label for="image-upload" id="upload-image-btn" class="d-inline-block float-right">Tải ảnh lên</label>
+			<input type="file" name="images" id="image-upload" multiple hidden />
+		</div>
+
+		<hr class="mt-2 mb-3" />
+
+		<div class="row text-center text-lg-start" id="images-container">
+			<% images.forEach(image=> {%>
+				<div class="col-lg-3 col-md-3 col-3 image-container position-relative img-selection"
+					data-id="<%= image._id %>" data-src="<%= image.src %>">
+					<a href="#" class="mb-4 h-100 position-relative">
+						<img class="img-fluid selection" src="<%= image.src %>" alt="" />
+					</a>
+					<div class="image-selection-label position-absolute">Chọn ảnh</div>
+					<div class="image-remove-button position-absolute" data-id="<%= image._id %>">X</div>
+					<div class="image-edit-button position-absolute" data-id="<%= image._id %>"
+						data-name="<%= image.name %>" data-alt="<%= image.alt %>" data-toggle="modal"
+						data-target="#modal-update-image"><i class="fa fa-pencil-square-o"></i></div>
+				</div>
+				<%}) %>
+		</div>
+	</div>
+
+	<!-- MODAL UPODATE -->
+	<div class="modal fade" id="modal-update-image" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+		aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">Chỉnh sửa image</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+
+				<div class="modal-body">
+					<form method="PUT" action="/cms-api/v1/images" class="form-horizontal">
+						<div class="form-group">
+							<input name="id" type="hidden" class="form-control" id="modelId">
+						</div>
+						<div class="form-group">
+							<label for="name" class="col-form-label">Tên</label>
+							<input name="name" type="text" class="form-control" id="modelName">
+						</div>
+						<div class="form-group">
+							<label for="alt" class="col-form-label">Alt</label>
+							<input name="alt" type="text" class="form-control" id="modelAlt">
+						</div>
+						<button type="submit" class="btn btn-primary btn-sm">Cập nhật</button>
+						<button type="reset" class="btn btn-danger btn-sm">
+							<i class="fa fa-ban"></i> Làm mới
+						</button>
+					</form>
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+	<script src="/gallery-ckeditor.js"></script>
+	<script src="/admin/js/submitForm.js"></script>
+</body>
+
+</html>

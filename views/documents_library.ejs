@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Kho lưu trữ tài liệu</title>
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" />
+		<link rel="stylesheet" href="/library.css" />
+	</head>
+	<body>
+		<!-- Page Content -->
+		<input type="hidden" name="docs-length" value="<%= documents.length %>" />
+		<div class="container">
+			<div class="d-flex justify-content-between">
+				<h1 class="fw-light text-center text-lg-start mt-4 mb-0 d-inline-block">Documents Library</h1>
+				<label for="doc-upload" id="upload-doc-btn" class="d-inline-block float-right">Tải file lên</label>
+				<input type="file" name="documents" id="doc-upload" multiple hidden />
+			</div>
+
+			<hr class="mt-2 mb-3" />
+
+			<div class="row text-center text-lg-start" id="docs-container">
+				<% documents.forEach(file => {%>
+				<div
+					class="col-lg-2 col-md-2 col-2 doc-container position-relative doc-selection"
+					data-id="<%=file._id%>"
+					data-name="<%=file.name%>"
+					data-src="/<%=file.type + '-icon.png'%>"
+				>
+					<a href="#" class="mb-4 h-100 position-relative">
+						<img class="selection" src="/<%=file.type + '-icon.png'%>" alt="" />
+						<div
+							class="info position-absolute bottom-0 bg-light w-100 text-justify text-primary"
+							style="font-weight: 600; padding: 5px 10px"
+						>
+							<%= file.name.slice(0,50) + (file.name.length > 50 ? '...' : '') %>
+						</div>
+					</a>
+					<div class="doc-selection-label position-absolute">Chọn file</div>
+					<div class="doc-remove-button position-absolute" data-id="<%= file._id %>">X</div>
+				</div>
+				<%}) %>
+			</div>
+		</div>
+
+		<script src="/library.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
+	</body>
+</html>

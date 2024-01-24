@@ -1,0 +1,181 @@
+<div class="breadcrumbs">
+  <div class="page-header float-left pl-5 pr-5">
+    <div class="page-title">
+      <h1 class="d-inline-block float-left">Danh sách bài viết</h1>
+    </div>
+  </div>
+  <div class="d-flex align-items-center float-right pr-5" style="height: 50px; padding-left: 20px">
+    <div data-action="/cms-api/v1/news" data-type="news" class="button-create-empty button btn-success p-2 pl-3 pr-3 br-7">
+      Tạo bài viết mới
+    </div>
+  </div>
+</div>
+
+<div class="col-lg bg-light pl-5 pr-5" style="padding-bottom: 100px">
+  <%- include('../../../components/filters/news')%>
+  <br />
+  <table class="table" style="margin: auto">
+    <thead>
+      <tr class="bg-light">
+        <th scope="col">#ID</th>
+        <th scope="col">Tiêu đề</th>
+        <th scope="col">Danh mục</th>
+        <th scope="col">Trạng thái</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% if( news && news.length){ %>
+      <% news.forEach(item=> {%>
+      <tr>
+        <td rowspan="2" style="width: 150px">
+          <div class="d-flex flex-column">
+            <div class="d-flex justify-content-center">
+              <%= FORMAT_ID_FN(`${item?._id}`) %>
+            </div><br />
+            <div data-url="/cms-api/v1/news<%=item._id%>" data-id="<%=item._id%>" class="button btn-danger p-1 pl-2 pr-2 br-7 mb-1 button-remove">
+              Xoá bài viết
+            </div>
+            <div class="button btn-secondary p-1 pl-2 pr-2 br-7 text-light" data-id="<%= item._id %>" data-name="<%= item.viName %>" data-toggle="modal" data-target="#modal-update-post-<%=item._id%>">
+              Sửa nhanh
+            </div>
+          </div>
+        </td>
+        <td scope="row">
+          <div class="d-flex flex-column justify-content-center" style="max-width: 600px">
+            <div class="mb-1"><strong style="width: 100px" class="d-inline-block">Tiếng Việt:
+              </strong>
+            </div>
+            <a href="" <%= item.viSlug %>" target="_blank" style="color: brown;">
+              <%=item.viName || '(chưa có bản dịch)' %>
+            </a>
+          </div>
+        </td>
+        <td scope="row">
+          <div class="d-flex flex-column justify-content-center" style="max-width: 600px">
+            <div class="mb-1"><strong style="width: 100px" class="d-inline-block">Tiếng Việt:
+              </strong></div>
+            <a href="/cms/news-categories/<%=item?.category?._id%>?lang=vi">
+              <%= item?.category?.viName || '(Trống)' %>
+            </a>
+          </div>
+        </td>
+        <td scope="row" style="width: 150px; max-width: 20%">
+          <% if(item?.vi) { %>
+          <div data-url="/cms-api/v1/news/<%=item.vi?._id%>/status/<%=  item?.vi?.status != -1 ? -1 : 2 %>" data-id="<%=item?.vi?._id%>" class="button btn-warning d-flex justify-content-center p-2 pl-3 pr-3 mb-1 br-7 button-update">
+            <%= item?.vi?.status !=-1 ? 'Đã duyệt' : 'Đã ẩn' %>
+          </div>
+          <% } %>
+        </td>
+        <td style="width: 70px">
+          <div class="d-flex flex-column justify-content-center">
+            <a href="/cms/news/<%=item._id%>?lang=vi" data-id="<%=item._id%>" class="edit-button button btn-info p-2 pl-3 pr-3 mb-1 br-7 text-light">Sửa
+            </a>
+            <div data-url="/cms-api/v1/news/<%=item._id%>/vi" data-id="<%=item._id%>" class="button <%=item.vi?'btn-danger':'btn-secondary'%> p-2 pl-3 pr-3 br-7 button-remove">
+              Xoá
+            </div>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td scope="row">
+          <div class="d-flex flex-column justify-content-center" style="max-width: 600px">
+            <div class="mb-1"><strong style="width: 100px" class="d-inline-block">English: </strong>
+            </div>
+            <a href="<%= item.enSlug %>" target="_blank" style="color: brown;">
+              <%=item.enName || '(chưa có bản dịch)' %>
+            </a>
+          </div>
+        </td>
+        <td scope="row">
+          <div class="d-flex flex-column justify-content-center" style="max-width: 600px">
+            <div class="mb-1"><strong style="width: 100px" class="d-inline-block">English: </strong>
+            </div>
+            <a href="/cms/news-categories/<%=item?.category?._id%>?lang=en">
+              <%= item?.category?.enName || '(Trống)' %>
+            </a>
+          </div>
+        </td>
+        <td scope="row" style="width: 150px; max-width: 20%">
+          <% if(item?.en) { %>
+          <div data-url="/cms-api/v1/news/<%=item.en?._id%>/status/<%=  item?.en?.status != -1 ? -1 : 2 %>" data-id="<%=item?.en?._id%>" class="button btn-warning d-flex justify-content-center p-2 pl-3 pr-3 mb-1 br-7 button-update">
+            <%= item?.en?.status !=-1 ? 'Đã duyệt' : 'Đã ẩn' %>
+          </div>
+
+          <% } %>
+        </td>
+        <td style="width: 70px">
+          <div class="d-flex flex-column justify-content-center">
+            <a href="/cms/news/<%=item._id%>?lang=en" data-id="<%=item._id%>" class="button btn-info p-2 pl-3 pr-3 br-7 mb-1">Sửa</a>
+            <div data-url="/cms-api/v1/news/<%=item._id%>/en" data-id="<%=item._id%>" class="button <%=item.en?'btn-danger':'btn-secondary'%> p-2 pl-3 pr-3 br-7 button-remove">
+              Xoá
+            </div>
+          </div>
+        </td>
+      </tr>
+
+      <!-- MODAL UPODATE -->
+      <div class="modal fade" id="modal-update-post-<%=item._id%>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Chỉnh sửa bài viết</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+
+            <div class="modal-body">
+              <form method="POST" action="/cms-api/v1/news/quick-update/<%=item._id%>" class="form-horizontal">
+                <div class="form-group">
+                  <label for="name" class="col-form-label">Tiêu đề</label>
+                  <input name="name" type="text" class="form-control title-input" value="<%=item.viName%>">
+                </div>
+                <div class="form-group">
+                  <label for="alt" class="col-form-label">slug</label>
+                  <input type="text" name="slug" required class="form-control slug-auto" value="<%=item.viSlug %>" />
+                  <div class="btn btn-info mt-2 create-slug-btn" style="cursor: pointer">Tạo
+                    slug auto</div>
+                </div>
+                <div class="form-group">
+                  <label class="col-form-label">Ngày tạo</label>
+                  <% const createdAt=item.createdAt || new Date() %>
+                  <input type="date" name="createdAt" class="form-control" value="<%= DATE_FORMAT_FN(createdAt, 'YYYY-MM-DD') %>" />
+
+                </div>
+                <div class="form-group">
+                  <label for="name" class="col-form-label">Tiêu đề SEO</label>
+                  <input type="text" name="seoTitle" maxlength="70" class="form-control seo-title-auto" value="<%=item.vi?.seoTitle%>" required />
+                  <div class="btn btn-info mt-2 create-seo-title-btn">Tạo tiêu đề SEO auto
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="name" class="col-form-label">Mô tả SEO</label>
+                  <textarea name="seoDescription" maxlength="160" rows="3" class="form-control"><%-item.vi?.seoDescription%></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary btn-sm">Cập nhật</button>
+                <button type="reset" class="btn btn-danger btn-sm">
+                  <i class="fa fa-ban"></i> Làm mới
+                </button>
+              </form>
+            </div>
+
+          </div>
+        </div>
+      </div>
+      <% })} %>
+    </tbody>
+  </table>
+  <br />
+  <br />
+  <div class="container d-flex justify-content-center">
+    <div class="pagination" style="margin: auto; align-self: center; justify-self: center">
+      <% pagination.forEach((link, index)=> {%>
+      <a class="<%=page == index + 1 ? 'active': '' %>" href="<%=link%>">
+        <%=index+1%>
+      </a>
+      <%}) %>
+    </div>
+  </div>
+</div>

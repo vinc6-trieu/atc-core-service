@@ -1,0 +1,189 @@
+<div class="breadcrumbs">
+  <div class="page-header float-left">
+    <div class="page-name">
+      <h1 class="d-inline-block float-left">Cập nhật nhóm quyền</h1>
+    </div>
+  </div>
+  <!-- Add your language selection component here if needed -->
+</div>
+
+<style>
+  .permissions-list {
+    margin-top: 10px;
+  }
+
+  .permission,
+  .sub-permission {
+    margin-bottom: 5px;
+    cursor: pointer;
+    padding: 8px;
+    /* border: 1px solid #ddd;
+  border-radius: 4px; */
+    transition: background-color 0.3s;
+  }
+
+
+  .permission:hover,
+  .sub-permission:hover {
+    background-color: #f5f5f5;
+  }
+
+  .sub-permissions-container {
+    display: none;
+  }
+
+  .sub-permissions-container.show {
+    display: block;
+  }
+</style>
+
+<div class="col-lg">
+  <br />
+  <br />
+  <form method="PUT" action="/cms-api/v1/policies/<%=policy?._id%>" class="form-horizontal">
+    <div class="card">
+      <div class="card-header">
+        <strong style="text-transform: uppercase">
+          Chi tiết
+        </strong>
+      </div>
+      <div class="card-body" style="padding: 20px !important; position: relative">
+        <div class="row">
+          <!-- Policy name -->
+          <div class="col-12 form-group">
+            <label for="policyName">Tên:</label>
+            <input type="text" name="policyName" id="policyName" class="form-control" value="<%=policy?.name ?? ''%>" required>
+          </div>
+
+          <div class="col-12 form-group">
+            <label for="policyDescription">Mô tả:</label>
+            <input type="text" name="policyDescription" id="policyDescription" class="form-control" value="<%=policy?.description ?? ''%>">
+          </div>
+
+          <div class="col-12 form-group">
+            <label for="departmentCode" class=" form-control-label">Phòng/Khoa:</label>
+            <select name="departmentCode" id="departmentCode" class="form-control select-search-input">
+              <option value="<%-DEPARTMENTS[0].code%>">
+                <%=DEPARTMENTS[0].viName %>
+              </option>
+              <% if (DEPARTMENTS && DEPARTMENTS.length) { %>
+                <% DEPARTMENTS.forEach((e, index)=> {%>
+                  <% if(index===0) return;%>
+                    <option value=<%- `"${e.code}"` %>
+                      <%= `${e.code}`==`${policy.departmentCode}` && 'selected' %>>
+                        <%= e.viName %>
+                    </option>
+                    <% }) %>
+                      <% } %>
+            </select>
+          </div>
+
+          <!-- List of Permissions -->
+          <div class="col-12 form-group">
+            <label>Danh sách các quyền:</label>
+            <div class="permissions-list">
+              <% permissions.filter(permission=> permission.root === null).forEach(function(permissionA, index) { %>
+                <% if (index !==0) { %>
+                  <hr />
+                  <% } %>
+                    <div class="permission clickable d-flex">
+                      <input type="checkbox" id="permissions<%= permissionA._id %>" name="selectedPermissions[]" value="<%= permissionA._id %>" <% if (policy?.permissions?.map(e=>
+                      `${e._id}`).includes(`${permissionA._id}`)) { %>checked<% } %>
+                        onchange="checkAllSubPermissions(this, '<%= permissionA._id %>')"
+                          >
+                          <div class="name-label w-100" onclick="toggleSubPermissions('<%=permissionA._id%>')">
+                            <span class="ml-2">
+                              <%= permissionA.name %>
+                            </span>
+                          </div>
+                    </div>
+                    <div class="sub-permissions-container" id="subPermissions<%= permissionA._id %>">
+                      <% permissions.filter(permission=> permission.root && permission.root.equals(permissionA._id)).forEach(function(subPermission) { %>
+                        <div class="sub-permission">
+                          <input class="ml-4" type="checkbox" onchange="checkSubPermissions(this, '<%=permissionA._id%>')" name="selectedPermissions[]" value="<%= subPermission._id %>" <% if
+                            (policy?.permissions?.map(e=>
+                          `${e._id}`).includes(`${subPermission._id}`)) { %>checked<% } %>
+                            <% if (policy?.permissions?.map(e=> `${e._id}`).includes(`${permissionA._id}`)) { %>disabled<% } %>
+                                >
+                                <span class="ml-2">
+                                  <%= subPermission.name %>
+                                </span>
+                        </div>
+                        <% }); %>
+                    </div>
+                    <% }); %>
+            </div>
+          </div>
+
+
+        </div>
+      </div>
+      <div class="card-footer text-right">
+        <button type="submit" class="btn btn-primary btn-sm">
+          <i class="fa fa-dot-circle-o"></i> Cập nhật
+        </button>
+        <button type="reset" class="btn btn-danger btn-sm"><i class="fa fa-ban"></i> Làm mới</button>
+      </div>
+    </div>
+  </form>
+</div>
+
+<script>
+  function toggleSubPermissions(permissionId) {
+    const subPermissionsContainer = document.getElementById(`subPermissions${permissionId}`);
+    subPermissionsContainer.classList.toggle('show');
+  }
+
+  function checkAllSubPermissions(checkbox, rootPermissionId) {
+    const subPermissions = document.querySelectorAll(`.sub-permissions-container#subPermissions${rootPermissionId} input[type="checkbox"]`);
+
+
+    // Check all sub-permissions and disable their checkboxes
+    subPermissions.forEach(subPermission => {
+      subPermission.checked = subPermission.disabled ? subPermission.checked : checkbox.checked;
+      if (subPermission.disabled) subPermission.checked = false
+      subPermission.disabled = checkbox.checked;
+    });
+  }
+
+  function checkSubPermissions(checkbox, rootPermissionId) {
+
+    const subPermissions = document.querySelectorAll(`.sub-permissions-container#subPermissions${rootPermissionId} input[type="checkbox"]`);
+
+    let allChecked = true;
+    subPermissions.forEach(subPermission => {
+      if (!subPermission.checked) allChecked = false;
+    });
+
+    if (allChecked) {
+      const rootPermission = document.querySelector(`#permissions${rootPermissionId}`)
+      rootPermission.checked = checkbox.checked ?? false
+
+      subPermissions.forEach(subPermission => {
+        subPermission.disabled = true;
+        subPermission.disabled = true;
+      });
+      rootPermission.checked = true
+    }
+  }
+
+  function showSubPermissionsContainers() {
+    const subPermissionsContainers = document.querySelectorAll('.sub-permissions-container');
+
+    subPermissionsContainers.forEach(subPermissionsContainer => {
+      const rootPermissionId = subPermissionsContainer.id.replace('subPermissions', '');
+      const rootPermissionCheckbox = document.querySelector(`#permissions${rootPermissionId}`);
+      const subPermissionCheckboxes = subPermissionsContainer.querySelectorAll('input[type="checkbox"]');
+
+      // Check if the root permission or at least one sub-permission is checked
+      const showContainer = rootPermissionCheckbox.checked || Array.from(subPermissionCheckboxes).some(subPermissionCheckbox => subPermissionCheckbox.checked);
+
+      // Show sub-permissions container if the condition is met
+      if (showContainer) {
+        subPermissionsContainer.classList.add('show');
+      }
+    });
+  }
+
+  window.addEventListener('load', showSubPermissionsContainers);
+</script>

@@ -1,0 +1,40 @@
+<form method="PUT" action="/admin/page-component" class="form-horizontal">
+	<input type="hidden" name="name" value="emails" />
+	<input type="hidden" name="page" value="common" />
+	<input type="hidden" name="lang" value="<%= lang %>" />
+
+	<% const emails = components.find(e => e.name == 'emails')?.titles || ''%>
+	<div class="card">
+		<div class="card-header">
+			<strong style="text-transform: uppercase">Hộp thư điện tử</strong>
+		</div>
+		<div class="card-body" style="padding: 20px !important; position: relative">
+			<div class="row form-group">
+				<div class="col-12">
+					<label for="service-title">Email chính</label>
+					<input
+						type="text"
+						name="titles"
+						id="service-title"
+						class="form-control"
+						value="<%=emails?.[0] || ''%>"
+					/>
+					<br />
+
+					<label for="service-title">Email phụ</label>
+					<input
+						type="text"
+						name="titles"
+						id="service-title"
+						class="form-control"
+						value="<%=emails?.[1] || ''%>"
+					/>
+				</div>
+			</div>
+		</div>
+		<div class="card-footer">
+			<button type="submit" class="btn btn-primary btn-sm"><i class="fa fa-dot-circle-o"></i> Đăng mới</button>
+			<button type="reset" class="btn btn-danger btn-sm"><i class="fa fa-ban"></i>Reset</button>
+		</div>
+	</div>
+</form>

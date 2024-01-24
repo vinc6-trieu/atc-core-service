@@ -1,0 +1,47 @@
+<head>
+	<!-- ========== Meta Tags ========== -->
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<!-- ========== Page Title ========== -->
+	<title><%=seo.title%></title>
+
+	<meta property="og:locale" content="<%= LANG == 'vi' ? 'vi' : 'en_US' %>" />
+	<meta property="og:image" content="https://bachkhoa-elec.com<%= seo.image %>" />
+	<meta property="og:description" content="<%= seo.description %>" />
+
+	<meta name="keywords" content="<%= seo.keywords %>" />
+	<meta name="description" content="<%= seo.description %>" />
+	<meta name="title" content="<%= seo.title %>" />
+
+	<!-- ========== Favicon Icon ========== -->
+	<link rel="shortcut icon" href="/assets/img/favicon.png" type="image/png" />
+	<% if (inc == 'inc/index/article') { %>
+	<meta name="robots" content="<%= article.status == 2 ? 'index, follow' : 'noindex' %>" />
+	<% } else { %>
+	<meta name="robots" content="index, follow" />
+	<% } %>
+
+	<!-- ========== Start Stylesheet ========== -->
+	<link href="/assets/css/bootstrap.min.css" rel="stylesheet" />
+	<link href="/assets/css/themify-icons.css" rel="stylesheet" />
+	<link href="/assets/css/flaticon-set.css" rel="stylesheet" />
+	<link href="/assets/css/elegant-icons.css" rel="stylesheet" />
+	<link href="/assets/css/magnific-popup.css" rel="stylesheet" />
+	<link href="/assets/css/owl.carousel.min.css" rel="stylesheet" />
+	<link href="/assets/css/owl.theme.default.min.css" rel="stylesheet" />
+	<link href="/assets/css/animate.css" rel="stylesheet" />
+	<link href="/assets/css/bootsnav.css" rel="stylesheet" />
+	<link href="/style.css" rel="stylesheet" />
+	<link href="/assets/css/font-awesome.min.css" rel="stylesheet" />
+
+	<link href="/assets/css/responsive.css" rel="stylesheet" />
+	<!-- ========== End Stylesheet ========== -->
+
+	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+	<!--[if lt IE 9]>
+		<script src="assets/js/html5/html5shiv.min.js"></script>
+		<script src="assets/js/html5/respond.min.js"></script>
+	<![endif]-->
+</head>
