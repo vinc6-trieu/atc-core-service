@@ -62,9 +62,9 @@
         </td>
         <td scope="row" style="width: 150px; max-width: 20%">
           <% if(item?.vi) { %>
-          <div data-url="/cms-api/v1/news/<%=item.vi?._id%>/status/<%=  item?.vi?.status != -1 ? -1 : 2 %>" data-id="<%=item?.vi?._id%>" class="button btn-warning d-flex justify-content-center p-2 pl-3 pr-3 mb-1 br-7 button-update">
-            <%= item?.vi?.status !=-1 ? 'Đã duyệt' : 'Đã ẩn' %>
-          </div>
+            <div data-url="/cms-api/v1/news/<%=item.vi?._id%>/status/<%=  item?.vi?.status !== 'private_noindex' ? 'private_noindex' : 'public_index' %>" data-id="<%=item?.vi?._id%>" class="button btn-warning d-flex justify-content-center p-2 pl-3 pr-3 mb-1 br-7 button-update">
+              <%= item?.vi?.status !== 'private_noindex' ? 'Đã publish' : 'Đã ẩn' %>
+            </div>
           <% } %>
         </td>
         <td style="width: 70px">
@@ -98,9 +98,9 @@
         </td>
         <td scope="row" style="width: 150px; max-width: 20%">
           <% if(item?.en) { %>
-          <div data-url="/cms-api/v1/news/<%=item.en?._id%>/status/<%=  item?.en?.status != -1 ? -1 : 2 %>" data-id="<%=item?.en?._id%>" class="button btn-warning d-flex justify-content-center p-2 pl-3 pr-3 mb-1 br-7 button-update">
-            <%= item?.en?.status !=-1 ? 'Đã duyệt' : 'Đã ẩn' %>
-          </div>
+            <div data-url="/cms-api/v1/news/<%=item.vi?._id%>/status/<%=  item?.vi?.status !== 'private_noindex' ? 'private_noindex' : 'public_index' %>" data-id="<%=item?.vi?._id%>" class="button btn-warning d-flex justify-content-center p-2 pl-3 pr-3 mb-1 br-7 button-update">
+              <%= item?.vi?.status !== 'private_noindex' ? 'Published' : 'Private' %>
+            </div>
 
           <% } %>
         </td>

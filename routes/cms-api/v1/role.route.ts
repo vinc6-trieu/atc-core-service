@@ -1,6 +1,6 @@
 import express from 'express'
 import { uploadImage } from '../../../middlewares/upload-file'
-import { roleController } from '../../../controllers/cms-api/role.controller'
+import { roleController } from '../../../controllers/cms-api/v1/role.controller'
 
 export const roleRoute = express.Router()
 

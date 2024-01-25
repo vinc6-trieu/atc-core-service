@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from 'express'
-import { newsCategoryService } from '../../services/news-category.service'
+import { newsEventsCategoryService } from '../../services/news-events-category.service'
 import { LANGUAGES, MESSAGES, STATUS_CODE } from '../../constants/base.constant'
 import HeaderMenuMock  from '../../__mocks__/advance-mega-menus.mock.json'
 import HomeMock  from '../../__mocks__/home.mock.json'
@@ -24,7 +24,7 @@ class HomeController {
 
   async getMenu(req: Request, res: Response, _: NextFunction) {
     const { lang = LANGUAGES.vi } = req.query
-    const postCategories = await newsCategoryService.getList({
+    const postCategories = await newsEventsCategoryService.getList({
       queryConditions: {},
       populates: [`${lang}`],
       limit: 10,

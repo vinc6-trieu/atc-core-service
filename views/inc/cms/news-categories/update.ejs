@@ -1,7 +1,7 @@
 <div class="breadcrumbs">
   <div class="page-header float-left">
     <div class="page-name">
-      <h1 class="d-inline-block float-left">Chỉnh sửa danh muc</h1>
+      <h1 class="d-inline-block float-left">Chỉnh sửa danh mục</h1>
     </div>
   </div>
   <%- include('../../../components/languages_select')%>
@@ -13,7 +13,8 @@
   <br />
   <form method="PUT" action="/cms-api/v1/news-categories/<%=category._id%>" class="form-horizontal">
     <input type="hidden" name="lang" value="<%=lang%>" />
-    <input type="hidden" name="newsCategory" value="<%=category._id%>" />
+    <input type="hidden" name="newsEventsCategory" value="<%=category._id%>" />
+    <input type="hidden" name="type" value="news" />
 
     <div class="card">
       <div class="card-header">

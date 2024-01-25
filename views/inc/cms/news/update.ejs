@@ -13,7 +13,8 @@
   <br />
   <form method="PUT" action="/cms-api/v1/news/<%=news._id%>" class="form-horizontal">
     <input type="hidden" name="lang" value="<%=lang%>" />
-    <input type="hidden" name="news" value="<%=news._id%>" />
+    <input type="hidden" name="news_events" value="<%=news._id%>" />
+    <input type="hidden" name="type" value="news" />
 
     <div class="card">
       <div class="card-header">

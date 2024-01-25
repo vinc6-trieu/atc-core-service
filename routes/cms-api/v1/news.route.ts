@@ -1,22 +1,22 @@
 import express from 'express'
 import { uploadImage } from '../../../middlewares/upload-file'
-import { newsController } from '../../../controllers/cms-api/news.controller'
+import { newsEventsController } from '../../../controllers/cms-api/v1/news-events.controller'
 import { bodyValidation } from '../../../middlewares'
 import { NewsInfoValidationSchema } from '../../../schemas/news.schema'
 
 export const newsRoute = express.Router()
 
 // -------------------- CREATE OR UPDATE ----------------------------
-newsRoute.post('/', uploadImage.none(), newsController.createID)
+newsRoute.post('/', uploadImage.none(), newsEventsController.createID)
 newsRoute.put(
   '/:id',
   bodyValidation(NewsInfoValidationSchema),
   uploadImage.none(),
-  newsController.createOrUpdate,
+  newsEventsController.createOrUpdate,
 )
-newsRoute.put('/:id/status/:status', uploadImage.none(), newsController.updateNewsStatus)
-newsRoute.post('/quick-update/:id', uploadImage.none(), newsController.quickUpdate)
+newsRoute.put('/:id/status/:status', uploadImage.none(), newsEventsController.updatENewsEventsStatus)
+newsRoute.post('/quick-update/:id', uploadImage.none(), newsEventsController.quickUpdate)
 
 // -------------------- DELETE ----------------------------
-newsRoute.delete('/:id', uploadImage.none(), newsController.removeOne)
-newsRoute.delete('/:id/:lang', uploadImage.none(), newsController.removeInfo)
+newsRoute.delete('/:id', uploadImage.none(), newsEventsController.removeOne)
+newsRoute.delete('/:id/:lang', uploadImage.none(), newsEventsController.removeInfo)

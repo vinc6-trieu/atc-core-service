@@ -1,6 +1,6 @@
 import express from 'express'
 import { uploadImage } from '../../../middlewares/upload-file'
-import { policyController } from '../../../controllers/cms-api/policy.controller'
+import { policyController } from '../../../controllers/cms-api/v1/policy.controller'
 
 export const policyRoute = express.Router()
 

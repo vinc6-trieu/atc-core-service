@@ -2,7 +2,7 @@ import express from 'express'
 import { cmsApiRoute } from './cms-api'
 import { cmsRoute } from './cms'
 import { apiRoute } from './api'
-import { authViewController } from '../controllers/cms/auth.controller'
+import { authViewController } from '../controllers/cms/v1/auth.controller'
 
 const router = express.Router()
 

@@ -1,6 +1,6 @@
 import express from 'express'
 import { uploadImage } from '../../../middlewares/upload-file'
-import { pageTypeController } from '../../../controllers/cms-api/page-type.controller'
+import { pageTypeController } from '../../../controllers/cms-api/v1/page-type.controller'
 export const typePageRoute = express.Router()
 
 // -------------------- CREATE OR UPDATE ----------------------------

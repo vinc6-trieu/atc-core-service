@@ -1,5 +1,5 @@
 import express from 'express'
-import { imageController } from '../../../controllers/cms-api/image.controller'
+import { imageController } from '../../../controllers/cms-api/v1/image.controller'
 import { uploadImage } from '../../../middlewares/upload-file'
 import { saveImagesToDB } from '../../../middlewares/save-file-to-database'
 export const imageRoute = express.Router()

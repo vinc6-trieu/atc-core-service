@@ -1,6 +1,6 @@
 import express from 'express'
 import { uploadImage } from '../../../middlewares/upload-file'
-import { tagController } from '../../../controllers/cms-api/tag.controller'
+import { tagController } from '../../../controllers/cms-api/v1/tag.controller'
 export const tagRoute = express.Router()
 
 // -------------------- CREATE OR UPDATE ----------------------------

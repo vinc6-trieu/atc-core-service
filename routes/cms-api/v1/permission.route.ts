@@ -1,6 +1,6 @@
 import express from 'express'
 import { uploadImage } from '../../../middlewares/upload-file'
-import { permissionController } from '../../../controllers/cms-api/permission.controller'
+import { permissionController } from '../../../controllers/cms-api/v1/permission.controller'
 
 export const permissionRoute = express.Router()
 
