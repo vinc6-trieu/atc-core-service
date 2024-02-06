@@ -14,4 +14,8 @@ apiV1Route.get('/menu', homeController.getJSONMenu)
 
 apiV1Route.get('/home-page', homeController.getJSONHome)
 
+
+
+apiV1Route.post('/contact-request', publicController.createContactRequest)
+
 apiV1Route.get('/:slug', publicController.getBySlug)

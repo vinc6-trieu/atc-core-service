@@ -10,7 +10,7 @@ export interface AdminDocument extends Document {
   avatar: mongoose.Types.ObjectId | null | ImageDocument
 
   email?: string
-  role: mongoose.Types.ObjectId | null | RoleDocument
+  role: number
   department: mongoose.Types.ObjectId | null | DepartmentDocument
   gender: number
   phone?: string
@@ -31,7 +31,7 @@ const adminSchema = new Schema<AdminDocument>(
     createdAt: { type: Date, default: new Date() },
     modifiedAt: { type: Date, default: new Date() },
     email: String,
-    role: { type: mongoose.Types.ObjectId, ref: 'role', required: true },
+    role: { type: Number, required: true },
     avatar: { type: mongoose.Types.ObjectId, ref: 'image', required: false },
     gender: { type: Number, default: 1 },
     phone: { type: String, default: '' },

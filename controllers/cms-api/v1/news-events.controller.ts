@@ -32,7 +32,6 @@ class NewsEventsController extends BaseController<NewsEventsDocument> {
     const update: Partial<NewsEventsInfoDocument> = dataUpdate
     update['category'] = dataUpdate['category'] ? dataUpdate['category'] : null
 
-    console.log({ update })
     const { seoTitle, seoDescription, seoKeywords, seoSchema, seoCanonical, seoRedirect, seoLang } =
       dataUpdate
 
