@@ -1,34 +1,26 @@
 import { NextFunction, Request, Response } from 'express'
 import { PaginationBuilder } from '../../../shared/helpers/pagination.helper'
 import { DATE_FORMAT_FN, FORMAT_ID_FN } from '../../../shared/utils/format.util'
-import { courseCategoryService } from '../../../services/course-category.service'
-import { contactRequestService } from '../../../services/contact-request.service'
+import { instructorService } from '../../../services/instructor.service'
+import { ELanguage } from '../../../shared/enums/locale.enum'
+import { instructorInfoService } from '../../../services/instructor-info.service'
 
-class ContactRequestsViewController {
+class InstructorViewController {
   renderList = async (req: Request, res: Response, next: NextFunction) => {
     const { page = 1, search = '', ...filter } = req.query
 
     const url = req.originalUrl
-
-    let status: number | null = null
-
-    if (filter.status || filter.status === '0') {
-      status = parseInt(filter.status.toString())
-    }
-
-    delete filter['status']
 
     if (parseInt(`${page}`) < 0) return res.render('error')
 
     const limit = 5
     const skip = (parseInt(`${page}`) - 1) * limit
 
-    const signalGetList = await courseCategoryService.getList({
+    const signalGetList = await instructorService.getList({
       skip,
       limit,
       queryConditions: {
         ...filter,
-        ...(status ? { status } : {}),
         ...(search ? { $text: { $search: search as string } } : {}),
       },
       sort: {
@@ -37,9 +29,8 @@ class ContactRequestsViewController {
       },
     })
 
-    const signalGetCount = await courseCategoryService.count({
+    const signalGetCount = await instructorService.count({
       ...filter,
-      ...(status ? { status } : {}),
       ...(search ? { $text: { $search: search as string } } : {}),
     })
 
@@ -50,11 +41,10 @@ class ContactRequestsViewController {
       return res.render('cms', { inc: 'error', message: signalGetList.message, error: {} })
 
     return res.render('cms', {
-      inc: 'inc/cms/contact-requests/list',
-      title: 'Danh sách tư vấn',
-      listData: signalGetList.data ?? [],
+      inc: 'inc/cms/instructors/list',
+      title: 'Danh sách người hướng dẫn',
+      instructors: signalGetList.data ?? [],
       pagination,
-      status,
       page,
       total,
       search,
@@ -66,22 +56,40 @@ class ContactRequestsViewController {
 
   renderEdit = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
     const { id } = req.params
+    const lang = req.query.lang ?? ELanguage.VI
 
-    const signalGet = await contactRequestService.getOne({
+    const switchLangs = {
+      vi: `/cms/instructors/${id}?lang=${ELanguage.VI}`,
+      en: `/cms/instructors/${id}?lang=${ELanguage.EN}`,
+    }
+
+    const signalGet = await instructorService.getOne({
       queryConditions: { _id: id.trim() },
-      populates: ['processUser'],
     })
 
-    const info = signalGet?.data ?? {}
+    const instructor = signalGet?.data ?? { _id: id }
+
+    const signalGetInfo = await instructorInfoService.getOne({
+      queryConditions: {
+        instructor: instructor._id,
+        lang,
+      },
+      populates: ['avatar'],
+    })
+
+    const info = signalGetInfo?.data ?? {}
 
     return res.render('cms', {
-      inc: 'inc/cms/contact-requests/update',
+      inc: 'inc/cms/instructors/update',
       title: 'Chỉnh sửa',
-      contact: info,
+      instructorInfo: info,
+      instructor,
+      lang,
+      switchLangs,
       DATE_FORMAT_FN,
       FORMAT_ID_FN,
     })
   }
 }
 
-export const contactRequestsViewController = new ContactRequestsViewController()
+export const instructorViewController = new InstructorViewController()

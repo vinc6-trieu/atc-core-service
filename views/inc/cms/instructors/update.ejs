@@ -1,0 +1,118 @@
+<div class="breadcrumbs">
+  <div class="page-header float-left">
+    <div class="page-name">
+      <h1 class="d-inline-block float-left">Chỉnh sửa</h1>
+    </div>
+  </div>
+  <%- include('../../../components/languages_select')%>
+</div>
+
+<div class="col-lg">
+  <br />
+
+  <br />
+  <form method="PUT" action="/cms-api/v1/instructors/<%=instructor._id%>" class="form-horizontal">
+    <input type="hidden" name="lang" value="<%=lang%>" />
+    <input type="hidden" name="instructor" value="<%=instructor._id%>" />
+    <input type="hidden" name="type" value="instructor" />
+
+    <div class="card">
+      <div class="card-header">
+        <strong style="text-transform: uppercase">
+          Bản dịch <%=lang == 'vi' ? 'Tiếng Việt' : 'Tiếng Anh' %>
+        </strong>
+      </div>
+      <div class="card-body" style="padding: 20px !important; position: relative">
+        <div class="row">
+          <div class="col-12 form-group">
+            <% const thumbnailSrc = instructorInfo?.avatar?.src || "/noimage.jpg" %>
+            <img onclick="openGallery(this, '#input-thumbnail')" src="<%=thumbnailSrc%>" style="width: 100%; cursor: pointer" class="gallery-image" />
+
+            <% const thumbnailID = instructorInfo?.avatar?._id || "" %>
+            <input type="hidden" id="input-thumbnail" name="avatar" value="<%=thumbnailID%>" required />
+          </div>
+
+          <div class="col-12 form-group">
+            <% const name = instructorInfo?.name || "" %>
+            <label>Tiêu đề</label>
+            <input type="text" name="name" required=true  id="title-input" class="form-control" value="<%=name%>"  required/>
+            <br />
+
+            <% const slug = instructorInfo?.slug || "" %>
+            <label>Slug (LINK URL)</label>
+            <input type="text" name="slug" required=true  id="slug-auto" class="form-control" value="<%=slug%>" required/>
+						<div id="create-slug-btn" class="btn btn-info mt-2" style="cursor: pointer">Tạo slug tự động</div>
+            <br>  
+
+            <% const phone = instructor?.phone || "" %>
+            <label>Số điện thoại</label>
+            <input type="text" name="phone" class="form-control" value="<%=phone%>"/>
+            <br> 
+
+            <% const email = instructor?.email || "" %>
+            <label>Địa chỉ email</label>
+            <input type="text" name="email" class="form-control" value="<%=email%>"/>
+            <br> 
+
+            <% const title = instructorInfo?.title || "" %>
+            <label>Chức danh</label>
+            <input type="text" name="title" class="form-control" value="<%=title%>"/>
+            <br />
+            <hr />
+          </div>
+
+          <div class="col-12 form-group">
+            <% const introduce = instructorInfo?.introduce || "" %>
+            <label for="introduce-content">Nội dung </label>
+            <textarea name="introduce" class="content-editor" id="content-editor"><%-introduce%></textarea>
+            <br />
+          </div>
+
+          <div class="col-12 form-group">
+            <label>Tiêu đề SEO (Giới hạn 70 kí tự)</label>
+            <% const seoTitle = instructorInfo?.seoTitle || "" %>
+            <input type="text" name="seoTitle" maxlength="70"  id="seo-title-auto" class="form-control" value="<%=seoTitle%>"  />
+            <div id="create-seo-title-btn" class="btn btn-info mt-2">Tạo tiêu đề SEO tự động
+						</div>
+            <br />
+            <br />
+
+            <% const seoDescription = instructorInfo?.seoDescription || "" %>
+            <label>Mô tả SEO (Giới hạn 160 kí tự)</label>
+            <textarea name="seoDescription" maxlength="160"  rows="3" class="form-control"><%-seoDescription%></textarea>
+            <br />
+
+            <label>Từ khoá SEO</label>
+            <% const seoKeywords = instructorInfo?.seoKeywords || "" %>
+            <input type="text" name="seoKeywords" class="form-control" value="<%=seoKeywords%>" />
+            <br />
+
+            <label>seoSchema</label>
+            <% const seoSchema = instructorInfo?.seoSchema || "" %>
+            <textarea name="seoSchema" rows="3" class="form-control"><%-seoSchema%></textarea>
+            <br />
+
+            <label>seoCanonical</label>
+            <% const seoCanonical = instructorInfo?.seoCanonical || "" %>
+            <input type="text" name="seoCanonical" id="seo-title-auto" class="form-control" value="<%=seoCanonical%>"  />
+            <br />
+
+            <label>seoLang</label>
+						<% const seoLang=instructorInfo?.seoLang || "vi" %>
+						<input type="text" name="seoLang" class="form-control" value="<%=seoLang%>" />
+						<br />
+
+          </div>
+        </div>
+      </div>
+      <div class="card-footer">
+        <button type="submit" class="btn btn-primary btn-sm">
+          <i class="fa fa-dot-circle-o"></i> Đăng mới
+        </button>
+        <button type="reset" class="btn btn-danger btn-sm"><i class="fa fa-ban"></i>Reset</button>
+      </div>
+    </div>
+  </form>
+</div>
+
+<script src="/admin/js/autoFilled.js"></script>

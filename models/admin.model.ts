@@ -1,5 +1,4 @@
-import mongoose, { Document, Schema, connection, model } from 'mongoose'
-import { RoleDocument } from './role.model'
+import mongoose, { Document, Schema } from 'mongoose'
 import { DepartmentDocument } from './department.model'
 import { ImageDocument } from './image.model'
 

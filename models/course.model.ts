@@ -27,11 +27,13 @@ export type Course = {
   type?: ECourseType
 
   // course props
+  code: string
   openingDate?: Date
   closingDate?: Date
   viInstructor?: string
   enInstructor?: string
-  seat: number
+  seatOccupied: number
+  seatTotal: number
   lectures?: number
   quizzes?: number
   views?: number
@@ -71,9 +73,11 @@ const courseSchema = new Schema<CourseDocument>(
     views: { type: Number, required: false, default: 0 },
 
     // course props
+    code: { type: String },
     openingDate: { type: Date },
     closingDate: { type: Date },
-    seat: { type: Number },
+    seatOccupied: { type: Number },
+    seatTotal: { type: Number },
     lectures: { type: Number },
     quizzes: { type: Number },
     viInstructor: { type: String },

@@ -148,12 +148,26 @@
                 <br />
               </div>
               <div class="col-6 form-group">
-                <label>Số lượng học viên</label>
-                <% const seat=course?.seat || "" %>
-                <input type="number" name="seat" maxlength="70" class="form-control" value="<%=seat%>" />
+                <label>Tổng học viên đã đăng kí</label>
+                <% const seatOccupied=course?.seatOccupied || "" %>
+                <input type="number" name="seatOccupied" maxlength="70" class="form-control" value="<%=seatOccupied%>" />
                 <br />
               </div>
 
+              <div class="col-6 form-group">
+                <label>Tổng suất mở đăng kí</label>
+                <% const seatTotal=course?.seatTotal || "" %>
+                <input type="number" name="seatTotal" maxlength="70" class="form-control" value="<%=seatTotal%>" />
+                <br />
+              </div>
+
+              <div class="col-6 form-group">
+                <label>Mã khóa học</label>
+                <% const code=courseInfo?.code || "" %>
+                <input type="text" name="code" maxlength="70" class="form-control" value="<%=code%>">
+                <br />
+              </div>
+              
               <div class="col-6 form-group">
                 <label>Số lượng buổi học</label>
                 <% const lectures=course?.lectures || "" %>

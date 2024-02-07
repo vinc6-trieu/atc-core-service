@@ -1,0 +1,94 @@
+<div class="breadcrumbs d-flex justify-content-center">
+	<div class="page-header float-left">
+		<div class="page-title">
+			<h1 class="d-inline-block float-left text-uppercase">
+				<%= title || "DANH SÁCH" %>
+			</h1>
+		</div>
+	</div>
+</div>
+
+<div class="col-lg bg-light" style="padding-bottom: 100px">
+  <%- include('../../../components/filters/course-register')%>
+		<br />
+		<table class="table table-bordered" style="max-width: 1280px; margin: auto">
+			<thead>
+				<tr class="bg-primary text-light">
+					<th scope="col">Ngày tạo</th>
+					<th scope="col">Họ và tên</th>
+					<th scope="col">SDT</th>
+					<th scope="col">Nhu cầu</th>
+					<th scope="col">Email</th>
+					<th scope="col">Trạng thái</th>
+					<th scope="col" style="max-width: 100px">Thao tác</th>
+				</tr>
+			</thead>
+			<tbody>
+
+				<% listData.forEach(e=> { %>
+					<tr scope="row">
+						<td scope="col">
+							<%= DATE_FORMAT_FN(e?.createdAt) || '' %>
+						</td>
+						<td scope="col">
+							<%= e?.fullName || '' %>
+						</td>
+						<td scope="col">
+							<%= e?.type === 1 ? 'Đăng kí' : 'Tư vấn' || '' %>
+						</td>
+						<td scope="col">
+							<%= e?.phone || '' %>
+						</td>
+						<td scope="col">
+							<%= e?.email || '' %>
+						</td>
+						<td scope="col">
+							<% if(e.status==-1){ %>
+								<span style="color: red;font-size: large;font-weight: bold">
+									Hủy
+								</span>
+								<% } else if(e.status==0){ %>
+									<span style="color:yellowgreen;font-size: large;font-weight: bold">
+										Chờ tư vấn
+									</span>
+									<% } else if(e.status==2){ %>
+										<span style="color: blue;font-size: large;font-weight: bold">
+											Đã tư vấn đang chờ xác nhận
+										</span>
+										<% } else if(e.status==1){ %>
+											<span style="color: blue;font-size: large;font-weight: bold">
+												Đã chuyển cho CSKH
+											</span>
+											<% } else if(e.status==3){ %>
+												<span style="color: gold;font-size: large;font-weight: bold">
+													Tư vấn thành công
+												</span>
+												<% } %>
+						</td>
+						<td scope="col" style="max-width: 200px">
+							<div class="d-flex justify-content-center">
+								<a href="/cms/course-registers/<%=e._id%>" target="_blank" data-id="<%=e._id%>"
+									class="button btn-info p-2 pl-3 pr-3 br-7 mr-2">Chi Tiết</a>
+								<div data-url="/cms-api/v1/course-registers/<%=e._id%> " data-id="<%=e._id%>"
+									class="button btn-danger p-2 pl-3 pr-3 br-7 button-remove">
+									Xoá
+								</div>
+							</div>
+						</td>
+					</tr>
+					<% }) %>
+			</tbody>
+		</table>
+
+		<br />
+		<br />
+		<div class="container d-flex justify-content-center">
+			<div class="pagination" style="margin: auto; align-self: center; justify-self: center">
+				<% pagination.forEach((link, index)=> {%>
+					<a class="<%=page == index + 1 ? 'active': '' %>" href="<%=link%>">
+						<%=index+1%>
+					</a>
+					<%}) %>
+			</div>
+		</div>
+</div>

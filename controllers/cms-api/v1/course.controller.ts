@@ -35,7 +35,9 @@ class CourseController extends BaseController<CourseDocument> {
 
     let {
       gallery,
-      seat,
+      seatTotal,
+      seatOccupied,
+      code,
       lectures,
       quizzes,
       duration,
@@ -102,10 +104,12 @@ class CourseController extends BaseController<CourseDocument> {
         queryConditions: { _id: id },
         data: {
           ...courseUpdate,
-          seat,
+          seatTotal,
+          seatOccupied,
           lectures,
           quizzes,
           openingDate,
+          code,
         },
       })
       if (signalUpdateCourse.error)

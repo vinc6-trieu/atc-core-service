@@ -13,6 +13,8 @@ import { eventsRoute } from './events.route'
 import { courseRoute } from './course.route'
 import { courseCategoryRoute } from './course-category.route'
 import { contactRequestsRoute } from './contact-requests.route'
+import { courseRegisterRoute } from './course-register.route'
+import { instructorRoute } from './instructor.route'
 
 export const cmsV1ApiV1Route = express.Router()
 
@@ -21,6 +23,8 @@ cmsV1ApiV1Route.use('/admins', isAuthenticated, adminRoute)
 cmsV1ApiV1Route.use('/images', imageRoute)
 cmsV1ApiV1Route.use('/news-categories', isAuthenticated, newsCategoryRoute)
 cmsV1ApiV1Route.use('/news', isAuthenticated, newsRoute)
+cmsV1ApiV1Route.use('/instructors', isAuthenticated, instructorRoute)
+cmsV1ApiV1Route.use('/course-registers', isAuthenticated, courseRegisterRoute)
 cmsV1ApiV1Route.use('/contact-requests', isAuthenticated, contactRequestsRoute)
 cmsV1ApiV1Route.use('/events-categories', isAuthenticated, eventsCategoryRoute)
 cmsV1ApiV1Route.use('/course-categories', isAuthenticated, courseCategoryRoute)

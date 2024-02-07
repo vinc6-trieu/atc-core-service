@@ -2,7 +2,7 @@
   <br />
   <br />
 
-  <form method="PUT" action="/cms-api/v1/contact-requests/<%=contact?._id%>" class="form-horizontal">
+  <form method="PUT" action="/cms-api/v1/course-registers/<%=courseRegister?._id%>" class="form-horizontal">
     <div class="card">
       <div class="card-header">
         <strong style="text-transform: uppercase">
@@ -15,48 +15,64 @@
           <div class="col-12 form-group">
             <div class="col col-md-6">
               <label class="d-block">Họ và tên</label>
-              <input type="text" class="form-control" readonly value="<%= contact?.fullName || " -"%>">
+              <input type="text" class="form-control" readonly value="<%= courseRegister?.fullName || " -"%>">
             </div>
             <div class="col col-md-6">
               <label class="d-block">Số điện thoại</label>
-              <input type="text" class="form-control" readonly value="<%= contact?.phone || " -"%>">
+              <input type="text" class="form-control" readonly value="<%= courseRegister?.phone || " -"%>">
             </div>
           </div>
           <br /><br />
           <div class="col-12 form-group">
             <div class="col col-md-12">
               <label class="d-block">Email</label>
-              <input type="text" class="form-control" readonly value="<%= contact?.email || " -"%>">
+              <input type="text" class="form-control" readonly value="<%= courseRegister?.email || " -"%>">
+            </div>
+          </div>
+
+          <div class="col-12 form-group">
+            <div class="col col-md-12">
+              <label class="d-block">Nhu cầu</label>
+              <input type="text" class="form-control" readonly><%=courseRegister?.type === 1 ? 'Đăng kí' : 'Tư vấn'%></input>
             </div>
           </div>
 
           <div class="col-12 form-group">
             <div class="col col-md-12">
               <label class="d-block">Thông tin cần tư vấn</label>
-              <textarea type="text" class="form-control" readonly><%=contact?.message%></textarea>
+              <textarea type="text" class="form-control" readonly><%=courseRegister?.message%></textarea>
             </div>
           </div>
+
+          <div class="col-12 form-group">
+            <div class="col col-md-12">
+              <label class="d-block">Khóa học</label>
+              <input type="text" class="form-control" readonly><%=courseRegister?.course?.viName || ''%></input>
+            </div>
+          </div>
+          
           <div class="col-12 form-group">
             <div class="col col-md-6">
               <label class="d-block">Trạng thái</label>
-              <% if(contact.status==3) {%>
+              <% if(courseRegister.status==3) {%>
                 <input type="text" class="form-control" readonly value="Giao Thành Công">
                 <% }else{ %>
                   <select name="status" class="form-control">>
-                    <option value="3" <%=contact.status==3 && 'selected' %>>Tư vấn thành công</option>
-                    <option value="2" <%=contact.status==2 && 'selected' %>>Đã tư vấn đang chờ xác nhận
+                    <option value="3" <%=courseRegister.status==3 && 'selected' %>>Tư vấn thành công</option>
+                    <option value="2" <%=courseRegister.status==2 && 'selected' %>>Đã tư vấn đang chờ xác nhận
                     </option>
-                    <option value="1" <%=contact.status==1 && 'selected' %>>Đã chuyển CSKH</option>
-                    <option value="0" <%=contact.status==0 && 'selected' %>>Chờ tư vấn</option>
-                    <option value="-1" <%=contact.status==-1 && 'selected' %>>Khách hàng hủy</option>
+                    <option value="1" <%=courseRegister.status==1 && 'selected' %>>Đã chuyển CSKH</option>
+                    <option value="0" <%=courseRegister.status==0 && 'selected' %>>Chờ tư vấn</option>
+                    <option value="-1" <%=courseRegister.status==-1 && 'selected' %>>Khách hàng hủy</option>
                   </select>
                   <% } %>
             </div>
+
             <div class="col col-md-6">
               <label class="d-block">Người xử lí</label>
-              <input type="hidden" name="processUser" value="<%= contact?.processUser && contact?.processUser?._id%>"
+              <input type="hidden" name="processUser" value="<%= courseRegister?.processUser && courseRegister?.processUser?._id%>"
                 class="form-control"></input>
-              <input readonly type="text" value="<%= contact?.processUser && contact?.processUser?.name || "" %>"
+              <input readonly type="text" value="<%= courseRegister?.processUser && courseRegister?.processUser?.name || "" %>"
                 class="form-control"></input>
 
               <br />
@@ -66,7 +82,7 @@
             <div class="col col-md-12">
               <label class="d-block">Ghi Chú ( Admin )</label>
               <textarea type="text" name="noteAdmin" cols="30" rows="3"
-                class="form-control"><%= contact?.noteAdmin|| "" %></textarea>
+                class="form-control"><%= courseRegister?.noteAdmin|| "" %></textarea>
               <br />
             </div>
           </div>

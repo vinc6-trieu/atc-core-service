@@ -1,10 +1,9 @@
 import { NextFunction, Request, Response } from 'express'
 import { PaginationBuilder } from '../../../shared/helpers/pagination.helper'
 import { DATE_FORMAT_FN, FORMAT_ID_FN } from '../../../shared/utils/format.util'
-import { courseCategoryService } from '../../../services/course-category.service'
-import { contactRequestService } from '../../../services/contact-request.service'
+import { courseRegisterService } from '../../../services/course-register.service'
 
-class ContactRequestsViewController {
+class CourseRegisterViewController {
   renderList = async (req: Request, res: Response, next: NextFunction) => {
     const { page = 1, search = '', ...filter } = req.query
 
@@ -23,7 +22,7 @@ class ContactRequestsViewController {
     const limit = 5
     const skip = (parseInt(`${page}`) - 1) * limit
 
-    const signalGetList = await courseCategoryService.getList({
+    const signalGetList = await courseRegisterService.getList({
       skip,
       limit,
       queryConditions: {
@@ -37,7 +36,7 @@ class ContactRequestsViewController {
       },
     })
 
-    const signalGetCount = await courseCategoryService.count({
+    const signalGetCount = await courseRegisterService.count({
       ...filter,
       ...(status ? { status } : {}),
       ...(search ? { $text: { $search: search as string } } : {}),
@@ -50,8 +49,8 @@ class ContactRequestsViewController {
       return res.render('cms', { inc: 'error', message: signalGetList.message, error: {} })
 
     return res.render('cms', {
-      inc: 'inc/cms/contact-requests/list',
-      title: 'Danh sách tư vấn',
+      inc: 'inc/cms/course-registers/list',
+      title: 'Danh sách đăng kí',
       listData: signalGetList.data ?? [],
       pagination,
       status,
@@ -67,21 +66,21 @@ class ContactRequestsViewController {
   renderEdit = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
     const { id } = req.params
 
-    const signalGet = await contactRequestService.getOne({
+    const signalGet = await courseRegisterService.getOne({
       queryConditions: { _id: id.trim() },
-      populates: ['processUser'],
+      populates: ['processUser', 'course'],
     })
 
     const info = signalGet?.data ?? {}
 
     return res.render('cms', {
-      inc: 'inc/cms/contact-requests/update',
+      inc: 'inc/cms/course-registers/update',
       title: 'Chỉnh sửa',
-      contact: info,
+      courseRegister: info,
       DATE_FORMAT_FN,
       FORMAT_ID_FN,
     })
   }
 }
 
-export const contactRequestsViewController = new ContactRequestsViewController()
+export const courseRegisterViewController = new CourseRegisterViewController()

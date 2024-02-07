@@ -92,12 +92,28 @@
 
                 <li class="menu-item-has-children dropdown">
                   <a href="" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true">
-                    <i class="menu-icon fa fa-users"></i>Tư vấn</a
+                    <i class="menu-icon fa fa-book"></i>Người hướng dẫn</a
                   >
                   <ul class="sub-menu children dropdown-menu">
                     <li>
                       <i class="menu-icon fa fa-list-ul"></i
-                      ><a href="/cms/contact-requests/list">Danh sách yêu cầu</a>
+                      ><a href="/cms/instructors/list">Danh sách</a>
+                    </li>
+                  </ul>
+                </li>
+
+                <li class="menu-item-has-children dropdown">
+                  <a href="" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true">
+                    <i class="menu-icon fa fa-users"></i>Đăng kí và Tư vấn</a
+                  >
+                  <ul class="sub-menu children dropdown-menu">
+                    <li>
+                      <i class="menu-icon fa fa-list-ul"></i>
+                      <a href="/cms/contact-requests/list">Yêu cầu liên hệ</a>
+                    </li>
+                    <li>
+                      <i class="menu-icon fa fa-list-ul"></i>
+                      <a href="/cms/course-registers/list">Đăng kí khóa học</a>
                     </li>
                   </ul>
                 </li>
@@ -183,7 +199,7 @@
             </a>
 
             <div class="user-menu dropdown-menu">
-              <a class="nav-link" href="/cms/user/password"
+              <a class="nav-link" href="/cms/admins/reset-password/<%= user?._id %>"
                 ><i class="fa fa-cog"></i> Đổi mật khẩu</a
               >
               <a class="nav-link" href="/logout"><i class="fa fa-power-off"></i> Đăng xuất</a>

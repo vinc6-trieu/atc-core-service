@@ -1,12 +1,15 @@
 import mongoose, { Document, Schema } from 'mongoose'
 import { AdminDocument } from './admin.model'
+import { CourseDocument } from './course.model'
 
-export interface ContactRequestDocument extends Document {
+export interface CourseRegisterDocument extends Document {
   fullName: string
   phone: string
   email: string
-  note: string
-  noteAdmin: string
+  note?: string
+  course?: mongoose.Types.ObjectId | CourseDocument | null
+  noteAdmin?: string
+  type: number
   processUser: AdminDocument
   status: number
   message: string
@@ -15,7 +18,7 @@ export interface ContactRequestDocument extends Document {
   createdAt: Date
 }
 
-const contactRequestSchema = new Schema<ContactRequestDocument>(
+const courseRegisterSchema = new Schema<CourseRegisterDocument>(
   {
     fullName: { type: String, required: true },
     phone: { type: String, required: true },
@@ -24,14 +27,15 @@ const contactRequestSchema = new Schema<ContactRequestDocument>(
     note: { type: String }, // thông tin thêm từ khách hàng
     noteAdmin: { type: String }, // ghi chú từ admin
     processUser: { type: mongoose.Types.ObjectId, ref: 'admin', default: null },
-
+    course: { type: mongoose.Types.ObjectId, ref: 'course' },
     /*** STATUS
-     *  2 - Tư vấn thành công
-     *  1 - Đã tư vấn đang chờ xác nhận từ khách
-     *  0 - Chờ tư vấn
+     *  2 - Đăng kí thành công
+     *  1 - Đã xác nhận đang chờ xác nhận từ khách
+     *  0 - Chờ xác nhận
      *  -1 - Khách hàng hủy
      ***/
     status: { type: Number, require: false, default: 0 },
+    type: { type: Number, require: false, default: 1 },
 
     createdAt: { type: Date, default: new Date() },
     modifiedAt: { type: Date, default: new Date() },
@@ -39,15 +43,15 @@ const contactRequestSchema = new Schema<ContactRequestDocument>(
   { timestamps: { createdAt: 'createdAt', updatedAt: 'updatedAt' } },
 )
 
-contactRequestSchema.index({
+courseRegisterSchema.index({
   fullName: 'text',
   phone: 'text',
   email: 'text',
 })
 
-const CONTACT_REQUEST_MODEL = mongoose.model<ContactRequestDocument>(
-  'contact_request',
-  contactRequestSchema,
+const COURSE_REGISTER_MODEL = mongoose.model<CourseRegisterDocument>(
+  'course_register',
+  courseRegisterSchema,
 )
 
-export default CONTACT_REQUEST_MODEL
+export default COURSE_REGISTER_MODEL
