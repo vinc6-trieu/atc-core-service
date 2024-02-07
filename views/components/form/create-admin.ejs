@@ -1,5 +1,5 @@
 <div class="col-lg">
-	<form method="POST" action="/cms-api/admin" class="form-horizontal">
+	<form method="POST" action="/cms-api/v1/admins" class="form-horizontal">
 		<input type="checkbox" class="open-hidden-form" id="open-create-admin" hidden />
 
 		<div class="card hidden-form" style="max-width: 600px">
@@ -29,7 +29,7 @@
 
 					<label for="">Tên</label>
 					<input
-						name="name"
+						name="fullname"
 						type="text"
 						class="form-control"
 						placeholder="Nguyễn Văn A"
@@ -54,7 +54,7 @@
 
 			<div class="card-footer">
 				<button type="submit" class="btn btn-primary btn-sm"><i class="fa fa-dot-circle-o"></i> Tạo mới</button>
-				<button type="reset" class="btn btn-danger btn-sm"><i class="fa fa-ban"></i>Reset</button>
+				<button type="reset" class="btn btn-danger btn-sm"><i class="fa fa-ban"></i>Close</button>
 			</div>
 		</div>
 		<label for="open-create-user" class="hidden-form-backdrop"></label>

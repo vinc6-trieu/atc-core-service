@@ -1,0 +1,33 @@
+<div class="card">
+	<div class="card-header">
+	</div>
+	<div class="card-body card-block">
+		<form method="GET" action="/admin/form_page_lien_he">
+			<div class="row form-group">
+				<br />
+				<div class="col col-md-6"><label for="hf-title" class=" form-control-label">Từ khóa tìm kiếm</label>
+					<input type="text" name="search" placeholder="" id="hf-title" value="<%= search || '' %>"
+						class="form-control">
+				</div>
+
+				<div class="col col-md-6"><label for="hf-status_search" class=" form-control-label">Trạng thái</label>
+					<select name="status" class="form-control">
+						<option value="">Tất cả</option>
+						<option value="2" <%=(`${status}`=='2' ) ? 'selected' : '' %>>Tư vấn thành công</option>
+						<option value="1" <%=(`${status}`=='1' ) ? 'selected' : '' %>>Đã tư vấn đang chờ xác nhận</option>
+						<option value="0" <%=(`${status}`=='0' ) ? 'selected' : '' %>>Chờ tư vấn</option>
+						<option value="-1" <%=(`${status}`=='-1' ) ? 'selected' : '' %>>Hủy</option>
+					</select>
+				</div>
+
+			</div>
+			<button type="submit" class="btn btn-primary btn-sm">
+				<i class="fa fa-search"></i> Tìm kiếm
+			</button>
+			<div class="d-inline-block ml-3"><strong>
+					<%= total %> Kết quả trả về
+				</strong></div>
+		</form>
+	</div>
+</div>
+<br />

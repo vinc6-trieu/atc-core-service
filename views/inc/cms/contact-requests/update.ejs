@@ -1,0 +1,84 @@
+<div class="col-lg">
+  <br />
+  <br />
+
+  <form method="PUT" action="/cms-api/v1/contact-requests/<%=contact?._id%>" class="form-horizontal">
+    <div class="card">
+      <div class="card-header">
+        <strong style="text-transform: uppercase">
+          <%= title || "Chỉnh sửa " %>
+        </strong>
+      </div>
+      <div class="card-body" style="padding: 20px !important; position: relative">
+        <div class="row">
+
+          <div class="col-12 form-group">
+            <div class="col col-md-6">
+              <label class="d-block">Họ và tên</label>
+              <input type="text" class="form-control" readonly value="<%= contact?.fullName || " -"%>">
+            </div>
+            <div class="col col-md-6">
+              <label class="d-block">Số điện thoại</label>
+              <input type="text" class="form-control" readonly value="<%= contact?.phone || " -"%>">
+            </div>
+          </div>
+          <br /><br />
+          <div class="col-12 form-group">
+            <div class="col col-md-12">
+              <label class="d-block">Email</label>
+              <input type="text" class="form-control" readonly value="<%= contact?.email || " -"%>">
+            </div>
+          </div>
+
+          <div class="col-12 form-group">
+            <div class="col col-md-12">
+              <label class="d-block">Thông tin cần tư vấn</label>
+              <textarea type="text" class="form-control" readonly><%=contact?.note%></textarea>
+            </div>
+          </div>
+          <div class="col-12 form-group">
+            <div class="col col-md-6">
+              <label class="d-block">Trạng thái</label>
+              <% if(contact.status==3) {%>
+                <input type="text" class="form-control" readonly value="Giao Thành Công">
+                <% }else{ %>
+                  <select name="status" class="form-control">>
+                    <option value="3" <%=contact.status==3 && 'selected' %>>Tư vấn thành công</option>
+                    <option value="2" <%=contact.status==2 && 'selected' %>>Đã tư vấn đang chờ xác nhận
+                    </option>
+                    <option value="1" <%=contact.status==1 && 'selected' %>>Đã chuyển CSKH</option>
+                    <option value="0" <%=contact.status==0 && 'selected' %>>Chờ tư vấn</option>
+                    <option value="-1" <%=contact.status==-1 && 'selected' %>>Khách hàng hủy</option>
+                  </select>
+                  <% } %>
+            </div>
+            <div class="col col-md-6">
+              <label class="d-block">Người xử lí</label>
+              <input type="hidden" name="processUser" value="<%= contact?.processUser && contact?.processUser?._id%>"
+                class="form-control"></input>
+              <input readonly type="text" value="<%= contact?.processUser && contact?.processUser?.name || "" %>"
+                class="form-control"></input>
+
+              <br />
+            </div>
+          </div>
+          <div class="col-12 form-group">
+            <div class="col col-md-12">
+              <label class="d-block">Ghi Chú ( Admin )</label>
+              <textarea type="text" name="noteAdmin" cols="30" rows="3"
+                class="form-control"><%= contact?.noteAdmin|| "" %></textarea>
+              <br />
+            </div>
+          </div>
+
+        </div>
+        <div class="col-12 form-group">
+          <div class="col col-md-6">
+            <button type="submit" class="btn btn-primary btn-sm">
+              <i class="fa fa-dot-circle-o"></i> Cập nhật
+            </button>
+          </div>
+        </div>
+      </div>
+  </form>
+</div>

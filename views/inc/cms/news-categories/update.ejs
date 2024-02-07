@@ -41,8 +41,7 @@
             <% const slug = categoryInfo?.slug || "" %>
             <label>Slug (LINK URL)</label>
             <input type="text" name="slug" required=true  id="slug-auto" class="form-control" value="<%=slug%>" required/>
-						<div id="create-slug-btn" class="btn btn-info mt-2" style="cursor: pointer">Tạo
-							slug auto</div>
+						<div id="create-slug-btn" class="btn btn-info mt-2" style="cursor: pointer">Tạo slug tự động</div>
 						  <br>
 						<br />
 
@@ -88,7 +87,7 @@
             <label>Tiêu đề SEO (Giới hạn 70 kí tự)</label>
             <% const seoTitle = categoryInfo?.seoTitle || "" %>
             <input type="text" name="seoTitle" maxlength="70"  id="seo-title-auto" class="form-control" value="<%=seoTitle%>"  />
-            <div id="create-seo-title-btn" class="btn btn-info mt-2">Tạo tiêu đề SEO auto
+            <div id="create-seo-title-btn" class="btn btn-info mt-2">Tạo tiêu đề SEO tự động
 						</div>
             <br />
             <br />

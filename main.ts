@@ -18,6 +18,7 @@ import { createUploadDirectories } from './middlewares/public-storage-initialize
 import { RequestWithPassport, passportInitialize } from './authentication/passport'
 import passport from 'passport'
 import { sessionRegister } from './authentication/session'
+import { formatResponse } from './middlewares/response-interceptor'
 
 const app = express()
 const port = process.env.PORT ?? 3000
@@ -67,6 +68,8 @@ app.use((req: Request, res: Response, next: NextFunction) => {
   next()
 })
 
+app.use(formatResponse)
+
 const timeZone = process.env.LOCAL_TIME_ZONE ? process.env.LOCAL_TIME_ZONE : 'Asia/Ho_Chi_Minh'
 moment.tz.setDefault(timeZone)
 
@@ -76,7 +79,6 @@ cachegoose(mongoose, {
 })
 
 app.use(indexRouter)
-
 app.use(errorHandler)
 
 // 404 Not Found handler (if no route matches)

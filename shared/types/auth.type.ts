@@ -6,7 +6,7 @@ export type CreateAdminPayload = {
   fullname: string
   username: string
   phone?: string
-  role: ERoles
+  role: number | string
   gender: number
 }
 

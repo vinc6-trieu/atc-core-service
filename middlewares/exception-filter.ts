@@ -2,7 +2,7 @@ import { Request, Response, NextFunction } from 'express'
 import { ERROR_CODES, ERROR_MESSAGES } from '../constants/response-message.constant'
 
 export function errorHandler(err: Error, req: Request, res: Response, next: NextFunction) {
-  console.error(err.stack ?? 'Something went wrong!!') // Log the error for debugging purposes
+  console.error(err.stack ?? err ?? 'Something went wrong!!') // Log the error for debugging purposes
 
   // Handle other types of errors here
 

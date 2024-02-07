@@ -1,7 +1,7 @@
 <br />
 <br />
 <div class="col-lg">
-  <form method="PATCH" action="/admin/user/password" class="form-horizontal">
+  <form method="PATCH" action="/cms-api/v1/admins/password" class="form-horizontal">
     <div class="card" style="max-width: 600px">
       <div class="card-header">
         <strong style="text-transform: uppercase">Reset Mật khẩu</strong>
@@ -9,13 +9,13 @@
       <div class="card-body" style="padding: 20px !important; position: relative">
         <div class="form-group">
           <label for="">Quản trị viên</label>
-          <input type="text" class="form-control" disabled value="<%= `${user.username} - ${user.name}` %>" />
+          <input type="text" class="form-control" disabled value="<%= `${userChange.username} - ${userChange.name}` %>" />
           <br />
-          <input type="text" name="userID" value="<%= user._id %>" hidden />
+          <input type="text" name="userChangeID" value="<%= userChange._id %>" hidden />
           <label for="">Mật khẩu mới</label>
           <input type="password" name="oldPassword" class="form-control" minlength="6" required />
           <br>
-          <input type="text" name="userID" value="<%= user._id %>" hidden />
+          <input type="text" name="userChangeID" value="<%= userChange._id %>" hidden />
           <label for="">Xác nhận mật khẩu mới</label>
           <input type="password" name="password" id="passowrd" class="form-control" minlength="6" required />
         </div>
@@ -26,6 +26,6 @@
         <button type="reset" class="btn btn-danger btn-sm"><i class="fa fa-ban"></i>Reset</button>
       </div>
     </div>
-    <label for="open-create-user" class="hidden-form-backdrop"></label>
+    <label for="open-create-userChange" class="hidden-form-backdrop"></label>
   </form>
 </div>

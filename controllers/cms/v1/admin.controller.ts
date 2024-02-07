@@ -27,13 +27,14 @@ class AdminViewController {
     const signalGetUserInfo = await adminService.getOne({
       queryConditions: { _id: userID },
     })
+
     if (signalGetUserInfo.error) res.status(500).json(signalGetUserInfo)
-    const user = signalGetUserInfo.data
+    const userChange = signalGetUserInfo.data
 
     return res.render('cms', {
-      inc: 'inc/cms/admins/reset_password',
+      inc: 'inc/cms/admins/admin_reset_pass',
       title: 'Đổi mật khẩu quản trị viên',
-      user,
+      userChange,
     })
   }
 }

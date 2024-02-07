@@ -1,8 +1,7 @@
 export enum ERoles {
-  SUPER_ADMIN = 'super_admin',
-  ADMIN = 'admin',
-  MANAGER = 'manager',
-  EDITOR = 'editor',
+  SUPER_ADMIN = 0,
+  SEOER = 1,
+  EDITOR = 2,
 }
 
 export enum ERoleStatus {

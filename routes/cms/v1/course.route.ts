@@ -1,5 +1,5 @@
 import express from 'express'
-import { policyViewController } from '../../../controllers/cms/v1/policy.controller'
+import { courseViewController } from '../../../controllers/cms/v1/course.controller'
 
 const router = express.Router()
 
@@ -8,13 +8,12 @@ const router = express.Router()
  * @swagger
  * /:
  *   get:
- *     description: Render list admin
+ *     description: Render list post
  *     responses:
  *       200:
  *         description: Returns a html.
  */
-router.get('/list', policyViewController.renderList)
-
-router.get('/:id', policyViewController.renderEdit)
+router.get('/list', courseViewController.renderList)
+router.get('/:id', courseViewController.renderEdit)
 
 export default router

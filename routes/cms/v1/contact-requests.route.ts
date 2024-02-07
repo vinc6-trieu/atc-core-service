@@ -1,5 +1,5 @@
 import express from 'express'
-import { roleViewController } from '../../../controllers/cms/v1/role.controller'
+import { contactRequestsViewController } from '../../../controllers/cms/v1/contact-requests.controller'
 
 const router = express.Router()
 
@@ -8,13 +8,12 @@ const router = express.Router()
  * @swagger
  * /:
  *   get:
- *     description: Render list admin
+ *     description: Render list post
  *     responses:
  *       200:
  *         description: Returns a html.
  */
-router.get('/list', roleViewController.renderList)
-
-router.get('/:id', roleViewController.renderEdit)
+router.get('/list', contactRequestsViewController.renderList)
+router.get('/:id', contactRequestsViewController.renderEdit)
 
 export default router

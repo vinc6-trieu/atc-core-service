@@ -1,0 +1,45 @@
+<div class="card">
+  <div class="card-header">
+    <strong>Tìm kiếm khóa học</strong>
+  </div>
+  <div class="card-body card-block">
+    <form method="GET" action="/cms/events/list">
+      <div class="row form-group">
+        <div class="col col-md-6"><label for="hf-title" class=" form-control-label">Từ khóa tìm kiếm</label>
+          <input type="text" name="search" id="hf-title" value="<%= search || '' %>" class="form-control">
+        </div>
+
+        <div class="col col-md-3"><label for="hf-category" class=" form-control-label">Danh mục</label>
+          <select name="category" id="category_search" class="form-control  select-search-input">
+            <option value="">Tất cả</option>
+            <% if (listCategories) {%>
+            <%for (let i=0; i < listCategories.length; i++) {%>
+            <option value=<%- `"${listCategories[i]._id}"`%> <% if (filter && filter.category==listCategories[i]._id) {%> selected <% } %>><%= listCategories[i].viName %>
+            </option>
+            <% } %>
+            <% } %>
+          </select>
+        </div>
+        <div class="col col-md-3"><label for="hf-status_search" class=" form-control-label">Trạng
+            thái</label>
+          <select name="status" class="form-control  select-search-input">
+            <option value="">Tất cả</option>
+            <% if (listStatus) {%>
+            <%for (let i=0; i < listStatus.length; i++) {%>
+            <option value=<%- `"${listStatus[i].id}"`%> <% if (status==listStatus[i].id) {%> selected <% } %>><%= listStatus[i].name %>
+            </option>
+            <% } %>
+            <% } %>
+          </select>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary btn-sm">
+        <i class="fa fa-search"></i> Tìm kiếm
+      </button>
+      <div class="d-inline-block ml-3"><strong>
+          <%= total %> Kết quả trả về
+        </strong></div>
+    </form>
+  </div>
+</div>
+<br />

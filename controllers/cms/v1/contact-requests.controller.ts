@@ -1,14 +1,11 @@
 import { NextFunction, Request, Response } from 'express'
-import { newsEventsCategoryService } from '../../../services/news-events-category.service'
 import { PaginationBuilder } from '../../../shared/helpers/pagination.helper'
-import { newsEventsCategoryInfoService } from '../../../services/news-events-category-info.service'
 import { ELanguage } from '../../../shared/enums/locale.enum'
 import { DATE_FORMAT_FN, FORMAT_ID_FN } from '../../../shared/utils/format.util'
-import { ERoleStatus } from '../../../shared/enums/roles.enum'
-import { roleService } from '../../../services/auth/role.service'
-import { policyService } from '../../../services/auth/policy.service'
+import { courseCategoryService } from '../../../services/course-category.service'
+import { contactRequestService } from '../../../services/contact-request.service'
 
-class RoleViewController {
+class ContactRequestsViewController {
   renderList = async (req: Request, res: Response, next: NextFunction) => {
     const { page = 1, search = '', ...filter } = req.query
 
@@ -16,16 +13,23 @@ class RoleViewController {
 
     let status: number | null = null
 
+    if (filter.status || filter.status === '0') {
+      status = parseInt(filter.status.toString())
+    }
+
+    delete filter['status']
+
     if (parseInt(`${page}`) < 0) return res.render('error')
 
     const limit = 5
     const skip = (parseInt(`${page}`) - 1) * limit
 
-    const signalGetList = await roleService.getList({
+    const signalGetList = await courseCategoryService.getList({
       skip,
       limit,
       queryConditions: {
         ...filter,
+        ...(status ? { status } : {}),
         ...(search ? { $text: { $search: search as string } } : {}),
       },
       sort: {
@@ -34,8 +38,9 @@ class RoleViewController {
       },
     })
 
-    const signalGetCount = await roleService.count({
+    const signalGetCount = await courseCategoryService.count({
       ...filter,
+      ...(status ? { status } : {}),
       ...(search ? { $text: { $search: search as string } } : {}),
     })
 
@@ -44,20 +49,19 @@ class RoleViewController {
 
     if (signalGetList.error)
       return res.render('cms', { inc: 'error', message: signalGetList.message, error: {} })
-    const roles = signalGetList.data
 
     return res.render('cms', {
-      inc: 'inc/cms/roles/list',
-      title: 'Danh sách vai trò',
-      roles,
+      inc: 'inc/cms/contact-requests/list',
+      title: 'Danh sách tư vấn',
+      listData: signalGetList.data ?? [],
       pagination,
+      status,
       page,
       total,
       search,
-      listStatus: ERoleStatus,
-      status,
+      filter,
       FORMAT_ID_FN,
-      DATE_FORMAT_FN
+      DATE_FORMAT_FN,
     })
   }
 
@@ -65,35 +69,21 @@ class RoleViewController {
     const { id } = req.params
     const lang = req.query.lang ?? ELanguage.VI
 
-    const switchLangs = {
-      vi: `/cms/roles/${id}?lang=${ELanguage.VI}`,
-      en: `/cms/roles/${id}?lang=${ELanguage.EN}`,
-    }
-
-    const signalGet = await roleService.getOne({
+    const signalGet = await contactRequestService.getOne({
       queryConditions: { _id: id.trim() },
-      populates: { path: 'policies' },
+      populates: ['processUser'],
     })
 
-    const role = signalGet?.data ?? { _id: id }
-
-    const signalGetPolicies = await policyService.getList({
-      queryConditions: {},
-    })
-    if (signalGetPolicies.error) return res.render('error')
-
-    const policies = signalGetPolicies.data
+    const info = signalGet?.data ?? {}
 
     return res.render('cms', {
-      inc: 'inc/cms/roles/update',
-      title: 'Chỉnh sửa vai trò',
-      role: role,
-      lang,
-      listStatus: ERoleStatus,
-      switchLangs,
-      policies: policies,
+      inc: 'inc/cms/contact-requests/update',
+      title: 'Chỉnh sửa',
+      contact: info,
+      DATE_FORMAT_FN,
+      FORMAT_ID_FN,
     })
   }
 }
 
-export const roleViewController = new RoleViewController()
+export const contactRequestsViewController = new ContactRequestsViewController()

@@ -56,6 +56,7 @@ document.addEventListener('DOMContentLoaded', async (ev) => {
 
     let fd = new FormData(this)
     let that = this
+    console.log({ fd })
 
     let contentEditors = this.querySelectorAll('.content-editor')
     if (contentEditors) {
@@ -120,7 +121,6 @@ document.addEventListener('DOMContentLoaded', async (ev) => {
 
   if (openPopupButtonArr)
     openPopupButtonArr.forEach((button) => {
-      console.log(button)
       button.addEventListener('click', openModalPopup)
     })
 

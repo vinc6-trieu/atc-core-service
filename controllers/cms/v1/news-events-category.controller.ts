@@ -200,7 +200,7 @@ class NewsCategoryViewController {
 
     const signalGetInfo = await newsEventsCategoryInfoService.getOne({
       queryConditions: {
-        newsCategory: id,
+        newsEventsCategory: id,
         lang,
       },
     })
@@ -243,7 +243,7 @@ class NewsCategoryViewController {
 
     const signalGetInfo = await newsEventsCategoryInfoService.getOne({
       queryConditions: {
-        newsCategory: id,
+        newsEventsCategory: id,
         lang,
       },
     })

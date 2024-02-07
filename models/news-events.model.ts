@@ -23,10 +23,7 @@ export type NewsEventsLanguages = {
 
 export type NewsEvents = {
   thumbnail?: mongoose.Types.ObjectId | null | ImageDocument
-  parent?: mongoose.Types.ObjectId | null | NewsEventsDocument
   category?: mongoose.Types.ObjectId | null | NewsEventsDocument
-  oldCategories?: string[]
-  id?: string
   type?: ENewsEventType
   createdAt: Date
   modifiedAt: Date
@@ -40,10 +37,9 @@ const newsEventsSchema = new Schema<NewsEventsDocument>(
     vi: { type: mongoose.Types.ObjectId, ref: 'news_events_info' },
     viName: { type: String },
     viSlug: { type: String },
-    thumbnail: { type: mongoose.Types.ObjectId, ref: 'image' },
     type: { type: String, enum: ENewsEventType, default: ENewsEventType.News },
     en: { type: mongoose.Types.ObjectId, ref: 'news_events_info' },
-    parent: { type: mongoose.Types.ObjectId, ref: 'news_events_category', default: null },
+    category: { type: mongoose.Types.ObjectId, ref: 'news_events_category', default: null },
     enName: { type: String },
     enSlug: { type: String },
     createdAt: { type: Date, default: new Date() },

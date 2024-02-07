@@ -9,6 +9,7 @@ import { ERoles } from '../../shared/enums/roles.enum'
 import { hashPassword, parseToken, signingToken } from '../../shared/helpers/auth.helper'
 import { CreateAdminPayload } from '../../shared/types/auth.type'
 import { IResponseData } from '../../shared/interfaces/base.interface'
+import { MESSAGES } from '../../constants/base.constant'
 
 export class AdminService extends BaseService<AdminDocument> {
   constructor() {
@@ -29,9 +30,9 @@ export class AdminService extends BaseService<AdminDocument> {
     gender,
     email,
     phone,
-    role = ERoles.EDITOR,
+    role = '2',
   }: CreateAdminPayload): Promise<IResponseData<{ admin: Partial<AdminDocument>; token: string }>> {
-    try { 
+    try {
       if (password.length < 6 || username.length < 6)
         return {
           error: true,
@@ -110,6 +111,16 @@ export class AdminService extends BaseService<AdminDocument> {
         message: ERROR_MESSAGES[ERROR_CODES.ERROR_REGISTER_ADMIN],
         error_code: ERROR_CODES.ERROR_REGISTER_ADMIN,
       }
+    }
+  }
+
+  updatePassword = async (userID: string, password: string) => {
+    try {
+      password = await Bun.password.hash(password)
+      const result = await ADMIN_MODEL.updateOne({ _id: userID }, { $set: { password } })
+      return { data: result, message: MESSAGES.CREATED_SUCCEED }
+    } catch (error: any) {
+      return { error: true, message: error.message }
     }
   }
 }

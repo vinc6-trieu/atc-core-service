@@ -31,6 +31,17 @@ class AdminController extends BaseController<AdminDocument> {
       },
     })
   }
+
+  updatePassword = async (req: Request, res: Response, _: NextFunction) => {
+    const { password, userID, oldPassword } = req.body
+
+    if (password != oldPassword) {
+      return res.status(400).json({ error: true, message: 'Mật khẩu Không khớp' })
+    }
+
+    const signalUpdate = await adminService.updatePassword(userID, password)
+    return res.status(signalUpdate.error ? 400 : 200).json(signalUpdate)
+  }
 }
 
 export const adminController = new AdminController()

@@ -24,6 +24,7 @@ export enum ERROR_CODES {
   ERROR_REGISTER_USER = '10012',
   INVALID_STATUS_PARAMETER = '10013',
   DATA_NOT_FOUND = '10014',
+  UNAUTHORIZED = '10015',
 }
 
 export const ERROR_MESSAGES: Record<ERROR_CODES, string> = {
@@ -42,4 +43,5 @@ export const ERROR_MESSAGES: Record<ERROR_CODES, string> = {
   [ERROR_CODES.ERROR_REGISTER_USER]: 'error_register_user',
   [ERROR_CODES.INVALID_STATUS_PARAMETER]: 'invalid_status_parameter',
   [ERROR_CODES.DATA_NOT_FOUND]: 'data_not_found',
+  [ERROR_CODES.UNAUTHORIZED]: 'permission_denied',
 }

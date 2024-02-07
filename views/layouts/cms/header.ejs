@@ -2,191 +2,225 @@
   <!-- Left Panel -->
 
   <aside id="left-panel" class="left-panel">
-    <div class="navbar-wrapper sticky">
-      <nav class="navbar navbar-expand-sm navbar-default scroll-y" style="height: 90vh">
-        <div class="navbar-header">
-          <button
-            class="navbar-toggler"
-            type="button"
-            data-toggle="collapse"
-            data-target="#main-menu"
-            aria-controls="main-menu"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <i class="fa fa-bars"></i>
-          </button>
-          <a class="navbar-brand" href="/cms/dashboard"
-            ><img style="width: 50%" src="/Logo.png" alt="Logo"
-          /></a>
-        </div>
+    <div class="left-panel-container">
+      <div class="navbar-wrapper sticky">
+        <nav class="navbar navbar-expand-sm navbar-default scroll-y" style="height: 90vh">
+          <div class="navbar-header">
+            <button
+              class="navbar-toggler"
+              type="button"
+              data-toggle="collapse"
+              data-target="#main-menu"
+              aria-controls="main-menu"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <i class="fa fa-bars"></i>
+            </button>
+            <a class="navbar-brand" href="/cms/dashboard"
+              ><img style="width: 50%" src="/Logo.png" alt="Logo"
+            /></a>
+          </div>
 
-        <div class="main-menu-wrapper">
-          <div id="main-menu" class="main-menu collapse navbar-collapse">
-            <ul class="nav navbar-nav">
-              <li>
-                <a href="/cms/dashboard"> <i class="menu-icon fa fa-dashboard"></i>Tổng quan </a>
-              </li>
-              <h3 class="menu-title">DANH SÁCH</h3>
-              <li class="dropdown">
-                <a class="button-create-empty" data-action="/cms-api/v1/news" data-type="news">
-                  <i class="menu-icon fa fa-plus"></i>Tạo mới tin tức
-                </a>
-                <a class="button-create-empty" data-action="/cms-api/v1/course" data-type="course">
-                  <i class="menu-icon fa fa-plus"></i>Tạo mới khóa học
-                </a>
-              </li>
+          <div class="main-menu-wrapper">
+            <div id="main-menu" class="main-menu collapse navbar-collapse">
+              <ul class="nav navbar-nav">
+                <li>
+                  <a href="/cms/dashboard"> <i class="menu-icon fa fa-dashboard"></i>Tổng quan </a>
+                </li>
+                <h3 class="menu-title">DANH SÁCH</h3>
+                <li class="dropdown">
+                  <a class="button-create-empty" data-action="/cms-api/v1/news" data-type="news">
+                    <i class="menu-icon fa fa-plus"></i>Tạo mới tin tức
+                  </a>
+                  <a
+                    class="button-create-empty"
+                    data-action="/cms-api/v1/courses"
+                    data-type="courses"
+                  >
+                    <i class="menu-icon fa fa-plus"></i>Tạo mới khóa học
+                  </a>
+                </li>
 
-              <li class="menu-item-has-children dropdown">
-                <a href="" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true">
-                  <i class="menu-icon fa fa-book"></i>Tin Tức</a
-                >
-                <ul class="sub-menu children dropdown-menu">
-                  <li>
-                    <i class="menu-icon fa fa-list-ul"></i
-                    ><a href="/cms/news/list">Danh sách tin tức</a>
-                  </li>
-                  <li>
-                    <i class="menu-icon fa fa-list-ul"></i
-                    ><a href="/cms/news-categories/list">Danh mục tin tức</a>
-                  </li>
-                </ul>
-              </li>
+                <li class="menu-item-has-children dropdown">
+                  <a href="" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true">
+                    <i class="menu-icon fa fa-book"></i>Tin Tức</a
+                  >
+                  <ul class="sub-menu children dropdown-menu">
+                    <li>
+                      <i class="menu-icon fa fa-list-ul"></i
+                      ><a href="/cms/news/list">Danh sách tin tức</a>
+                    </li>
+                    <li>
+                      <i class="menu-icon fa fa-list-ul"></i
+                      ><a href="/cms/news-categories/list">Danh mục tin tức</a>
+                    </li>
+                  </ul>
+                </li>
 
-              <li class="menu-item-has-children dropdown">
-                <a href="" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true">
-                  <i class="menu-icon fa fa-book"></i>Sự Kiện</a
-                >
-                <ul class="sub-menu children dropdown-menu">
-                  <li>
-                    <i class="menu-icon fa fa-list-ul"></i
-                    ><a href="/cms/events/list">Danh sách sự kiện</a>
-                  </li>
-                  <li>
-                    <i class="menu-icon fa fa-list-ul"></i
-                    ><a href="/cms/events-categories/list">Danh mục sự kiện</a>
-                  </li>
-                </ul>
-              </li>
+                <li class="menu-item-has-children dropdown">
+                  <a href="" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true">
+                    <i class="menu-icon fa fa-book"></i>Sự Kiện</a
+                  >
+                  <ul class="sub-menu children dropdown-menu">
+                    <li>
+                      <i class="menu-icon fa fa-list-ul"></i
+                      ><a href="/cms/events/list">Danh sách sự kiện</a>
+                    </li>
+                    <li>
+                      <i class="menu-icon fa fa-list-ul"></i
+                      ><a href="/cms/events-categories/list">Danh mục sự kiện</a>
+                    </li>
+                  </ul>
+                </li>
 
-              <li class="menu-item-has-children dropdown">
-                <a href="" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true">
-                  <i class="menu-icon fa fa-book"></i>Khóa học</a
-                >
-                <ul class="sub-menu children dropdown-menu">
-                  <li>
-                    <i class="menu-icon fa fa-list-ul"></i
-                    ><a href="/cms/course/list">Danh sách khóa học</a>
-                  </li>
-                  <li>
-                    <i class="menu-icon fa fa-list-ul"></i
-                    ><a href="/cms/course-categories/list">Danh mục khóa học</a>
-                  </li>
-                </ul>
-              </li>
+                <li class="menu-item-has-children dropdown">
+                  <a href="" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true">
+                    <i class="menu-icon fa fa-book"></i>Khóa học</a
+                  >
+                  <ul class="sub-menu children dropdown-menu">
+                    <li>
+                      <i class="menu-icon fa fa-list-ul"></i
+                      ><a href="/cms/courses/list">Danh sách khóa học</a>
+                    </li>
+                    <li>
+                      <i class="menu-icon fa fa-list-ul"></i
+                      ><a href="/cms/course-categories/list">Danh mục khóa học</a>
+                    </li>
+                  </ul>
+                </li>
 
-              <!-- <li class="menu-item-has-children dropdown">
-                <a href="" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true">
-                  <i class="menu-icon fa fa-book"></i>Phân Quyền</a>
-                <ul class="sub-menu children dropdown-menu">
-                  <li><i class="menu-icon fa fa-list-ul"></i><a href="/cms/roles/list">Danh sách vai trò</a>
-                  </li>
-                  <li><i class="menu-icon fa fa-list-ul"></i><a href="/cms/policies/list">Danh sách quyền hạn</a>
-                  </li>
-                </ul>
-              </li> -->
+                <li class="menu-item-has-children dropdown">
+                  <a href="" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true">
+                    <i class="menu-icon fa fa-users"></i>Tư vấn</a
+                  >
+                  <ul class="sub-menu children dropdown-menu">
+                    <li>
+                      <i class="menu-icon fa fa-list-ul"></i
+                      ><a href="/cms/contact-requests/list">Danh sách yêu cầu</a>
+                    </li>
+                  </ul>
+                </li>
 
-              <li class="menu-item-has-children">
-                <a href="/cms/admins/list"> <i class="menu-icon fa fa-user-secret"></i>Quản trị viên</a>
-              </li>
+                <!-- <li class="menu-item-has-children dropdown">
+                  <a href="" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true">
+                    <i class="menu-icon fa fa-book"></i>Phân Quyền</a>
+                  <ul class="sub-menu children dropdown-menu">
+                    <li><i class="menu-icon fa fa-list-ul"></i><a href="/cms/roles/list">Danh sách vai trò</a>
+                    </li>
+                    <li><i class="menu-icon fa fa-list-ul"></i><a href="/cms/policies/list">Danh sách quyền hạn</a>
+                    </li>
+                  </ul>
+                </li> -->
+                <h3 class="menu-title">QUẢN TRỊ</h3>
+                <li class="menu-item-has-children">
+                  <a href="/cms/admins/list">
+                    <i class="menu-icon fa fa-user-secret"></i>Quản trị viên</a
+                  >
+                </li>
 
-              <!-- <h3 class="menu-title">KÊNH MARKETING</h3>
-              <li class="menu-item-has-children">
-                <a href="/cms/promotions"> <i class="menu-icon fa fa-cubes"></i>Chương trình quảng bá</a>
-              </li> -->
+                <!-- <h3 class="menu-title">KÊNH MARKETING</h3>
+                <li class="menu-item-has-children">
+                  <a href="/cms/promotions"> <i class="menu-icon fa fa-cubes"></i>Chương trình quảng bá</a>
+                </li> -->
 
-              <!-- <li class="menu-item-has-children">
-                <a href="/cms/product-sale-categories"> <i class="menu-icon fa fa-bolt"></i>Danh mục chương trình</a>
-              </li> -->
-              <!-- 
-              <li class="menu-item-has-children">
-                <a href="/cms/aggregate-contents"> <i class="menu-icon fa fa-cubes"></i>Search all</a>
-                <a href="/cms/form_page_lien_he"> <i class="menu-icon fa fa-bolt"></i>Danh mục người dùng</a>
-              </li> -->
+                <!-- <li class="menu-item-has-children">
+                  <a href="/cms/product-sale-categories"> <i class="menu-icon fa fa-bolt"></i>Danh mục chương trình</a>
+                </li> -->
+                <!-- 
+                <li class="menu-item-has-children">
+                  <a href="/cms/aggregate-contents"> <i class="menu-icon fa fa-cubes"></i>Search all</a>
+                  <a href="/cms/form_page_lien_he"> <i class="menu-icon fa fa-bolt"></i>Danh mục người dùng</a>
+                </li> -->
 
-              <!-- <h3 class="menu-title">LANDING PAGE</h3>
-              <li class="menu-item-has-children">
-                <a href="/cms/landing-page"> <i class="menu-icon fa fa-file-powerpoint-o"></i>Landing page</a>
-              </li> -->
+                <!-- <h3 class="menu-title">LANDING PAGE</h3>
+                <li class="menu-item-has-children">
+                  <a href="/cms/landing-page"> <i class="menu-icon fa fa-file-powerpoint-o"></i>Landing page</a>
+                </li> -->
 
-              <h3 class="menu-title">LAYOUT</h3>
-              <li class="menu-item-has-children">
-                <a href="/cms/home"> <i class="menu-icon fa fa-home"></i>Trang chủ</a>
-                <a href="/cms/about"> <i class="menu-icon fa fa-briefcase"></i>Về chúng tôi</a>
-                <a href="/cms/contact"> <i class="menu-icon fa fa-diamond"></i>Liên hệ</a>
-              </li>
+                <h3 class="menu-title">LAYOUT</h3>
+                <li class="menu-item-has-children">
+                  <a href="/cms/home"> <i class="menu-icon fa fa-home"></i>Trang chủ</a>
+                  <a href="/cms/about"> <i class="menu-icon fa fa-briefcase"></i>Về chúng tôi</a>
+                  <a href="/cms/contact"> <i class="menu-icon fa fa-diamond"></i>Liên hệ</a>
+                </li>
 
-              <!-- <h3 class="menu-title">SEO settings</h3>
-              <li class="menu-item-has-children">
-                <a href="/cms/seo-files"> <i class="menu-icon fa fa-sitemap"></i>Tệp dành cho SEO</a>
-                <a href="/cms/seo/home"> <i class="menu-icon fa fa-cog"></i>SEO Trang chủ</a>
-                <a href="/cms/seo/blog"> <i class="menu-icon fa fa-pencil-square-o"></i>SEO trang tin tức</a>
-                <a href="/cms/seo/about"> <i class="menu-icon fa fa-object-group"></i>SEO trang giới thiệu</a>
-                <a href="/cms/seo/store"> <i class="menu-icon fa fa-compress"></i>SEO trang chi nhánh</a>
-                <a href="/cms/seo/search"> <i class="menu-icon fa fa-search"></i>SEO trang tìm kiếm</a>
-              </li> -->
+                <!-- <h3 class="menu-title">SEO settings</h3>
+                <li class="menu-item-has-children">
+                  <a href="/cms/seo-files"> <i class="menu-icon fa fa-sitemap"></i>Tệp dành cho SEO</a>
+                  <a href="/cms/seo/home"> <i class="menu-icon fa fa-cog"></i>SEO Trang chủ</a>
+                  <a href="/cms/seo/blog"> <i class="menu-icon fa fa-pencil-square-o"></i>SEO trang tin tức</a>
+                  <a href="/cms/seo/about"> <i class="menu-icon fa fa-object-group"></i>SEO trang giới thiệu</a>
+                  <a href="/cms/seo/store"> <i class="menu-icon fa fa-compress"></i>SEO trang chi nhánh</a>
+                  <a href="/cms/seo/search"> <i class="menu-icon fa fa-search"></i>SEO trang tìm kiếm</a>
+                </li> -->
 
-              <!-- <h3 class="menu-title">TÀI KHOẢN ADMIN</h3> -->
-              <!-- /.menu-title -->
-              <!-- <li class="menu-item-has-children"></li> -->
-            </ul>
+                <!-- <h3 class="menu-title">TÀI KHOẢN ADMIN</h3> -->
+                <!-- /.menu-title -->
+                <!-- <li class="menu-item-has-children"></li> -->
+              </ul>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </div>
+
+    <div id="header" class="header">
+      <div class="header-menu">
+        <div class="col-sm-12 float-right">
+          <div class="user-area dropdown float-right">
+            <a
+              href="#"
+              class="dropdown-toggle"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              <div style="width: 40px" class="rounded-circle user-avatar-container">
+                <img class="user-avatar" src="/admin.jpeg" alt="User Avatar" />
+              </div>
+              <span class="user-name"><%= user?.name %></span>
+            </a>
+
+            <div class="user-menu dropdown-menu">
+              <a class="nav-link" href="/cms/user/password"
+                ><i class="fa fa-cog"></i> Đổi mật khẩu</a
+              >
+              <a class="nav-link" href="/logout"><i class="fa fa-power-off"></i> Đăng xuất</a>
+            </div>
           </div>
         </div>
-        <!-- /.navbar-collapse --`
-      </nav>
-    </div>
-  </aside>
-  <!-- /#left-panel -->
-
-        <!-- Left Panel -->
-
-        <!-- Right Panel -->
-
-        <div id="right-panel" class="right-panel">
-          <!-- Header-->
-          <header id="header" class="header">
-            <div class="header-menu">
-              <div class="col-sm-12 float-right">
-                <div class="user-area dropdown float-right">
-                  <a
-                    href="#"
-                    class="dropdown-toggle"
-                    data-toggle="dropdown"
-                    aria-haspopup="true"
-                    aria-expanded="false"
-                  >
-                    <img
-                      style="width: 40px"
-                      class="user-avatar rounded-circle"
-                      src="/admin.jpeg"
-                      alt="User Avatar"
-                    />
-                  </a>
-
-                  <div class="user-menu dropdown-menu">
-                    <a class="nav-link" href="/cms/user/password"
-                      ><i class="fa fa-cog"></i> Đổi mật khẩu</a
-                    >
-                    <a class="nav-link" href="/logout"><i class="fa fa-power-off"></i> Đăng xuất</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </header>
-          <!-- /header -->
-          <!-- Header-->
-        </div>
-      </nav>
+      </div>
     </div>
   </aside>
 </body>
+
+<!-- <header id="header" class="header">
+  <div class="header-menu">
+    <div class="col-sm-12 float-right">
+      <div class="user-area dropdown float-right">
+        <a
+          href="#"
+          class="dropdown-toggle"
+          data-toggle="dropdown"
+          aria-haspopup="true"
+          aria-expanded="false"
+        >
+          <img
+            style="width: 40px"
+            class="user-avatar rounded-circle"
+            src="/admin.jpeg"
+            alt="User Avatar"
+          />
+        </a>
+
+        <div class="user-menu dropdown-menu">
+          <a class="nav-link" href="/cms/user/password"
+            ><i class="fa fa-cog"></i> Đổi mật khẩu</a
+          >
+          <a class="nav-link" href="/logout"><i class="fa fa-power-off"></i> Đăng xuất</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</header> -->

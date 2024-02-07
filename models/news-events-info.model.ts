@@ -44,7 +44,6 @@ const newsEventsInfoSchema = new Schema<NewsEventsInfoDocument>(
     content: { type: String, required: false, trim: true },
     summary: { type: String, required: false, trim: true },
     thumbnail: { type: mongoose.Types.ObjectId, ref: 'image', required: true },
-    gallery: [{ type: mongoose.Types.ObjectId, ref: 'image', required: false }],
     description: { type: String, required: false, trim: true },
     status: { type: String, enum: ENewsEventsStatus, default: ENewsEventsStatus.Draft },
     slug: { type: String, required: false, index: { unique: true } },

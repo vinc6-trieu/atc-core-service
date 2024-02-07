@@ -32,7 +32,7 @@ export const RegisterAdminSchema = yup.object({
     .min(6, 'Username should has more than 6 chars')
     .max(32, 'Username should has limit to 32 chars')
     .required('Username is required'),
-  email: yup.string().required('Password is required'),
+  email: yup.string(),
   password: yup
     .string()
     .min(6, 'Password should has more than 6 chars')
@@ -41,7 +41,6 @@ export const RegisterAdminSchema = yup.object({
     .string()
     .min(3, 'Fullname should has more than 6 chars')
     .required('Fullname is required'),
-  role: yup.string().oneOf(Object.values(ERoles)).required('Role is required'),
 })
 
 export type RegisterAdminSchemaType = yup.InferType<typeof RegisterAdminSchema>

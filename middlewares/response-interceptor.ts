@@ -1,9 +1,10 @@
 import { NextFunction, Request, Response } from 'express'
 import { IResponseData } from '../shared/interfaces/base.interface'
 import { API_CMS_URL, CMS_URL } from '../constants/base.constant'
+import { RequestWithPassport } from '../authentication/passport'
 
 export function formatResponse(
-  req: Request,
+  req: RequestWithPassport,
   res: Response<IResponseData<any>>,
   next: NextFunction,
 ) {
@@ -43,6 +44,7 @@ export function formatResponse(
       ...locals,
       API_CMS_URL,
       CMS_URL,
+      user: req.session?.passport?.user,
     }
     // Continue with the original render method
     originalRender.call(res, view, locals)

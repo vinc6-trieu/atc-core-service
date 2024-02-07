@@ -14,5 +14,6 @@ const router = express.Router()
  *         description: Returns a html.
  */
 router.get('/list', adminViewController.renderList)
+router.get('/reset-password/:userID', adminViewController.renderUpdatePassword)
 
 export default router

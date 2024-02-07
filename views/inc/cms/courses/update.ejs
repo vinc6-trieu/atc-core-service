@@ -1,0 +1,247 @@
+<div class="breadcrumbs">
+  <div class="page-header float-left">
+    <div class="page-title">
+      <h1 class="d-inline-block float-left">Chỉnh sửa khóa học</h1>
+    </div>
+  </div>
+  <%- include('../../../components/languages_select')%>
+</div>
+
+<div class="col-lg">
+  <br />
+
+  <br />
+  <form method="PUT" action="/cms-api/v1/courses/<%=course._id%>" class="form-horizontal">
+    <input type="hidden" name="lang" value="<%=lang%>" />
+    <input type="hidden" name="course" value="<%=course._id%>" />
+
+    <div class="card">
+      <div class="card-header">
+        <strong style="text-transform: uppercase">
+          <%=lang=='vi' ? 'Bản dịch Tiếng Việt' : 'Bản dịch Tiếng Anh' %>
+        </strong>
+      </div>
+      <div class="card-body" style="padding: 20px !important; position: relative">
+        <div class="row">
+          <div class="col-12 form-group d-block">
+            <label class="col-12 form-group d-block">Ảnh thumnail</label>
+            <% const thumbnailSrc=courseInfo?.thumbnail?.src || "/noimage.jpg" %>
+            <img onclick="openGallery(this, '#input-thumbnail')" src="<%=thumbnailSrc%>" style="width: 100%; cursor: pointer" class="gallery-image" />
+
+            <% const thumbnailID=courseInfo?.thumbnail?._id || "" %>
+            <input type="hidden" id="input-thumbnail" name="thumbnail" value="<%=thumbnailID%>" required />
+          </div>
+
+          <div class="row col-12 form-group d-block">
+            <br>
+            <label class="col-12 form-group d-block">Hình ảnh</label>
+            <% if (gallery && gallery.length > 0) { %>
+              <% gallery.forEach((item, index) => { %>
+                <div class="col-4 form-group">
+                  <% const thumbnailSrc = item.src || "/noimage.jpg"; %>
+                  <div class="restore-image-button" onclick="clearImage(this, index)">X</div>
+                  <img style="width: 100%; height: auto; height: 300px; cursor: pointer" onclick="openGallery(this, '#input-thumbnail<%= index %>')" src="<%= thumbnailSrc %>"
+                    style="width: 100%; cursor: pointer" class="gallery-image" />
+          
+                  <input type="hidden" id="input-thumbnail<%= index %>" name="gallery" value="<%= item._id %>" />
+                </div>
+              <% }); %>
+            <% } else { %>
+              <div class="col-4 form-group">
+                <% const thumbnailSrc = "/noimage.jpg"; %>
+                <div class="restore-image-button" onclick="clearImage(this, 0)">X</div>
+                <img style="width: 100%; height: auto; height: 300px; cursor: pointer" onclick="openGallery(this, '#input-thumbnail0')" src="<%= thumbnailSrc %>"
+                  style="width: 100%; cursor: pointer" class="gallery-image" />
+                <input type="hidden" id="input-thumbnail0" name="gallery" value="" />
+              </div>
+            <% } %>
+          </div>
+          <div class="col-4 form-group">
+            <div onclick="addMoreImages()" class="btn btn-info mt-2" style="cursor: pointer">Thêm ảnh</div>
+          </div>
+
+          <div class="col-12 form-group">
+            <br>
+            <br>
+            <% const title=courseInfo?.name || "" %>
+            <label>Tiêu đề khóa học</label>
+            <input type="text" name="name" required=true class="form-control" id="title-input" value="<%=title%>" />
+            <br />
+
+            <% const slug=courseInfo?.slug || "" %>
+            <label>Slug (LINK URL)</label>
+            <input type="text" name="slug" required=true class="form-control" value="<%=slug%>" id="slug-auto" />
+            <div id="create-slug-btn" class="btn btn-info mt-2" style="cursor: pointer">Tạo
+              slug tự động</div>
+            <br>
+            <br />
+
+            <% const description=courseInfo?.description || "" %>
+            <label>Mô tả ngắn</label>
+            <textarea name="description" rows="5" class="form-control"><%-description%></textarea>
+            <br />
+            <hr />
+          </div>
+
+          <div class="col-12 form-group">
+            <% const content=courseInfo?.content || "" %>
+            <label for="introduce-content">Nội dung khóa học</label>
+            <textarea name="content" class="content-editor" id="content-editor"><%-content%></textarea>
+            <br />
+          </div>
+
+          <div class="col-12 form-group">
+            <% const outcome=courseInfo?.outcome || "" %>
+            <label for="outcome-content">Mục tiêu đạt được</label>
+            <textarea name="outcome" class="content-editor" id="outcome-editor"><%-outcome%></textarea>
+            <br />
+          </div>
+
+          <div class="col-12 form-group">
+            <div class="col-6 form-group">
+              <label for="select" class="form-control-label d-block">Danh mục</label>
+              <select name="category" id="courseCategory" class="select-search-input form-control">
+                <option value="" <%=!course.category && 'selected' %>>Trống</option>
+                <% if (categories && categories.length) { %>
+                <% categories.forEach(e=> {%>
+                <option value=<%- `"${e._id}"` %> <%= `${e._id}`==`${course.category}` && 'selected' %>>
+                  <%= (lang=='en' ) ? e.enName : e.viName %>
+                </option>
+                <% }) %>
+                <% } %>
+              </select>
+            </div>
+
+            <div class="col-6 form-group">
+            <label>Trạng thái</label>
+            <select name="status" id="" class="form-control" style="max-width: 200px">
+              <option <%- `${courseInfo?.status}`==`public_index` ? "selected" : '' %> value="public_index">Public,
+                index</option>
+              <option <%- `${courseInfo?.status}`==`public_noindex` ? "selected" : '' %> value="public_noindex">Public, no
+                index</option>
+              <option <%- `${courseInfo?.status}`==`redirect_noindex` ? "selected" : '' %> value="redirect_noindex">Redirect, no
+                index</option>
+              <option <%- `${courseInfo?.status}`==`private_noindex` ? "selected" : '' %> value="private_noindex">Private,
+                no index</option>
+              <option <%- `${courseInfo?.status}`==`draft` ? "selected" : '' %> value="draft">Draft
+              </option>
+            </select>
+            </div>
+            <br />
+
+            <br />
+            <br />
+
+            <div class="col-12 form-group">
+            <hr />
+            <label for="select" class="form-control-label d-block"><span><strong>THÔNG TIN KHÓA HỌC</strong></span></label>
+            <div class="col-6 form-group">
+                <label>Giá ban đầu</label>
+                <% const originalPrice=courseInfo?.originalPrice || "" %>
+                <input type="number" name="originalPrice" maxlength="70" class="form-control" value="<%=originalPrice%>"  />
+                <br />
+              </div>
+              <div class="col-6 form-group">
+                <label>Giá hiện tại</label>
+                <% const price=courseInfo?.price || "" %>
+                <input type="number" name="price" maxlength="70" class="form-control" value="<%=price%>"  />
+                <br />
+              </div>
+              <div class="col-6 form-group">
+                <label>Số lượng học viên</label>
+                <% const seat=course?.seat || "" %>
+                <input type="number" name="seat" maxlength="70" class="form-control" value="<%=seat%>" />
+                <br />
+              </div>
+
+              <div class="col-6 form-group">
+                <label>Số lượng buổi học</label>
+                <% const lectures=course?.lectures || "" %>
+                <input type="number" name="lectures" maxlength="70" class="form-control" value="<%=lectures%>" />
+                <br />
+              </div>
+
+              <div class="col-6 form-group">
+                <label>Số lượng bài tập</label>
+                <% const quizzes=course?.quizzes || "" %>
+                <input type="number" name="quizzes" maxlength="70" class="form-control" value="<%=quizzes%>" />
+                <br />
+              </div>
+
+              <div class="col-6 form-group">
+                <label>Thời hạn khóa học</label>
+                <% const duration=courseInfo?.duration || "" %>
+                <input type="text" name="duration" maxlength="70" class="form-control" value="<%=duration%>">
+                <br />
+              </div>
+              
+              <div class="col-6 form-group">
+                <label>Ngày bắt đầu</label>
+                <% const openingDate=course.openingDate || new Date() %>
+                <input type="date" name="openingDate" class="form-control" value="<%= DATE_FORMAT_FN(openingDate, 'YYYY-MM-DD') %>" />
+                <br />
+              </div>
+
+              <div class="col-6 form-group">
+                <label for="select" class="form-control-label d-block">Người hướng dẫn</label>
+                <select name="instructor" id="courseCategory" class="select-search-input form-control">
+                  <option value="" <%=!course.category && 'selected' %>>Trống</option>
+                  <% if (categories && categories.length) { %>
+                  <% categories.forEach(e=> {%>
+                  <option value=<%- `"${e._id}"` %> <%= `${e._id}`==`${course.category}` && 'selected' %>>
+                    <%= (lang=='en' ) ? e.enName : e.viName %>
+                  </option>
+                  <% }) %>
+                  <% } %>
+                </select>
+              </div>
+
+            </div>  
+            
+            <div class="col-12 form-group">
+            <hr />
+            <label for="select" class="form-control-label d-block"><span><strong>THÔNG TIN SEO</strong></span></label>
+            <div class="col-6 form-group">
+            <label>Tiêu đề SEO (Giới hạn 70 kí tự)</label>
+            <% const seoTitle=courseInfo?.seoTitle || "" %>
+            <input type="text" name="seoTitle" maxlength="70" class="form-control" value="<%=seoTitle%>" id="seo-title-auto" />
+            <div id="create-seo-title-btn" class="btn btn-info mt-2">Tạo tiêu đề SEO tự động
+            </div>
+            </div>
+            <div class="col-6 form-group">
+            <% const seoDescription=courseInfo?.seoDescription || "" %>
+            <label>Mô tả SEO (Giới hạn 160 kí tự)</label>
+            <textarea name="seoDescription" maxlength="160" rows="3" class="form-control"><%-seoDescription%></textarea>
+            </div>
+
+            <div class="col-6 form-group">
+            <label>Từ khoá SEO</label>
+            <% const seoKeywords=courseInfo?.seoKeywords || "" %>
+            <input type="text" name="seoKeywords" class="form-control" value="<%=seoKeywords%>" />
+            </div>
+            <div class="col-6 form-group">
+            <label>Seo canonical</label>
+            <% const canonical=courseInfo?.seoCanonical || "" %>
+            <input type="text" name="seoCanonical" class="form-control" value="<%=canonical%>" />
+            </div>
+            <div class="col-6 form-group">
+            <label>seoLang</label>
+            <% const seoLang=courseInfo?.seoLang || "vi" %>
+            <input type="text" name="seoLang" class="form-control" value="<%=seoLang%>" />
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer">
+        <button type="submit" class="btn btn-primary btn-sm">
+          <i class="fa fa-dot-circle-o"></i> Đăng mới
+        </button>
+        <button type="reset" class="btn btn-danger btn-sm"><i class="fa fa-ban"></i>Reset</button>
+      </div>
+    </div>
+  </form>
+</div>
+
+<script src="/admin/js/autoFilled.js"></script>
+<script src="/admin/js/addMoreImage.js"></script>
