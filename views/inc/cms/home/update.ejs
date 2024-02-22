@@ -23,38 +23,202 @@
       <div class="card-body" style="padding: 20px !important; position: relative">
         <div class="row">
           <!-- Input field for Slider Images -->
-          <div class="row col-12 form-group d-block">
-            <br />
-            <label class="col-12 form-group d-block">Hình ảnh</label>
+
+          <div class="row col-12 form-group d-block gallery-container">
+            <div class="image-list">
+              <br />
+              <label class="col-12 form-group d-block">Hình ảnh</label>
+              <div class="col-4 form-group image-node">
+                <% const thumbnailSrc = "/noimage.jpg"; %>
+                <div class="restore-image-button" onclick="clearImage(this, 0)">X</div>
+                <img
+                  style="width: 100%; height: auto; height: 300px; cursor: pointer"
+                  onclick="openGallery(this, '#input-thumbnail0')"
+                  src="<%= thumbnailSrc %>"
+                  style="width: 100%; cursor: pointer"
+                  class="gallery-image"
+                />
+                <input type="hidden" id="input-thumbnail0" name="gallery" value="" />
+              </div>
+            </div>
             <div class="col-4 form-group">
-              <% const thumbnailSrc = "/noimage.jpg"; %>
-              <div class="restore-image-button" onclick="clearImage(this, 0)">X</div>
-              <img
-                style="width: 100%; height: auto; height: 300px; cursor: pointer"
-                onclick="openGallery(this, '#input-thumbnail0')"
-                src="<%= thumbnailSrc %>"
-                style="width: 100%; cursor: pointer"
-                class="gallery-image"
-              />
-              <input type="hidden" id="input-thumbnail0" name="gallery" value="" />
+              <div onclick="addMoreImages()" class="btn btn-info mt-2" style="cursor: pointer">
+                Thêm ảnh
+              </div>
             </div>
           </div>
-          <div class="col-4 form-group">
-            <div onclick="addMoreImages()" class="btn btn-info mt-2" style="cursor: pointer">
-              Thêm ảnh
-            </div>
-          </div>
-          <!-- Input field for Slider Videos -->
+          <!-- Slider Section -->
           <div class="col-12 form-group">
-            <label for="slider-videos" class="control-label mb-1">Slider Videos (multiple)</label>
-            <input
-              id="slider-videos"
-              name="slider-videos"
-              type="file"
-              class="form-control"
-              accept="video/*"
-              multiple
-            />
+            <label for="slider-videos" class="control-label mb-1 mr-4">Select Video Files</label>
+            <button
+              type="button"
+              class="btn btn-primary"
+              data-toggle="modal"
+              data-target="#videoModal"
+            >
+              Select Videos
+            </button>
+            <div
+              class="modal fade"
+              id="videoModal"
+              tabindex="-1"
+              role="dialog"
+              aria-labelledby="videoModalLabel"
+              aria-hidden="true"
+            >
+              <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="videoModalLabel">Select Videos</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <input
+                      type="text"
+                      id="video-search"
+                      class="form-control mb-2"
+                      placeholder="Search videos"
+                    />
+                    <div id="video-list">
+                      <!-- Placeholder video item (replace with dynamically generated items) -->
+                      <div class="video-item">
+                        <div class="row">
+                          <div class="col-sm-4">
+                            <video width="200" height="100" controls>
+                              <source src="video1.mp4" type="video/mp4" />
+                              Your browser does not support the video tag.
+                            </video>
+                          </div>
+                          <div class="col-sm-8">
+                            <h5>Video 1</h5>
+                            <p>Description of Video 1</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="video-item">
+                        <div class="row">
+                          <div class="col-sm-4">
+                            <video width="200" height="100" controls>
+                              <source src="video1.mp4" type="video/mp4" />
+                              Your browser does not support the video tag.
+                            </video>
+                          </div>
+                          <div class="col-sm-8">
+                            <h5>Video 1</h5>
+                            <p>Description of Video 1</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="video-item">
+                        <div class="row">
+                          <div class="col-sm-4">
+                            <video width="200" height="100" controls>
+                              <source src="video1.mp4" type="video/mp4" />
+                              Your browser does not support the video tag.
+                            </video>
+                          </div>
+                          <div class="col-sm-8">
+                            <h5>Video 1</h5>
+                            <p>Description of Video 1</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="video-item">
+                        <div class="row">
+                          <div class="col-sm-4">
+                            <video width="200" height="100" controls>
+                              <source src="video1.mp4" type="video/mp4" />
+                              Your browser does not support the video tag.
+                            </video>
+                          </div>
+                          <div class="col-sm-8">
+                            <h5>Video 1</h5>
+                            <p>Description of Video 1</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="video-item">
+                        <div class="row">
+                          <div class="col-sm-4">
+                            <video width="200" height="100" controls>
+                              <source src="video1.mp4" type="video/mp4" />
+                              Your browser does not support the video tag.
+                            </video>
+                          </div>
+                          <div class="col-sm-8">
+                            <h5>Video 1</h5>
+                            <p>Description of Video 1</p>
+                          </div>
+                        </div>
+                      </div>
+                      <!-- End of placeholder -->
+                    </div>
+                    <nav aria-label="Page navigation example">
+                      <div
+                        class="col-12 form-group pagination justify-content-center d-flex"
+                        id="video-pagination"
+                      >
+                        <div class="page-item disabled">
+                          <a class="page-link" href="#" tabindex="-1" aria-disabled="true"
+                            >Previous</a
+                          >
+                        </div>
+                        <div class="page-item"><a class="page-link" href="#">1</a></div>
+                        <div class="page-item"><a class="page-link" href="#">2</a></div>
+                        <div class="page-item">
+                          <a class="page-link" href="#">Next</a>
+                        </div>
+                      </div>
+                    </nav>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                      Close
+                    </button>
+                    <button type="button" class="btn btn-primary" id="select-video-btn">
+                      Select
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Selected Videos Display Section -->
+          <div class="col-12 form-group" id="selected-videos">
+            <div id="selected-videos-list">
+              <!-- Example of a selected video item -->
+              <div class="selected-video-item col-3">
+                <h4>Video Title</h4>
+                <video width="320" height="240" controls>
+                  <source src="path_to_video.mp4" type="video/mp4" />
+                  Your browser does not support the video tag.
+                </video>
+              </div>
+              <div class="selected-video-item col-3">
+                <h4>Video Title</h4>
+                <video width="320" height="240" controls>
+                  <source src="path_to_video.mp4" type="video/mp4" />
+                  Your browser does not support the video tag.
+                </video>
+              </div>
+              <div class="selected-video-item col-3">
+                <h4>Video Title</h4>
+                <video width="320" height="240" controls>
+                  <source src="path_to_video.mp4" type="video/mp4" />
+                  Your browser does not support the video tag.
+                </video>
+              </div>
+              <div class="selected-video-item col-3">
+                <h4>Video Title</h4>
+                <video width="320" height="240" controls>
+                  <source src="path_to_video.mp4" type="video/mp4" />
+                  Your browser does not support the video tag.
+                </video>
+              </div>
+              <!-- End of example -->
+            </div>
           </div>
           <div class="col-12 form-group">
             <label for="bannerType" class="control-label mb-1">Banner Type</label>
@@ -123,17 +287,178 @@
               Thêm ảnh
             </div>
           </div>
-          <!-- Input field for Slider Videos -->
+          <!-- Slider Section -->
           <div class="col-12 form-group">
-            <label for="slider-videos" class="control-label mb-1">Slider Videos (multiple)</label>
-            <input
-              id="slider-videos"
-              name="slider-videos"
-              type="file"
-              class="form-control"
-              accept="video/*"
-              multiple
-            />
+            <label for="slider-videos" class="control-label mb-1 mr-4">Select Video Files</label>
+            <button
+              type="button"
+              class="btn btn-primary"
+              data-toggle="modal"
+              data-target="#videoModal"
+            >
+              Select Videos
+            </button>
+            <div
+              class="modal fade"
+              id="videoModal"
+              tabindex="-1"
+              role="dialog"
+              aria-labelledby="videoModalLabel"
+              aria-hidden="true"
+            >
+              <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="videoModalLabel">Select Videos</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <input
+                      type="text"
+                      id="video-search"
+                      class="form-control mb-2"
+                      placeholder="Search videos"
+                    />
+                    <div id="video-list">
+                      <!-- Placeholder video item (replace with dynamically generated items) -->
+                      <div class="video-item">
+                        <div class="row">
+                          <div class="col-sm-4">
+                            <video width="200" height="100" controls>
+                              <source src="video1.mp4" type="video/mp4" />
+                              Your browser does not support the video tag.
+                            </video>
+                          </div>
+                          <div class="col-sm-8">
+                            <h5>Video 1</h5>
+                            <p>Description of Video 1</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="video-item">
+                        <div class="row">
+                          <div class="col-sm-4">
+                            <video width="200" height="100" controls>
+                              <source src="video1.mp4" type="video/mp4" />
+                              Your browser does not support the video tag.
+                            </video>
+                          </div>
+                          <div class="col-sm-8">
+                            <h5>Video 1</h5>
+                            <p>Description of Video 1</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="video-item">
+                        <div class="row">
+                          <div class="col-sm-4">
+                            <video width="200" height="100" controls>
+                              <source src="video1.mp4" type="video/mp4" />
+                              Your browser does not support the video tag.
+                            </video>
+                          </div>
+                          <div class="col-sm-8">
+                            <h5>Video 1</h5>
+                            <p>Description of Video 1</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="video-item">
+                        <div class="row">
+                          <div class="col-sm-4">
+                            <video width="200" height="100" controls>
+                              <source src="video1.mp4" type="video/mp4" />
+                              Your browser does not support the video tag.
+                            </video>
+                          </div>
+                          <div class="col-sm-8">
+                            <h5>Video 1</h5>
+                            <p>Description of Video 1</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="video-item">
+                        <div class="row">
+                          <div class="col-sm-4">
+                            <video width="200" height="100" controls>
+                              <source src="video1.mp4" type="video/mp4" />
+                              Your browser does not support the video tag.
+                            </video>
+                          </div>
+                          <div class="col-sm-8">
+                            <h5>Video 1</h5>
+                            <p>Description of Video 1</p>
+                          </div>
+                        </div>
+                      </div>
+                      <!-- End of placeholder -->
+                    </div>
+                    <nav aria-label="Page navigation example">
+                      <div
+                        class="col-12 form-group pagination justify-content-center d-flex"
+                        id="video-pagination"
+                      >
+                        <div class="page-item disabled">
+                          <a class="page-link" href="#" tabindex="-1" aria-disabled="true"
+                            >Previous</a
+                          >
+                        </div>
+                        <div class="page-item"><a class="page-link" href="#">1</a></div>
+                        <div class="page-item"><a class="page-link" href="#">2</a></div>
+                        <div class="page-item">
+                          <a class="page-link" href="#">Next</a>
+                        </div>
+                      </div>
+                    </nav>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                      Close
+                    </button>
+                    <button type="button" class="btn btn-primary" id="select-video-btn">
+                      Select
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Selected Videos Display Section -->
+          <div class="col-12 form-group" id="selected-videos">
+            <div id="selected-videos-list">
+              <!-- Example of a selected video item -->
+              <div class="selected-video-item col-3">
+                <h4>Video Title</h4>
+                <video width="320" height="240" controls>
+                  <source src="path_to_video.mp4" type="video/mp4" />
+                  Your browser does not support the video tag.
+                </video>
+              </div>
+              <div class="selected-video-item col-3">
+                <h4>Video Title</h4>
+                <video width="320" height="240" controls>
+                  <source src="path_to_video.mp4" type="video/mp4" />
+                  Your browser does not support the video tag.
+                </video>
+              </div>
+              <div class="selected-video-item col-3">
+                <h4>Video Title</h4>
+                <video width="320" height="240" controls>
+                  <source src="path_to_video.mp4" type="video/mp4" />
+                  Your browser does not support the video tag.
+                </video>
+              </div>
+              <div class="selected-video-item col-3">
+                <h4>Video Title</h4>
+                <video width="320" height="240" controls>
+                  <source src="path_to_video.mp4" type="video/mp4" />
+                  Your browser does not support the video tag.
+                </video>
+              </div>
+              <!-- End of example -->
+            </div>
           </div>
 
           <div class="col-12 form-group">
