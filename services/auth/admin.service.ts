@@ -5,7 +5,6 @@ import {
 } from '../../constants/response-message.constant'
 import ADMIN_MODEL, { AdminDocument } from '../../models/admin.model'
 import { BaseService } from '../../shared/base/service.base'
-import { ERoles } from '../../shared/enums/roles.enum'
 import { hashPassword, parseToken, signingToken } from '../../shared/helpers/auth.helper'
 import { CreateAdminPayload } from '../../shared/types/auth.type'
 import { IResponseData } from '../../shared/interfaces/base.interface'
