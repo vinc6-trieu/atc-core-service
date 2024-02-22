@@ -1,5 +1,4 @@
 import mongoose, { Document, Schema } from 'mongoose'
-import { DepartmentDocument } from './department.model'
 import { ImageDocument } from './image.model'
 
 export interface AdminDocument extends Document {
@@ -10,7 +9,6 @@ export interface AdminDocument extends Document {
 
   email?: string
   role: number
-  department: mongoose.Types.ObjectId | null | DepartmentDocument
   gender: number
   phone?: string
 

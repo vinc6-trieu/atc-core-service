@@ -11,3 +11,9 @@ export enum ECourseStatus {
   PublicIndex = 'public_index',
   Deleted = 'deleted',
 }
+
+export enum ECourseForm {
+  Online = 'online',
+  Offline = 'offline',
+  OnlineAndOffline = 'online_offline',
+}

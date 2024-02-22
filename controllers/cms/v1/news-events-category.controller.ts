@@ -193,7 +193,6 @@ class NewsCategoryViewController {
 
     const signalGet = await newsEventsCategoryService.getOne({
       queryConditions: { _id: id.trim() },
-      populates: ['thumbnail'],
     })
 
     const category = signalGet?.data ?? { _id: id }
@@ -203,6 +202,7 @@ class NewsCategoryViewController {
         newsEventsCategory: id,
         lang,
       },
+      populates: ['thumbnail'],
     })
 
     const info = signalGetInfo?.data ?? {}
@@ -236,7 +236,6 @@ class NewsCategoryViewController {
 
     const signalGet = await newsEventsCategoryService.getOne({
       queryConditions: { _id: id.trim() },
-      populates: ['thumbnail'],
     })
 
     const category = signalGet?.data ?? { _id: id }
@@ -246,6 +245,7 @@ class NewsCategoryViewController {
         newsEventsCategory: id,
         lang,
       },
+      populates: ['thumbnail'],
     })
 
     const info = signalGetInfo?.data ?? {}

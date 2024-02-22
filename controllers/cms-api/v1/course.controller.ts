@@ -49,12 +49,16 @@ class CourseController extends BaseController<CourseDocument> {
       seoCanonical,
       seoRedirect,
       seoLang,
+      instructor1 = null,
+      instructor2 = null,
     } = dataUpdate
 
     // create TOC
     const dataCreate = createToc(dataUpdate.content)
     update.toc = dataCreate.html
     update.content = dataCreate.content
+    update.instructor1 = instructor1 ? instructor1 : null
+    update.instructor2 = instructor2 ? instructor1 : null
 
     gallery = [...gallery].filter((e) => (e ? true : false))
 
@@ -63,7 +67,11 @@ class CourseController extends BaseController<CourseDocument> {
       session = await courseService.startTransaction()
       const signalUpdateInfo = await courseInfoService.createOrUpdate({
         queryConditions: { course: id, lang },
-        data: { ...update, gallery, duration },
+        data: {
+          ...update,
+          gallery,
+          duration,
+        },
       })
 
       if (signalUpdateInfo.error || !signalUpdateInfo.data)
@@ -76,7 +84,6 @@ class CourseController extends BaseController<CourseDocument> {
           ? {
               viSlug: courseInfo.slug,
               viName: courseInfo.name,
-              viInstructor: courseInfo.instructor,
               viPrice: courseInfo.price,
               viOriginalPrice: courseInfo.originalPrice,
               viDuration: courseInfo.duration,
@@ -84,7 +91,6 @@ class CourseController extends BaseController<CourseDocument> {
           : {
               enSlug: courseInfo.slug,
               enName: courseInfo.name,
-              enInstructor: courseInfo.instructor,
               enPrice: courseInfo.price,
               enOriginalPrice: courseInfo.originalPrice,
               enDuration: courseInfo.duration,
@@ -202,14 +208,12 @@ class CourseController extends BaseController<CourseDocument> {
       dataRemove.vi = null
       dataRemove.viName = ''
       dataRemove.viSlug = ''
-      dataRemove.viInstructor = ''
     }
 
     if (lang === ELanguage.EN) {
       dataRemove.en = null
       dataRemove.enName = ''
       dataRemove.enSlug = ''
-      dataRemove.enInstructor = ''
     }
 
     const removeSignals = await Promise.all([

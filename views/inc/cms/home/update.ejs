@@ -1,0 +1,189 @@
+<div class="breadcrumbs">
+  <div class="page-header float-left">
+    <div class="page-title">
+      <h1 class="d-inline-block float-left">CHỈNH SỬA TRANG CHỦ</h1>
+    </div>
+  </div>
+  <% include('../../../components/languages_select')%>
+</div>
+
+<div class="col-lg">
+  <br />
+  <br />
+
+  <form
+    method="PUT"
+    action="/cms-api/v1/page-components/<!%=pageCom?._id%>"
+    class="form-horizontal"
+  >
+    <div class="card">
+      <div class="card-header">
+        <strong style="text-transform: uppercase"> <%= "Banner trang chủ" %> </strong>
+      </div>
+      <div class="card-body" style="padding: 20px !important; position: relative">
+        <div class="row">
+          <!-- Input field for Slider Images -->
+          <div class="row col-12 form-group d-block">
+            <br />
+            <label class="col-12 form-group d-block">Hình ảnh</label>
+            <div class="col-4 form-group">
+              <% const thumbnailSrc = "/noimage.jpg"; %>
+              <div class="restore-image-button" onclick="clearImage(this, 0)">X</div>
+              <img
+                style="width: 100%; height: auto; height: 300px; cursor: pointer"
+                onclick="openGallery(this, '#input-thumbnail0')"
+                src="<%= thumbnailSrc %>"
+                style="width: 100%; cursor: pointer"
+                class="gallery-image"
+              />
+              <input type="hidden" id="input-thumbnail0" name="gallery" value="" />
+            </div>
+          </div>
+          <div class="col-4 form-group">
+            <div onclick="addMoreImages()" class="btn btn-info mt-2" style="cursor: pointer">
+              Thêm ảnh
+            </div>
+          </div>
+          <!-- Input field for Slider Videos -->
+          <div class="col-12 form-group">
+            <label for="slider-videos" class="control-label mb-1">Slider Videos (multiple)</label>
+            <input
+              id="slider-videos"
+              name="slider-videos"
+              type="file"
+              class="form-control"
+              accept="video/*"
+              multiple
+            />
+          </div>
+          <div class="col-12 form-group">
+            <label for="bannerType" class="control-label mb-1">Banner Type</label>
+            <select name="bannerType" id="bannerType" class="form-control" style="max-width: 200px">
+              <option value="video">Video</option>
+              <option value="video">Image</option>
+            </select>
+          </div>
+          <!-- Input field for Button Label -->
+          <div class="col-12 form-group">
+            <label for="button-label" class="control-label mb-1">Button Label</label>
+            <input id="button-label" name="button-label" type="text" class="form-control" />
+          </div>
+          <!-- Input field for Button Link -->
+          <div class="col-12 form-group">
+            <label for="button-link" class="control-label mb-1">Button Link</label>
+            <input id="button-link" name="button-link" type="url" class="form-control" />
+          </div>
+        </div>
+        <div class="col-12 form-group">
+          <div class="col col-md-6">
+            <button type="submit" class="btn btn-primary btn-sm">
+              <i class="fa fa-dot-circle-o"></i> Cập nhật
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+
+<div class="col-lg">
+  <br />
+  <br />
+
+  <form
+    method="PUT"
+    action="/cms-api/v1/page-components/<!%=pageCom?._id%>"
+    class="form-horizontal"
+  >
+    <div class="card">
+      <div class="card-header">
+        <strong style="text-transform: uppercase"> <%= "Banner trang chủ" %> </strong>
+      </div>
+      <div class="card-body" style="padding: 20px !important; position: relative">
+        <div class="row">
+          <!-- Slider Section -->
+          <div class="row col-12 form-group d-block">
+            <br />
+            <label class="col-12 form-group d-block">Hình ảnh</label>
+            <div class="col-4 form-group">
+              <% const thumbnailSrc2 = "/noimage.jpg"; %>
+              <div class="restore-image-button" onclick="clearImage(this, 0)">X</div>
+              <img
+                style="width: 100%; height: auto; height: 300px; cursor: pointer"
+                onclick="openGallery(this, '#input-thumbnail0')"
+                src="<%= thumbnailSrc2 %>"
+                style="width: 100%; cursor: pointer"
+                class="gallery-image"
+              />
+              <input type="hidden" id="input-thumbnail0" name="gallery" value="" />
+            </div>
+          </div>
+          <div class="col-4 form-group">
+            <div onclick="addMoreImages()" class="btn btn-info mt-2" style="cursor: pointer">
+              Thêm ảnh
+            </div>
+          </div>
+          <!-- Input field for Slider Videos -->
+          <div class="col-12 form-group">
+            <label for="slider-videos" class="control-label mb-1">Slider Videos (multiple)</label>
+            <input
+              id="slider-videos"
+              name="slider-videos"
+              type="file"
+              class="form-control"
+              accept="video/*"
+              multiple
+            />
+          </div>
+
+          <div class="col-12 form-group">
+            <label for="bannerType" class="control-label mb-1">Banner Type</label>
+            <select name="bannerType" id="bannerType" class="form-control" style="max-width: 200px">
+              <option value="video">Video</option>
+              <option value="video">Image</option>
+            </select>
+          </div>
+          <!-- Introduction Section -->
+          <div class="col-12 form-group">
+            <label for="intro-title" class="control-label mb-1">Introduction Title</label>
+            <input id="intro-title" name="intro-title" type="text" class="form-control" />
+          </div>
+          <div class="col-12 form-group">
+            <label for="intro-content" class="control-label mb-1">Introduction Content</label>
+            <textarea class="content-editor" id="content-editor"></textarea>
+          </div>
+          <div class="col-12 form-group">
+            <label for="intro-button-label" class="control-label mb-1"
+              >Introduction Button Label</label
+            >
+            <input
+              id="intro-button-label"
+              name="intro-button-label"
+              type="text"
+              class="form-control"
+            />
+          </div>
+          <div class="col-12 form-group">
+            <label for="intro-button-link" class="control-label mb-1"
+              >Introduction Button Link</label
+            >
+            <input
+              id="intro-button-link"
+              name="intro-button-link"
+              type="url"
+              class="form-control"
+            />
+          </div>
+        </div>
+        <div class="col-12 form-group">
+          <div class="col col-md-6">
+            <button type="submit" class="btn btn-primary btn-sm">
+              <i class="fa fa-dot-circle-o"></i> Cập nhật
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+<script src="/admin/js/addMoreImage.js"></script>

@@ -22,7 +22,6 @@ export type CourseCategoryLanguages = {
   CourseCategoryEn
 
 export type CourseCategory = {
-  thumbnail?: mongoose.Types.ObjectId | null | ImageDocument
   parent?: mongoose.Types.ObjectId | null | CourseCategoryDocument
   createdAt: Date
   type?: ENewsEventType
@@ -37,7 +36,6 @@ const courseCategorySchema = new Schema<CourseCategoryDocument>(
     viName: { type: String },
     viSlug: { type: String },
     type: { type: String, enum: ENewsEventType, default: ENewsEventType.News },
-    thumbnail: { type: mongoose.Types.ObjectId, ref: 'image' },
     parent: { type: mongoose.Types.ObjectId, ref: 'course_category', default: null },
     vi: { type: mongoose.Types.ObjectId, ref: 'course_category_info', default: null },
     en: { type: mongoose.Types.ObjectId, ref: 'course_category_info', default: null },

@@ -28,7 +28,7 @@ class CourseCategoryController extends BaseController<CourseCategoryDocument> {
     const lang = dataUpdate.lang.trim()
 
     const signalUpdateInfo = await courseCategoryInfoService.createOrUpdate({
-      queryConditions: { newsEventsCategory: id, lang },
+      queryConditions: { courseCategory: id, lang },
       data: dataUpdate,
     })
     if (!signalUpdateInfo.data) return res.status(STATUS_CODE.SERVER_ERROR).json(signalUpdateInfo)
@@ -52,10 +52,10 @@ class CourseCategoryController extends BaseController<CourseCategoryDocument> {
       data: update,
     })
     if (signalUpdate.error) return res.status(STATUS_CODE.SERVER_ERROR).json(signalUpdate)
-    let newsEventsCategory = signalUpdate.data
+    let courseCategory = signalUpdate.data
 
     const responseJson = {
-      data: { newsEventsCategory, info },
+      data: { courseCategory, info },
       message: MESSAGES.CREATED_SUCCEED,
     }
     return res.status(STATUS_CODE.OK).json(responseJson)

@@ -4,13 +4,16 @@ import { ELanguage } from '../shared/enums/locale.enum'
 import { TagDocument } from './tag.model'
 import { CourseCategoryDocument } from './course-category.model'
 import { CourseDocument } from './course.model'
-import { ECourseStatus, ECourseType } from '../shared/enums/course.enum'
+import { ECourseForm, ECourseStatus, ECourseType } from '../shared/enums/course.enum'
+import { InstructorDocument } from './instructor.model'
 
 export interface CourseInfoDocument extends Document {
   name?: string
   content?: string
   outcome?: string
   summary?: string
+  targetObject?: string
+  form?: ECourseForm
   thumbnail?: mongoose.Types.ObjectId | null | ImageDocument
   gallery?: [mongoose.Types.ObjectId | ImageDocument]
   description?: string
@@ -24,7 +27,8 @@ export interface CourseInfoDocument extends Document {
   toc?: string
   price: number
   originalPrice: number
-  instructor: string
+  instructor1?: mongoose.Types.ObjectId | null | InstructorDocument
+  instructor2?: mongoose.Types.ObjectId | null | InstructorDocument
   duration: string
 
   seoTitle?: string
@@ -46,11 +50,26 @@ const courseInfoSchema = new Schema<CourseInfoDocument>(
   {
     name: { type: String, required: false, trim: true },
     content: { type: String, required: false, trim: true },
+    outcome: { type: String, required: false, trim: true },
+    targetObject: { type: String, required: false, trim: true },
     summary: { type: String, required: false, trim: true },
     thumbnail: { type: mongoose.Types.ObjectId, ref: 'image', required: true },
+    instructor1: {
+      type: mongoose.Types.ObjectId,
+      ref: 'instructor',
+      required: false,
+      default: null,
+    },
+    instructor2: {
+      type: mongoose.Types.ObjectId,
+      ref: 'instructor',
+      required: false,
+      default: null,
+    },
     gallery: [{ type: mongoose.Types.ObjectId, ref: 'image', required: false }],
     description: { type: String, required: false, trim: true },
     status: { type: String, enum: ECourseStatus, default: ECourseStatus.Draft },
+    form: { type: String, enum: ECourseForm, default: ECourseForm.OnlineAndOffline },
     slug: { type: String, required: false, index: { unique: true } },
     lang: { type: String, enum: ELanguage },
 

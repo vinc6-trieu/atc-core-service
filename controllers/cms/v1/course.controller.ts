@@ -6,6 +6,7 @@ import { courseInfoService } from '../../../services/course-info.service'
 import { courseService } from '../../../services/course.service'
 import { courseCategoryService } from '../../../services/course-category.service'
 import { ELanguage } from '../../../shared/enums/locale.enum'
+import { instructorService } from '../../../services/instructor.service'
 
 class CourseViewController {
   renderList = async (req: Request, res: Response, next: NextFunction) => {
@@ -144,6 +145,13 @@ class CourseViewController {
 
     const categories = signalGetCategories.data
 
+    const signalGetInstructors = await instructorService.getList({
+      queryConditions: {},
+    })
+    if (signalGetInstructors.error) return res.render('error')
+
+    const instructors = signalGetInstructors.data
+
     return res.render('cms', {
       inc: 'inc/cms/courses/update',
       title: 'Chỉnh sửa khóa học',
@@ -153,6 +161,7 @@ class CourseViewController {
       gallery,
       switchLangs,
       categories,
+      instructors,
       DATE_FORMAT_FN,
     })
   }

@@ -12,6 +12,7 @@ import instructorRoute from './instructor.route'
 import courseRouter from './course.route'
 import contactRequests from './contact-requests.route'
 import courseCategoryRoute from './course-category.route'
+import homeRoute from './home.route'
 
 export const cmsV1Route = express.Router()
 
@@ -29,3 +30,4 @@ cmsV1Route.use('/events-categories', isAuthenticated, eventsCategoryRoute)
 cmsV1Route.use('/course-categories', isAuthenticated, courseCategoryRoute)
 cmsV1Route.use('/events', isAuthenticated, eventsRoute)
 cmsV1Route.use('/images', isAuthenticated, imageRoute)
+cmsV1Route.use('/home', isAuthenticated, homeRoute)

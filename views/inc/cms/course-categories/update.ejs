@@ -25,10 +25,10 @@
       <div class="card-body" style="padding: 20px !important; position: relative">
         <div class="row">
           <div class="col-12 form-group">
-            <% const thumbnailSrc = category?.thumbnail?.src || "/noimage.jpg" %>
+            <% const thumbnailSrc = categoryInfo?.thumbnail?.src || "/noimage.jpg" %>
             <img onclick="openGallery(this, '#input-thumbnail')" src="<%=thumbnailSrc%>" style="width: 100%; cursor: pointer" class="gallery-image" />
 
-            <% const thumbnailID = category?.thumbnail?._id || "" %>
+            <% const thumbnailID = categoryInfo?.thumbnail?._id || "" %>
             <input type="hidden" id="input-thumbnail" name="thumbnail" value="<%=thumbnailID%>" required />
           </div>
 

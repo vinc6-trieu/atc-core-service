@@ -103,16 +103,16 @@ class CourseViewController {
 
     const signalGet = await courseCategoryService.getOne({
       queryConditions: { _id: id.trim() },
-      populates: ['thumbnail'],
     })
 
     const category = signalGet?.data ?? { _id: id }
 
     const signalGetInfo = await courseCategoryInfoService.getOne({
       queryConditions: {
-        newsEventsCategory: id,
+        courseCategory: id,
         lang,
       },
+      populates: ['thumbnail'],
     })
 
     const info = signalGetInfo?.data ?? {}

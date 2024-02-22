@@ -136,13 +136,13 @@
             <hr />
             <label for="select" class="form-control-label d-block"><span><strong>THÔNG TIN KHÓA HỌC</strong></span></label>
             <div class="col-6 form-group">
-                <label>Giá ban đầu</label>
+                <label>Học phí gốc</label>
                 <% const originalPrice=courseInfo?.originalPrice || "" %>
                 <input type="number" name="originalPrice" maxlength="70" class="form-control" value="<%=originalPrice%>"  />
                 <br />
               </div>
               <div class="col-6 form-group">
-                <label>Giá hiện tại</label>
+                <label>Học phí sau khi giảm</label>
                 <% const price=courseInfo?.price || "" %>
                 <input type="number" name="price" maxlength="70" class="form-control" value="<%=price%>"  />
                 <br />
@@ -163,7 +163,7 @@
 
               <div class="col-6 form-group">
                 <label>Mã khóa học</label>
-                <% const code=courseInfo?.code || "" %>
+                <% const code=course?.code || "" %>
                 <input type="text" name="code" maxlength="70" class="form-control" value="<%=code%>">
                 <br />
               </div>
@@ -188,6 +188,13 @@
                 <input type="text" name="duration" maxlength="70" class="form-control" value="<%=duration%>">
                 <br />
               </div>
+
+              <div class="col-6 form-group">
+                <label>Đối tượng hướng đến</label>
+                <% const targetObject=courseInfo?.targetObject || "" %>
+                <input type="text" name="targetObject" maxlength="270" class="form-control" value="<%=targetObject%>">
+                <br />
+              </div>
               
               <div class="col-6 form-group">
                 <label>Ngày bắt đầu</label>
@@ -196,13 +203,14 @@
                 <br />
               </div>
 
+
               <div class="col-6 form-group">
-                <label for="select" class="form-control-label d-block">Người hướng dẫn</label>
-                <select name="instructor" id="courseCategory" class="select-search-input form-control">
-                  <option value="" <%=!course.category && 'selected' %>>Trống</option>
-                  <% if (categories && categories.length) { %>
-                  <% categories.forEach(e=> {%>
-                  <option value=<%- `"${e._id}"` %> <%= `${e._id}`==`${course.category}` && 'selected' %>>
+                <label for="instructor1" class="form-control-label d-block">Người hướng dẫn 1</label>
+                <select name="instructor1" id="instructor1" class="select-search-input form-control">
+                  <option value="" <%=!courseInfo.instructor1 && 'selected' %>>Trống</option>
+                  <% if (instructors && instructors.length) { %>
+                  <% instructors.forEach(e=> {%>
+                  <option value=<%- `"${e._id}"` %> <%= `${e._id}`==`${courseInfo.instructor1}` && 'selected' %>>
                     <%= (lang=='en' ) ? e.enName : e.viName %>
                   </option>
                   <% }) %>
@@ -210,6 +218,28 @@
                 </select>
               </div>
 
+              <div class="col-6 form-group">
+                <label for="select" class="form-control-label d-block">Hình thức học</label>
+                <select name="form" id="" class="form-control" style="max-width: 200px">
+                <option <%- `${courseInfo?.form}`==`online_offline` ? "selected" : '' %> value="online_offline">Trực tuyến/Trực tiếp</option>
+                <option <%- `${courseInfo?.form}`==`online` ? "selected" : '' %> value="online">Trực tuyến</option>
+                <option <%- `${courseInfo?.form}`==`offline` ? "selected" : '' %> value="offline">Trực tiếp</option>
+              </select>
+              </div>
+
+              <div class="col-6 form-group">
+                <label for="instructor2" class="form-control-label d-block">Người hướng dẫn 2</label>
+                <select name="instructor2" id="instructor2" class="select-search-input form-control">
+                  <option value="" <%=!courseInfo.instructor2 && 'selected' %>>Trống</option>
+                  <% if (instructors && instructors.length) { %>
+                  <% instructors.forEach(e=> {%>
+                  <option value=<%- `"${e._id}"` %> <%= `${e._id}`==`${courseInfo.instructor2}` && 'selected' %>>
+                    <%= (lang=='en' ) ? e.enName : e.viName %>
+                  </option>
+                  <% }) %>
+                  <% } %>
+                </select>
+              </div>
             </div>  
             
             <div class="col-12 form-group">

@@ -230,7 +230,6 @@ class NewsEventsViewController {
 
     const signalGet = await newsEventsService.getOne({
       queryConditions: { _id: id.trim() },
-      populates: ['thumbnail'],
     })
 
     const news = signalGet?.data ?? { _id: id }
@@ -240,7 +239,7 @@ class NewsEventsViewController {
         news_events: news._id,
         lang,
       },
-      populates: ['thumbnail', 'gallery'],
+      populates: ['thumbnail'],
     })
 
     const info = signalGetInfo?.data ?? {}
@@ -275,7 +274,6 @@ class NewsEventsViewController {
 
     const signalGet = await newsEventsService.getOne({
       queryConditions: { _id: id.trim() },
-      populates: ['thumbnail'],
     })
 
     const events = signalGet?.data ?? { _id: id }
@@ -285,7 +283,7 @@ class NewsEventsViewController {
         news_events: events._id,
         lang,
       },
-      populates: ['thumbnail', 'gallery'],
+      populates: ['thumbnail'],
     })
 
     const info = signalGetInfo?.data ?? {}

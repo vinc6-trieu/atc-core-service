@@ -16,7 +16,6 @@ export type CourseVi = {
 }
 
 export type CourseLanguages = {
-  parent?: mongoose.Types.ObjectId | null | CourseDocument
   thumbnail?: mongoose.Types.ObjectId | null | ImageDocument
 } & CourseVi &
   CourseEn
@@ -27,11 +26,9 @@ export type Course = {
   type?: ECourseType
 
   // course props
-  code: string
+  code?: string
   openingDate?: Date
   closingDate?: Date
-  viInstructor?: string
-  enInstructor?: string
   seatOccupied: number
   seatTotal: number
   lectures?: number
@@ -73,15 +70,13 @@ const courseSchema = new Schema<CourseDocument>(
     views: { type: Number, required: false, default: 0 },
 
     // course props
-    code: { type: String },
+    code: { type: String, required: false, index: { unique: true } },
     openingDate: { type: Date },
     closingDate: { type: Date },
     seatOccupied: { type: Number },
     seatTotal: { type: Number },
     lectures: { type: Number },
     quizzes: { type: Number },
-    viInstructor: { type: String },
-    enInstructor: { type: String },
 
     viDuration: { type: String },
     enDuration: { type: String },

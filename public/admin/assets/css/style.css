@@ -5729,9 +5729,15 @@ body.open .navbar .navbar-brand.hidden {
 }
 
 .page-header {
-  padding-right: 15px;
-  padding-left: 15px;
-  padding-top: 15px;
+  display: flex;
+  align-items: center ;
+  padding: 25px;
+}
+
+.create-new {
+  padding: 25px;
+  height: 100% !important;
+  padding-left: unset !important;
 }
 
 .dropdown {
