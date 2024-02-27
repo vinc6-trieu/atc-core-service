@@ -1,6 +1,6 @@
-import mongoose, { Schema, Model, model } from 'mongoose'
+import mongoose, { Schema, Model, model, Document } from 'mongoose'
 
-export type PageComponent = {
+export type PageComponentDocument = {
   name: string
   page: string
 
@@ -19,9 +19,9 @@ export type PageComponent = {
   lang: 'vi' | 'en'
   createdAt: Date
   modifiedAt: Date
-}
+} & Document
 
-const pageComponentSchema = new Schema<PageComponent>({
+const pageComponentSchema = new Schema<PageComponentDocument>({
   name: { type: String, trim: true, required: true },
   page: { type: String, trim: true, required: true },
 
@@ -41,6 +41,9 @@ const pageComponentSchema = new Schema<PageComponent>({
   modifiedAt: { type: Date, required: true, default: new Date() },
 })
 
-const PAGE_COMPONENT_MODEL: Model<PageComponent> = model('page_component', pageComponentSchema)
+const PAGE_COMPONENT_MODEL: Model<PageComponentDocument> = model(
+  'page_component',
+  pageComponentSchema,
+)
 
 export default PAGE_COMPONENT_MODEL
