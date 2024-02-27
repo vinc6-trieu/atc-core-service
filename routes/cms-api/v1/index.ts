@@ -15,6 +15,7 @@ import { courseCategoryRoute } from './course-category.route'
 import { contactRequestsRoute } from './contact-requests.route'
 import { courseRegisterRoute } from './course-register.route'
 import { instructorRoute } from './instructor.route'
+import { pageComponentRoute } from './page-component.route'
 
 export const cmsV1ApiV1Route = express.Router()
 
@@ -32,3 +33,4 @@ cmsV1ApiV1Route.use('/events', isAuthenticated, eventsRoute)
 cmsV1ApiV1Route.use('/courses', isAuthenticated, courseRoute)
 cmsV1ApiV1Route.use('/tags', tagRoute)
 cmsV1ApiV1Route.use('/page-types', typePageRoute)
+cmsV1ApiV1Route.use('/page-components', pageComponentRoute)
