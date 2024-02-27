@@ -23,40 +23,37 @@
       <div class="card-body" style="padding: 20px !important; position: relative">
         <div class="row">
           <!-- Input field for Slider Images -->
-
-          <div class="row col-12 form-group d-block gallery-container">
-            <div class="image-list">
-              <br />
-              <label class="col-12 form-group d-block">Hình ảnh</label>
-              <div class="col-4 form-group image-node">
-                <% const thumbnailSrc = "/noimage.jpg"; %>
-                <div class="restore-image-button" onclick="clearImage(this, 0)">X</div>
-                <img
-                  style="width: 100%; height: auto; height: 300px; cursor: pointer"
-                  onclick="openGallery(this, '#input-thumbnail0')"
-                  src="<%= thumbnailSrc %>"
-                  style="width: 100%; cursor: pointer"
-                  class="gallery-image"
-                />
-                <input type="hidden" id="input-thumbnail0" name="gallery" value="" />
-              </div>
-            </div>
+          <div class="row col-12 form-group d-block">
+            <br />
+            <label class="col-12 form-group d-block">Hình ảnh</label>
             <div class="col-4 form-group">
-              <div onclick="addMoreImages()" class="btn btn-info mt-2" style="cursor: pointer">
-                Thêm ảnh
-              </div>
+              <% const thumbnailSrc = "/noimage.jpg"; %>
+              <div class="restore-image-button" onclick="clearImage(this, 0)">X</div>
+              <img
+                style="width: 100%; height: auto; height: 300px; cursor: pointer"
+                onclick="openGallery(this, '#input-thumbnail0')"
+                src="<%= thumbnailSrc %>"
+                style="width: 100%; cursor: pointer"
+                class="gallery-image"
+              />
+              <input type="hidden" id="input-thumbnail0" name="gallery" value="" />
+            </div>
+          </div>
+          <div class="col-4 form-group">
+            <div onclick="addMoreImages()" class="btn btn-info mt-2" style="cursor: pointer">
+              Thêm ảnh
             </div>
           </div>
           <!-- Slider Section -->
           <div class="col-12 form-group">
-            <label for="slider-videos" class="control-label mb-1 mr-4">Select Video Files</label>
+            <label for="slider-videos" class="control-label mb-1 mr-4">Videos</label>
             <button
               type="button"
               class="btn btn-primary"
               data-toggle="modal"
               data-target="#videoModal"
             >
-              Select Videos
+              Chọn Videos
             </button>
             <div
               class="modal fade"
@@ -69,7 +66,7 @@
               <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
                   <div class="modal-header">
-                    <h5 class="modal-title" id="videoModalLabel">Select Videos</h5>
+                    <h5 class="modal-title" id="videoModalLabel">Chọn Videos</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                       <span aria-hidden="true">&times;</span>
                     </button>
@@ -221,7 +218,7 @@
             </div>
           </div>
           <div class="col-12 form-group">
-            <label for="bannerType" class="control-label mb-1">Banner Type</label>
+            <label for="bannerType" class="control-label mb-1">Loại banner</label>
             <select name="bannerType" id="bannerType" class="form-control" style="max-width: 200px">
               <option value="video">Video</option>
               <option value="video">Image</option>
@@ -261,7 +258,7 @@
   >
     <div class="card">
       <div class="card-header">
-        <strong style="text-transform: uppercase"> <%= "Banner trang chủ" %> </strong>
+        <strong style="text-transform: uppercase"> <%= "Introduction" %> </strong>
       </div>
       <div class="card-body" style="padding: 20px !important; position: relative">
         <div class="row">
@@ -289,14 +286,14 @@
           </div>
           <!-- Slider Section -->
           <div class="col-12 form-group">
-            <label for="slider-videos" class="control-label mb-1 mr-4">Select Video Files</label>
+            <label for="slider-videos" class="control-label mb-1 mr-4">Chọn Video</label>
             <button
               type="button"
               class="btn btn-primary"
               data-toggle="modal"
               data-target="#videoModal"
             >
-              Select Videos
+              Chọn Video
             </button>
             <div
               class="modal fade"
@@ -309,7 +306,7 @@
               <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
                   <div class="modal-header">
-                    <h5 class="modal-title" id="videoModalLabel">Select Videos</h5>
+                    <h5 class="modal-title" id="videoModalLabel">Videos</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                       <span aria-hidden="true">&times;</span>
                     </button>
@@ -436,51 +433,35 @@
                   Your browser does not support the video tag.
                 </video>
               </div>
-              <div class="selected-video-item col-3">
-                <h4>Video Title</h4>
-                <video width="320" height="240" controls>
-                  <source src="path_to_video.mp4" type="video/mp4" />
-                  Your browser does not support the video tag.
-                </video>
-              </div>
-              <div class="selected-video-item col-3">
-                <h4>Video Title</h4>
-                <video width="320" height="240" controls>
-                  <source src="path_to_video.mp4" type="video/mp4" />
-                  Your browser does not support the video tag.
-                </video>
-              </div>
-              <div class="selected-video-item col-3">
-                <h4>Video Title</h4>
-                <video width="320" height="240" controls>
-                  <source src="path_to_video.mp4" type="video/mp4" />
-                  Your browser does not support the video tag.
-                </video>
-              </div>
               <!-- End of example -->
             </div>
           </div>
 
-          <div class="col-12 form-group">
-            <label for="bannerType" class="control-label mb-1">Banner Type</label>
+          <div class="col-3 form-group">
+            <label for="bannerType" class="control-label mb-1">Loại Banner</label>
             <select name="bannerType" id="bannerType" class="form-control" style="max-width: 200px">
               <option value="video">Video</option>
               <option value="video">Image</option>
             </select>
           </div>
+          <div class="col-3 form-group">
+            <label for="bannerType" class="control-label mb-1">Trạng Thái</label>
+            <select name="bannerType" id="bannerType" class="form-control" style="max-width: 200px">
+              <option value="1">Bật</option>
+              <option value="0">Tắt</option>
+            </select>
+          </div>
           <!-- Introduction Section -->
           <div class="col-12 form-group">
-            <label for="intro-title" class="control-label mb-1">Introduction Title</label>
+            <label for="intro-title" class="control-label mb-1">Tiêu đề</label>
             <input id="intro-title" name="intro-title" type="text" class="form-control" />
           </div>
           <div class="col-12 form-group">
-            <label for="intro-content" class="control-label mb-1">Introduction Content</label>
+            <label for="intro-content" class="control-label mb-1">Nội dung</label>
             <textarea class="content-editor" id="content-editor"></textarea>
           </div>
           <div class="col-12 form-group">
-            <label for="intro-button-label" class="control-label mb-1"
-              >Introduction Button Label</label
-            >
+            <label for="intro-button-label" class="control-label mb-1">Button Label</label>
             <input
               id="intro-button-label"
               name="intro-button-label"
@@ -489,9 +470,7 @@
             />
           </div>
           <div class="col-12 form-group">
-            <label for="intro-button-link" class="control-label mb-1"
-              >Introduction Button Link</label
-            >
+            <label for="intro-button-link" class="control-label mb-1">Button Link</label>
             <input
               id="intro-button-link"
               name="intro-button-link"
