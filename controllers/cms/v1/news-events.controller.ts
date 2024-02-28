@@ -268,8 +268,8 @@ class NewsEventsViewController {
     const lang = req.query.lang ?? ELanguage.VI
 
     const switchLangs = {
-      vi: `/cms/news/${id}?lang=${ELanguage.VI}`,
-      en: `/cms/news/${id}?lang=${ELanguage.EN}`,
+      vi: `/cms/events/${id}?lang=${ELanguage.VI}`,
+      en: `/cms/events/${id}?lang=${ELanguage.EN}`,
     }
 
     const signalGet = await newsEventsService.getOne({

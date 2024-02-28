@@ -3,6 +3,12 @@ export enum ECourseType {
   LongTerm = 'long_term',
 }
 
+export enum ECourseLevel {
+  Beginner = 'beginner',
+  Intermediate = 'intermediate',
+  Expert = 'expert',
+}
+
 export enum ECourseStatus {
   Draft = 'draft',
   Private = 'private_noindex',

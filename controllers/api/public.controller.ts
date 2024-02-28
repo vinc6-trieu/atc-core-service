@@ -7,14 +7,6 @@ import { ERROR_CODES, ERROR_MESSAGES } from '../../constants/response-message.co
 import { contactRequestService } from '../../services/contact-request.service'
 import { ContactRequestDocument } from '../../models/contact-request.model'
 
-const statusProcess = {
-  '3': 'Tư vấn thành công',
-  '2': 'Đã tư vấn đang chờ xác nhận từ khách',
-  '1': 'Đã chuyển Calling Center CSKH',
-  '0': 'Chờ tư vấn',
-  '-1': 'Khách hàng hủy',
-}
-
 const emailRegexp =
   /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/
 

@@ -23,7 +23,7 @@ exports.roleValue = {
   CREATE_SEO: 0,
 }
 
-function checkRole(requiredRole: number) {
+export function checkRole(requiredRole: number) {
   return (req: RequestWithPassport, res: Response, next: NextFunction) => {
     const userRole = req.isAuthenticated() ? (req.user as AdminDocument).role : 0
 

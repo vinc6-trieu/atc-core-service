@@ -1,6 +1,6 @@
 import mongoose, { Document, Schema } from 'mongoose'
 import { ImageDocument } from './image.model'
-import { ECourseType } from '../shared/enums/course.enum'
+import { ECourseLevel, ECourseType } from '../shared/enums/course.enum'
 import { CourseInfoDocument } from './course-info.model'
 
 export type CourseEn = {
@@ -23,6 +23,7 @@ export type CourseLanguages = {
 export type Course = {
   thumbnail?: mongoose.Types.ObjectId | null | ImageDocument
   category?: mongoose.Types.ObjectId | null | CourseDocument
+  level?: ECourseLevel
   type?: ECourseType
 
   // course props
@@ -62,6 +63,7 @@ const courseSchema = new Schema<CourseDocument>(
     viName: { type: String },
     viSlug: { type: String },
     type: { type: String, enum: ECourseType, default: ECourseType.ShortTerm },
+    level: { type: String, enum: ECourseLevel },
     en: { type: mongoose.Types.ObjectId, ref: 'course_info' },
     category: { type: mongoose.Types.ObjectId, ref: 'course_category', default: null },
     enName: { type: String },

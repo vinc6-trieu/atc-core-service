@@ -1,6 +1,6 @@
 export enum ERoles {
   SUPER_ADMIN = 0,
-  SEOER = 1,
+  MANAGER = 1,
   EDITOR = 2,
 }
 

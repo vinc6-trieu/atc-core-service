@@ -102,6 +102,7 @@
                   </ul>
                 </li>
 
+                <% if( user && user.role <= 1){ %>
                 <li class="menu-item-has-children dropdown">
                   <a href="" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true">
                     <i class="menu-icon fa fa-users"></i>Đăng kí và Tư vấn</a
@@ -117,6 +118,7 @@
                     </li>
                   </ul>
                 </li>
+                <% } %>
 
                 <!-- <li class="menu-item-has-children dropdown">
                   <a href="" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true">
@@ -128,6 +130,7 @@
                     </li>
                   </ul>
                 </li> -->
+                <% if( user && user.role < 1){ %>
                 <h3 class="menu-title">QUẢN TRỊ</h3>
                 <li class="menu-item-has-children">
                   <a href="/cms/admins/list">
@@ -153,7 +156,6 @@
                 <li class="menu-item-has-children">
                   <a href="/cms/landing-page"> <i class="menu-icon fa fa-file-powerpoint-o"></i>Landing page</a>
                 </li> -->
-
                 <h3 class="menu-title">LAYOUT</h3>
                 <li class="menu-item-has-children">
                   <a href="/cms/home/update"> <i class="menu-icon fa fa-home"></i>Trang chủ</a>
@@ -175,6 +177,8 @@
                 <!-- /.menu-title -->
                 <!-- <li class="menu-item-has-children"></li> -->
               </ul>
+
+              <% } %>
             </div>
           </div>
         </nav>

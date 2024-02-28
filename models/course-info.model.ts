@@ -4,8 +4,15 @@ import { ELanguage } from '../shared/enums/locale.enum'
 import { TagDocument } from './tag.model'
 import { CourseCategoryDocument } from './course-category.model'
 import { CourseDocument } from './course.model'
-import { ECourseForm, ECourseStatus, ECourseType } from '../shared/enums/course.enum'
+import { ECourseForm, ECourseStatus } from '../shared/enums/course.enum'
 import { InstructorDocument } from './instructor.model'
+
+export interface Review {
+  reviewer: string // Assuming the name of the reviewer
+  rating: number // Rating given by the reviewer
+  comment: string // Review comment
+  date: Date // Date of the review
+}
 
 export interface CourseInfoDocument extends Document {
   name?: string
@@ -29,7 +36,10 @@ export interface CourseInfoDocument extends Document {
   originalPrice: number
   instructor1?: mongoose.Types.ObjectId | null | InstructorDocument
   instructor2?: mongoose.Types.ObjectId | null | InstructorDocument
+  instructor3?: mongoose.Types.ObjectId | null | InstructorDocument
   duration: string
+
+  reviews?: Review[]
 
   seoTitle?: string
   seoDescription?: string
@@ -66,6 +76,12 @@ const courseInfoSchema = new Schema<CourseInfoDocument>(
       required: false,
       default: null,
     },
+    instructor3: {
+      type: mongoose.Types.ObjectId,
+      ref: 'instructor',
+      required: false,
+      default: null,
+    },
     gallery: [{ type: mongoose.Types.ObjectId, ref: 'image', required: false }],
     description: { type: String, required: false, trim: true },
     status: { type: String, enum: ECourseStatus, default: ECourseStatus.Draft },
@@ -81,6 +97,15 @@ const courseInfoSchema = new Schema<CourseInfoDocument>(
     course: { type: mongoose.Types.ObjectId, ref: 'course' },
     tags: [{ type: mongoose.Types.ObjectId, ref: 'tag' }],
     author: { type: String, required: false, trim: true },
+
+    reviews: [
+      {
+        reviewer: { type: String, required: true },
+        rating: { type: Number, required: true },
+        comment: { type: String, required: true },
+        date: { type: Date, default: new Date() },
+      },
+    ],
 
     seoTitle: { type: String, trim: true },
     seoDescription: { type: String, trim: true },

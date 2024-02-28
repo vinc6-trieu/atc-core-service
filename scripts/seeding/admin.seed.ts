@@ -18,6 +18,16 @@ const seedDatabase = async (): Promise<void> => {
       role: 0,
     })
 
+    await adminService.createAdmin({
+      fullname: 'editor',
+      password: '123456',
+      username: 'editor',
+      gender: 1,
+      email: 'editor@editor.com',
+      phone: '123123123123',
+      role: 2,
+    })
+
     console.log('Database admin seeded successfully')
   } catch (error) {
     console.error('Error seeding database:', error)
